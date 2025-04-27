@@ -19,7 +19,7 @@ const Blog = () => {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const res = await axios.get("http://localhost:5000/api/blogs/categories");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs/categories`);
         setCategories(res.data.data || []); // Assuming the categories are in `data`
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -36,7 +36,7 @@ const Blog = () => {
         let res;
         if (selectedCategoryId) {
           // Fetch blogs by category
-          res = await axios.get(`http://localhost:5000/api/blogs/categories/${selectedCategoryId}/blogs`);
+          res = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs/categories/${selectedCategoryId}/blogs`);
         } else {
           // Fetch all blogs
           res = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs?page=${page}`);
