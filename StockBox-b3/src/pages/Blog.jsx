@@ -9,30 +9,50 @@ import { useGSAP } from "@gsap/react";
 
 const Blog = () => {
   const [data, setData] = useState([]);
-  const [selectedKeyword, setSelectedKeyword] = useState("");
+  const [categories, setCategories] = useState([]); // State for categories
+  const [selectedCategoryId, setSelectedCategoryId] = useState(""); // Track selected category ID
   const [page, setPage] = useState(1);
   const [metadata, setMetadata] = useState({});
+  const [loading, setLoading] = useState(false);
 
-  const keywords = [
-    ...new Set(data.map((blog) => blog.category?.blogCategoryName).filter(Boolean)),
-  ];
+  // Fetch categories from the backend
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const res = await axios.get("http://localhost:5000/api/blogs/categories");
+        setCategories(res.data.data || []); // Assuming the categories are in `data`
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    }
+    fetchCategories();
+  }, []);
 
+  // Fetch blogs from the backend
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs?page=${page}`);
+        let res;
+        if (selectedCategoryId) {
+          // Fetch blogs by category
+          res = await axios.get(`http://localhost:5000/api/blogs/categories/${selectedCategoryId}/blogs`);
+        } else {
+          // Fetch all blogs
+          res = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs?page=${page}`);
+        }
         setData(res.data.data || []);
         setMetadata(res.data.metadata || {});
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
       }
     }
     fetchData();
-  }, [page]);
+  }, [page, selectedCategoryId]);
 
-  const filteredBlogs = selectedKeyword
-    ? data.filter((blog) => blog.category?.blogCategoryName === selectedKeyword)
-    : data;
+  const filteredBlogs = data;
 
   useGSAP(() => {
     const moveSphere = (e) => {
@@ -64,18 +84,18 @@ const Blog = () => {
         <h2 className="text-xl font-semibold mb-4">Filter by Category</h2>
         <ul className="space-y-3">
           <li
-            className={`cursor-pointer pl-2 rounded-md ${selectedKeyword === "" ? "bg-gray-700" : ""}`}
-            onClick={() => setSelectedKeyword("")}
+            className={`cursor-pointer pl-2 rounded-md ${selectedCategoryId === "" ? "bg-gray-700" : ""}`}
+            onClick={() => setSelectedCategoryId("")}
           >
             Show All
           </li>
-          {keywords.map((keyword, index) => (
+          {categories.map((category) => (
             <li
-              key={index}
-              className={`cursor-pointer pl-2 rounded-md ${selectedKeyword === keyword ? "bg-gray-700" : ""}`}
-              onClick={() => setSelectedKeyword(keyword)}
+              key={category._id}
+              className={`cursor-pointer pl-2 rounded-md ${selectedCategoryId === category._id ? "bg-gray-700" : ""}`}
+              onClick={() => setSelectedCategoryId(category._id)}
             >
-              {keyword}
+              {category.blogCategoryName}
             </li>
           ))}
         </ul>
@@ -92,63 +112,69 @@ const Blog = () => {
         <div className="mb-6 w-full md:hidden">
           <select
             className="px-4 py-2 rounded-md bg-gray-900 w-full text-white text-sm"
-            value={selectedKeyword}
-            onChange={(e) => setSelectedKeyword(e.target.value)}
+            value={selectedCategoryId}
+            onChange={(e) => setSelectedCategoryId(e.target.value)}
           >
             <option value="">Show All</option>
-            {keywords.map((keyword, index) => (
-              <option key={index} value={keyword}>
-                {keyword}
+            {categories.map((category) => (
+              <option key={category._id} value={category._id}>
+                {category.blogCategoryName}
               </option>
             ))}
           </select>
         </div>
 
         {/* Blog Cards */}
-        <div className="flex gap-10 flex-wrap justify-center w-full z-10 lg:w-[100%]">
-          {filteredBlogs.map((blog, index) => {
-            const imageUrl = blog.thumbImage?.secure_url || "default-placeholder.jpg";
-            const contentText = blog.content?.replace(/<\/?[^>]+(>|$)/g, "") || "";
-            const category = blog.category?.blogCategoryName || "Uncategorized";
-            const date = new Date(blog.updatedAt).toLocaleDateString();
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <div className="flex gap-10 flex-wrap justify-center w-full z-10 lg:w-[100%]">
+            {filteredBlogs.map((blog, index) => {
+              const imageUrl = blog.thumbImage?.secure_url || "default-placeholder.jpg";
+              const contentText = blog.content?.replace(/<\/?[^>]+(>|$)/g, "") || "";
+              const category = blog.category?.blogCategoryName || "Uncategorized";
+              const date = new Date(blog.updatedAt).toLocaleDateString();
 
-            return (
-              <BlogCard
-                key={index}
-                id={blog._id}
-                title={blog.title || "Untitled Blog"}
-                desc={contentText.split(" ").slice(0, 20).join(" ") + "..."}
-                author={blog.author || "Unknown"}
-                comments={0}
-                Date={date}
-                keywords={[category]}
-                imageUrl={imageUrl}
-                className="z-10"
-              />
-            );
-          })}
-        </div>
+              return (
+                <BlogCard
+                  key={index}
+                  id={blog._id}
+                  title={blog.title || "Untitled Blog"}
+                  desc={contentText.split(" ").slice(0, 20).join(" ") + "..."}
+                  author={blog.author || "Unknown"}
+                  comments={0}
+                  Date={date}
+                  keywords={[category]}
+                  imageUrl={imageUrl}
+                  className="z-10"
+                />
+              );
+            })}
+          </div>
+        )}
 
         {/* Pagination */}
-        <div className="flex gap-4 mt-10">
-          <button
-            disabled={!metadata.prev}
-            onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-            className="px-4 py-2 bg-gray-700 rounded-md disabled:opacity-50"
-          >
-            Previous
-          </button>
-          <span className="text-lg font-semibold">
-            Page {metadata.current_page || page}
-          </span>
-          <button
-            disabled={!metadata.next}
-            onClick={() => setPage((prev) => prev + 1)}
-            className="px-4 py-2 bg-gray-700 rounded-md disabled:opacity-50"
-          >
-            Next
-          </button>
-        </div>
+        {!selectedCategoryId && (
+          <div className="flex gap-4 mt-10">
+            <button
+              disabled={!metadata.prev}
+              onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+              className="px-4 py-2 bg-gray-700 rounded-md disabled:opacity-50"
+            >
+              Previous
+            </button>
+            <span className="text-lg font-semibold">
+              Page {metadata.current_page || page}
+            </span>
+            <button
+              disabled={!metadata.next}
+              onClick={() => setPage((prev) => prev + 1)}
+              className="px-4 py-2 bg-gray-700 rounded-md disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
+        )}
 
         {/* Total Posts Info */}
         {metadata.total && (
