@@ -30,8 +30,8 @@ const MainContent = () => {
   });
 
   return (
-    <div className="mainContent md:flex h-full items-center px-4 md:px- lg:px-10 ">
-      <div className="md:w-1/2 w-full">
+    <div className="mainContent md:flex  items-center  ">
+      <div className=" w-full">
         <img src={man} alt="" className="w-[80%] man" />
       </div>
       <div className="md:w-1/2 text-white text-lg para w-[90%]">

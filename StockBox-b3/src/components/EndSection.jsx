@@ -42,7 +42,7 @@ const EndSection = () => {
   ];
 
   return (
-    <footer className="bg-black text-white w-full font-plus-jakarta-sans">
+    <footer className="bg-[#0E0C0C] text-white w-full font-plus-jakarta-sans">
       <hr className="h-[2px] mb-12 md:mb-[99px] w-full opacity-10" />
 
       <div className="container mx-auto px-4">
@@ -337,7 +337,7 @@ const EndSection = () => {
         </div>
 
         {/* SEBI & Company Information (same for both mobile and desktop) */}
-        <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+        <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 md:ml-9">
           {/* SEBI Registration Details */}
           <div className="space-y-4 md:space-y-6">
             <h2 className="text-lg font-bold">

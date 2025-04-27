@@ -49,9 +49,9 @@ const ExpertAdvice = () => {
   });
 
   return (
-    <div className="container mx-auto px-4 md:px-8    overflow-x-hidden">
+    <div className="container lg:mx-10 mx-auto  md:px-8    overflow-x-hidden">
       {/* Hero Section */}
-      <section className="grid md:grid-cols-2 gap-12 mb-20 md:mb-32 relative">
+      <section className="grid md:grid-cols-2 gap-12 mb-20  relative">
         {/* Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-3xl -z-10" />
         
@@ -89,7 +89,7 @@ const ExpertAdvice = () => {
               onClick={() => navigator("/report")}
               className="group relative bg-gradient-to-br from-orange-400 to-purple-500 hover:from-purple-500 hover:to-orange-400 
                         text-white font-semibold py-4 px-8 rounded-xl shadow-2xl hover:shadow-purple-500/30
-                        transform transition-all duration-300 hover:-translate-y-1"
+                        transform transition-all duration-300 hover:-translate-y-1 mt-10  "
             >
               <span className="relative z-10">Get the Performance Report</span>
               <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300" />

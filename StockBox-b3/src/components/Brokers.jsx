@@ -8,7 +8,7 @@ const Brokers = () => {
   
   return (
     <div className="md:mt-[40vh] mb-[10%] relative mt-[10vh]">
-      <div className="absolute left-0 top-0 w-[100px] h-full bg-gradient-to-r from-[#161515d8] to-transparent z-10"></div>
+      <div className="absolute left-0 top-0 w-[100px] h-full  z-10"></div>
       <div className="bg-[#1615151b]  overflow-hidden ">
  <h1 className="md:text-[4rem] lg:text-[7vh] text-white text-center text-3xl">Easy One Tap Execution</h1>
  <p className="md:text-[2rem] lg:text-[3vh] text-[#909090] text-center text-sm">We Support 16 brokers</p>
