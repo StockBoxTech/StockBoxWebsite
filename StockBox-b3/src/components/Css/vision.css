@@ -1,0 +1,85 @@
+@keyframes floatPhone {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .float-animation {
+    animation: floatPhone 3s ease-in-out infinite;
+  }
+
+  .ball{
+    animation: floatball 3s ease-in-out infinite;
+  }
+  .ball1{
+    animation: floatball1 3s ease-in-out infinite;
+  }
+
+  @keyframes floatball1 {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  @keyframes floatball {
+    0% {
+      transform: translateX(0px);
+    
+    }
+    50% {
+      transform: translateX(-20px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+  @keyframes waterEffect {
+    0% {
+      transform: scale(1) translateY(110px) rotate(0deg);
+      opacity: 0.7;
+    }
+    25% {
+      transform: scale(1.05) translateY(50px) rotate(2deg);
+      opacity: 0.85;
+    }
+    50% {
+      transform: scale(1.1) translateY(-100px) rotate(-2deg);
+      opacity: 1;
+    }
+    75% {
+      transform: scale(2.05) translateY(-50px) rotate(1deg);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(2) translateY(10px) rotate(0deg);
+      opacity: 0.7;
+    }
+  }
+  
+  @keyframes floatEffect {
+    0% {
+      transform: translateY(10px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(220px);
+    }
+  }
+  
+  .effect {
+    animation: waterEffect 4s cubic-bezier(0.25, 1, 0.5, 1) infinite, 
+               floatEffect 3s ease-in-out infinite;
+  }
