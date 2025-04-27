@@ -15,6 +15,7 @@ import { errorHandler } from "./middleware/globalErrorHandler.js";
 import imgRouter from "./routes/ImageRoute.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 import router from "./routes/blog/blogRoutes.js";
+import SendOtpToPhNumberRouter from "./routes/SendOtpToPhNumber.js";
 dotenv.config();
 
 // Initialize Express app
@@ -43,7 +44,7 @@ app.use("/api/sec",UserRoute);  //login, signup, logout
 app.use("/api/crousal" , imgRouter); //hero image
 app.use("/api/pdf", uploadRoutes);  //pdf upload
 app.use("/api/jobs", jobRoutes); // job routes
-
+app.use("/api/Otp", SendOtpToPhNumberRouter); // OTP routes
 // Error handling middleware
 app.use(errorHandler);
 

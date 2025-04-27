@@ -1,11 +1,11 @@
 // middleware/authMiddleware.js
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 export const protectRoute = (req, res, next) => {
-  const token = req.cookies.token
+  const token = req.cookies.token;
 
   if (!token) {
-    return res.status(401).json({ message: 'Not authorized, no token' });
+    return res.status(401).json({ message: "Not authorized, no token" });
   }
 
   try {
@@ -13,7 +13,8 @@ export const protectRoute = (req, res, next) => {
     req.user = decoded; // decoded contains the payload (like user id)
     next();
   } catch (error) {
-    return res.status(401).json({ message: 'Not authorized, token failed' });
+    return res.status(401).json({ message: "Not authorized, token failed" });
   }
 };
 
+export default protectRoute;
