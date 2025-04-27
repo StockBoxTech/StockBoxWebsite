@@ -5,10 +5,43 @@ const Report = () => {
   const [pdfList, setPdfList] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+  const [currentPdf, setCurrentPdf] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    contact: "",
+    otp: ""
+  });
+  const [generatedOtp, setGeneratedOtp] = useState("");
+  const [isotpsend, setIsotpsend] = useState({});
+  const [backendPayload, setBackendPayload] = useState({});
+  const [otpSent, setOtpSent] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+  const [isSendingOtp, setIsSendingOtp] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
+  
 
   useEffect(() => {
+    const savedUser = localStorage.getItem("verifiedUser");
+    if (savedUser) {
+      setIsVerified(true);
+    }
     fetchPdfs();
   }, []);
+
+  useEffect(() => {
+    setBackendPayload({
+      phoneNumber: formData.contact,
+      name: formData.name,
+    });
+    setIsotpsend({
+      phoneNumber: formData.contact,
+      otp: formData.otp,
+    });
+    
+  }, [formData]);
+
 
   const fetchPdfs = async () => {
     try {
@@ -24,40 +57,131 @@ const Report = () => {
     }
   };
 
+  const validateForm = () => {
+    const errors = {};
+    if (!formData.name.trim()) errors.name = "Name is required";
+    if (!formData.contact.trim()) errors.contact = "Contact number is required";
+    else if (!/^\d{10}$/.test(formData.contact)) errors.contact = "Invalid contact number";
+    return errors;
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    
+    // Clear error when user types
+    if (formErrors[name]) {
+      setFormErrors(prev => ({
+        ...prev,
+        [name]: ""
+      }));
+    }
+  };
+
+  const generateOtp = async () => {
+
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
+    try {
+      setIsSendingOtp(true);
+     const res =axios.post(`${import.meta.env.VITE_API_URL}/api/otp/request-otp`, backendPayload)
+    setOtpSent(true);
+    } catch (error) {
+      console.error("Error sending OTP:", error);
+      setError("Failed to send OTP. Please try again.");
+    } finally {
+      setIsSendingOtp(false);
+    }
+  };
+
+  
+  const verifyOtp = async () => {
+    if (!formData.otp.trim()) {
+      setFormErrors({ otp: "OTP is required" });
+      return;
+    }
+  
+    try {
+      setIsVerifying(true);
+  
+      // Send OTP verification request to the backend
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/otp/verify-otp`, isotpsend);
+  
+      // Handle successful verification
+      if (response.status === 200) {
+        localStorage.setItem(
+          "verifiedUser",
+          JSON.stringify({
+            name: formData.name,
+            contact: formData.contact,
+            verifiedAt: new Date().toISOString(),
+          })
+        );
+        setIsVerified(true);
+        setShowForm(false);
+        downloadPdf(currentPdf.url, currentPdf.name);
+      } else {
+        // Handle unexpected success response
+        setError("Unexpected response from the server. Please try again.");
+      }
+    } catch (error) {
+      // Handle errors from the backend
+      if (error.response) {
+        const { status, data } = error.response;
+  
+        if (status === 400) {
+          setError(data.message || "Invalid OTP. Please try again.");
+        } else if (status === 500) {
+          setError("Server error. Please try again later.");
+        } else {
+          setError("Failed to verify OTP. Please try again.");
+        }
+      } else {
+        // Handle network or other errors
+        setError("Network error. Please check your connection and try again.");
+      }
+    } finally {
+      setIsVerifying(false);
+    }
+  };
+
+
+  const resetForm = () => {
+    setFormData({ name: "", contact: "", otp: "" });
+    setFormErrors({});
+    setOtpSent(false);
+    setGeneratedOtp("");
+    setShowForm(false);
+  };
+
   const downloadPdf = async (pdfUrl, originalName) => {
     try {
-      // Ensure URL is absolute
       const fullUrl = pdfUrl.startsWith('http') ? pdfUrl : 
                      `${import.meta.env.VITE_API_URL}${pdfUrl.startsWith('/') ? '' : '/'}${pdfUrl}`;
   
       const response = await axios.get(fullUrl, {
         responseType: 'blob',
-        headers: {
-          // Add authorization if needed
-          // 'Authorization': `Bearer ${yourToken}`
-        }
       });
   
-      if (response.status !== 200) {
-        throw new Error(`Server responded with ${response.status}`);
-      }
-  
-      // Create safe filename
       const safeFilename = (originalName || 'document')
         .replace(/[^a-z0-9._-]/gi, '_')
         .replace(/_+/g, '_') + '.pdf';
   
-      // Create download link
-      const blob = new Blob([response.data], { type: response.headers['content-type'] || 'application/pdf' });
+      const blob = new Blob([response.data], { type: 'application/pdf' });
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
       link.setAttribute('download', safeFilename);
-      link.style.display = 'none';
       document.body.appendChild(link);
       link.click();
   
-      // Clean up
       setTimeout(() => {
         document.body.removeChild(link);
         window.URL.revokeObjectURL(url);
@@ -69,8 +193,112 @@ const Report = () => {
     }
   };
 
+  const handleDownloadClick = (pdf) => {
+    if (isVerified) {
+      downloadPdf(pdf.pdfUrl, pdf.originalName);
+    } else {
+      setCurrentPdf({ url: pdf.pdfUrl, name: pdf.originalName });
+      setShowForm(true);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      {/* Verification Modal */}
+      {showForm && (
+        <div className="fixed inset-0  bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md">
+            <h2 className="text-xl font-bold mb-4">Verification Required</h2>
+            
+            {!otpSent ? (
+              <>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium mb-1">Name *</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className={`w-full p-2 border rounded ${formErrors.name ? 'border-red-500' : 'border-gray-300'}`}
+                    placeholder="Enter your name"
+                    required
+                  />
+                  {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>}
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium mb-1">Contact Number *</label>
+                  <input
+                    type="tel"
+                    name="contact"
+                    value={formData.contact}
+                    onChange={handleInputChange}
+                    className={`w-full p-2 border rounded ${formErrors.contact ? 'border-red-500' : 'border-gray-300'}`}
+                    placeholder="Enter 10-digit mobile number"
+                    maxLength="10"
+                    required
+                  />
+                  {formErrors.contact && <p className="text-red-500 text-xs mt-1">{formErrors.contact}</p>}
+                </div>
+                <div className="flex space-x-3">
+                  <button
+                    onClick={generateOtp}
+                    disabled={isSendingOtp}
+                    className="flex-1 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 disabled:bg-blue-400"
+                  >
+                    {isSendingOtp ? 'Sending...' : 'Send OTP'}
+                  </button>
+                  <button
+                    onClick={resetForm}
+                    className="flex-1 bg-gray-600 text-white py-2 px-4 rounded hover:bg-gray-700"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="mb-6">
+                  <p className="text-sm text-gray-600">
+                    OTP sent to {formData.contact}. Please enter it below.
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium mb-1">Enter OTP *</label>
+                  <input
+                    type="text"
+                    name="otp"
+                    value={formData.otp}
+                    onChange={handleInputChange}
+                    className={`w-full p-2 border rounded ${formErrors.otp ? 'border-red-500' : 'border-gray-300'}`}
+                    placeholder="Enter 4-digit OTP"
+                    maxLength="4"
+                  />
+                  {formErrors.otp && <p className="text-red-500 text-xs mt-1">{formErrors.otp}</p>}
+                </div>
+                <div className="flex space-x-3">
+                  <button
+                    onClick={verifyOtp}
+                    disabled={isVerifying}
+                    className="flex-1 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 disabled:bg-green-400"
+                  >
+                    {isVerifying ? 'Verifying...' : 'Verify OTP'}
+                  </button>
+                  <button
+                    onClick={() => {
+                      setOtpSent(false);
+                      setFormErrors({});
+                    }}
+                    className="flex-1 bg-gray-600 text-white py-2 px-4 rounded hover:bg-gray-700"
+                  >
+                    Back
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto">
         <header className="mb-8">
           <h1 className="text-3xl font-bold text-gray-800">Document Library</h1>
@@ -127,15 +355,17 @@ const Report = () => {
                           </div>
                         </div>
                         <div className="mt-auto">
-                          <button
-                            onClick={() => downloadPdf(pdf.pdfUrl, pdf.originalName)}
-                            className="w-full inline-flex justify-center items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                          >
-                            Download
-                            <svg className="ml-1 -mr-0.5 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-                            </svg>
-                          </button>
+                        <button
+  onClick={() => handleDownloadClick(pdf)}
+  className={`w-full inline-flex justify-center items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ${
+    !isVerified ? 'filter blur-sm' : 'hover:bg-green-700'
+  }`}
+>
+  Download
+  <svg className="ml-1 -mr-0.5 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+    <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+  </svg>
+</button>
                         </div>
                       </div>
                     </div>

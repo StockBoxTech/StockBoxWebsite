@@ -21,7 +21,7 @@ const Brokers = () => {
               pauseOnHover={true}
               gradient={false}
             >
-      {[...broker(),...broker()].map((item, key) => (
+      {broker().map((item, key) => (
         <img 
           src={item} 
           alt={`Image ${key + 1}`} 
@@ -39,9 +39,10 @@ const Brokers = () => {
               speed={30} 
               pauseOnHover={true}
               gradient={false}
+              direction="right"
             >
 
-      {[...broker().reverse(),...broker()].map((item, key) => (
+      {broker().map((item, key) => (
         <img 
           src={item} 
           alt={`Image ${key + 1}`} 
