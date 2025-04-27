@@ -1,51 +1,88 @@
-import ph1 from "../../assets/Download/BentoGram/ph1.png"
-import ph2 from "../../assets/Download/BentoGram/ph2.png"
-import ph3 from "../../assets/Download/BentoGram/ph3.png"
-import box from "../../assets/Download/BentoGram/box.png"
+import ph1 from "../../assets/Download/BentoGram/ph1.png";
+import ph2 from "../../assets/Download/BentoGram/ph2.png";
+import ph3 from "../../assets/Download/BentoGram/ph3.png";
+import box from "../../assets/Download/BentoGram/box.png";
 
 const BentoGram = () => {
+
+  function redirectToStore() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/android|windows/i.test(userAgent)) {
+      // Redirect to Google Play Store for Android and Windows users
+      window.location.href = "https://play.google.com/store/search?q=stockBox&c=apps&hl=en";
+    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      // Redirect to App Store for iOS users
+      window.location.href = "https://apps.apple.com/in/app/stockbox-technologies/id6443554700";
+    } else {
+      // Optional: Handle other devices
+      alert("This app is available on Play Store and App Store.");
+    }
+  }
+
   return (
-    <div className="w-full px-4 md:px-16 md:mt-[20vh] mt-10  ">
+    <div className="w-full px-4 md:px-16 py-12 md:py-24 ">
       {/* Title Section */}
-      <div className="text-center mb-10 md:mb-16">
-  <h2 className=" font-bold mb-4 text-white md:text-[2vw] text-3xl ">
-    Experience StockBox on Your Mobile
-  </h2>
-  <p className=" md:text-[1.2vw] text-gray-300 text-sm">
-    Download our mobile app to access real-time market data and insights on the go
-  </p>
-</div>
+      <div className="max-w-4xl mx-auto text-center mb-12 md:mb-20">
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          Experience StockBox on Your Mobile
+        </h2>
+        <p className="text-lg md:text-xl text-gray-300">
+          Download our mobile app to access real-time market data and insights on the go
+        </p>
+      </div>
 
+      {/* Bento Grid Layout */}
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        {/* Left Column */}
+        <div className="space-y-4 md:space-y-6">
+          <div className="relative group overflow-hidden rounded-xl md:rounded-2xl h-64 md:h-80">
+            <img 
+              src={ph2} 
+              alt="StockBox app screenshot 1" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+          </div>
+          
+          <div className="relative group overflow-hidden rounded-xl md:rounded-2xl h-64 md:h-80">
+            <img 
+              src={ph3} 
+              alt="StockBox app screenshot 2" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+          </div>
+        </div>
 
-      {/* Grid Layout */}
-     {/*  <div className="grid grid-cols-2 gap-5">
-  <div className="w-full h-[50vh] bg-amber-400">a</div>
-  <div className="w-full bg-amber-700 h-[60vh]">b</div>
-  <div className="w-full h-[50vh] bg-amber-400">c</div>
- 
-</div> */}
-<div className="w-full h-full flex gap-5 justify-center">
-    <div className="flex flex-col w-[40%] gap-5">
-     <div className="w-full h-[30vh]  hover:scale-150 transition-transform duration-500 ">
-      <img src={ph2} alt="no image" className="w-full h-full object-cover rounded-sm"/>
-     </div>
-     <div className="w-full h-[30vh]  hover:scale-150 transition-transform duration-500">
-     <img src={ph3} alt="no image" className="w-full h-full object-cover rounded-sm"/>
-     </div>
-    </div>
+        {/* Right Column */}
+        <div className="space-y-4 md:space-y-6">
+          <div className="relative group overflow-hidden rounded-xl md:rounded-2xl h-[28rem] md:h-[35rem]">
+            <img 
+              src={ph1} 
+              alt="StockBox app screenshot 3" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+          </div>
+          
+          <div className="relative group overflow-hidden rounded-xl md:rounded-2xl h-32 md:h-40 bg-gradient-to-r from-orange-500 to-amber-600">
+            <img 
+              src={box} 
+              alt="Download background" 
+              className="absolute inset-0 w-full h-full object-cover opacity-20"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <button className="text-white text-2xl md:text-4xl font-bold tracking-wide hover:scale-105 transition-transform duration-300" onClick={()=>redirectToStore()}>
+                TRY NOW
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<div className="w-[40%] h-full  flex flex-col gap-5">
-    <div className="w-full h-[45vh] 0 hover:scale-150 transition-transform duration-500">
-    <img src={ph1} alt="no image" className="w-full h-full object-cover rounded-sm"/>
-    </div>
-    <div className="w-full h-[15vh] bg-black relative rounded-2xl">
-      <img src={box} alt="no image" className="absolute w-[1000px] h-full object-fill rounded-lg"/>
-      <h2 className="absolute md:bottom-[30%] md:left-[20%] text-white md:text-6xl flex text-2xl top-[20%] 
-      left-[25%] hover:text-amber-600 transition-all duration-900 hover:scale-150 lg:text-[10vh]">TRY NOW</h2>
-    </div>
-</div>
-</div>
-
+      {/* App Store Badges */}
+     
     </div>
   );
 };

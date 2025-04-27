@@ -18,12 +18,12 @@ const Navbar = () => {
 
   gsap.registerPlugin(useGSAP);
   const navItems = [
-    { title: 'Expert Advice', icon: faUser, desc: 'Get professional guidance', path:"/expert" },
-    { title: 'Portfolio Screener', icon: faChartLine, desc: 'Analyze your investments',path:"/portfolio" },
-    { title: 'ReadyMade Stockbox', icon: faBriefcase, desc: 'Pre-built portfolios',path:"/ready" },
-    { title: 'Stock Screener', icon: faSearchDollar,path:"/screener", desc: 'Find perfect stocks' },
-    {title:"Portfolio Hedger",icon:faUser,path:"/portfoliohedger",desc:"Invest confidently with smart protection."},
-    {title:"Fii/Dii Investments",icon:faUser,path:"/invest",desc:"Monitor market trends for better investments."},
+    { title: 'Expert Advice', icon: faUser, desc: 'Get professional guidance', path:"/expert-advice/" },
+    { title: 'Portfolio Screener', icon: faChartLine, desc: 'Analyze your investments',path:"/portfolio-screener/" },
+    { title: 'ReadyMade Stockbox', icon: faBriefcase, desc: 'Pre-built portfolios',path:"/readymade-stockbox/" },
+    { title: 'Stock Screener', icon: faSearchDollar,path:"/stock-screener", desc: 'Find perfect stocks/' },
+    {title:"Portfolio Hedger",icon:faUser,path:"/portfolio-hedger/",desc:"Invest confidently with smart protection."},
+    {title:"Fii/Dii Investments",icon:faUser,path:"/fii-dii-investments/",desc:"Monitor market trends for better investments."},
   ];
 
   useEffect(() => {
@@ -139,10 +139,10 @@ const Navbar = () => {
               </div>
 
               {[
-                { name: 'About', path: '/About-us' },
+                { name: 'About', path: '/about-us/' },
                
-                { name: 'Contact', path: '/contactus' },
-                {name: 'Blog', path: '/blogs'},
+                { name: 'Contact', path: '/contact-us/' },
+                {name: 'Blog', path: '/blogs/'},
                 
               ].map((item) => (
                 <Link

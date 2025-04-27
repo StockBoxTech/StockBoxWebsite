@@ -14,22 +14,22 @@ import { Link } from "react-router-dom";
 const EndSection = () => {
   const menuItems = [
     { name: "Home", path: "/" },
-    { name: "About us", path: "/About-us" },
-    { name: "Blogs", path: "/blogs" },
-    { name: "Partner with us", path: "/partner" },
-    { name: "Career", path: "/career" },
-    { name: "Media", path: "/media" },
-    { name: "Contact Us", path: "/contactus" },
-    { name: "Investor Charter", path: "/investor-charter" },
+    { name: "About us", path: "/about-us/" },
+    { name: "Blogs", path: "/blogs/" },
+    { name: "Partner with us", path: "partner-with-us/" },
+    { name: "Career", path: "/careers/" },
+    { name: "Media", path: "/media/" },
+    { name: "Contact Us", path: "/contact-us/" },
+    { name: "Investor Charter", path: "/investor-charter/" },
   ];
 
   const products = [
-    { name: "Expert Advice", path: "/expert" },
-    { name: "Portfolio Screener", path: "/portfolio" },
-    { name: "Ready Made StockBox", path: "/ready" },
-    { name: "Stocks Screener", path: "/screener" },
-    { name: "Portfolio Hedger", path: "/portfoliohedger" },
-    { name: "FII/DII Investment", path: "/invest" },
+    { name: "Expert Advice", path: "/expert-advice/" },
+    { name: "Portfolio Screener", path: "/portfolio-screener/" },
+    { name: "Ready Made StockBox", path: "/readymade-stockbox/" },
+    { name: "Stocks Screener", path: "/stock-screener/" },
+    { name: "Portfolio Hedger", path: "/portfolio-hedger/" },
+    { name: "FII/DII Investment", path: "/fii-dii-investments/" },
   ];
 
   const socialLinks = [

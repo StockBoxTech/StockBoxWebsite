@@ -99,8 +99,11 @@ const ExpertAdvice = () => {
       </section>
 
       {/* Content Sections */}
-      <MainContent />
-      <USP />
+      
+        <MainContent />
+      <USP /> 
+     
+     
     </div>
   );
 };
