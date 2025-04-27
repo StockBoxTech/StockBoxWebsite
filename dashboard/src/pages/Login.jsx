@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import {
   Eye,
   EyeOff,
@@ -9,6 +10,7 @@ import {
   XCircle,
   RefreshCw,
 } from "lucide-react";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -18,6 +20,8 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  const navigate =  useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,6 +53,11 @@ const Login = () => {
           withCredentials: true,
         }
       );
+      if (res.data.status === "success") {
+        navigate("/dashboard");
+         toast.success("Login successful!");
+         
+       }
 
       setSuccess(true);
     } catch (error) {

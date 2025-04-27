@@ -11,10 +11,12 @@ import SingleBlog from "./pages/Blog";
 import DashboardLayout from "./components/Navbar";
 import JobForm from "./pages/JobForm";
 import Category from "./pages/Category";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
     <DashboardLayout>
+      <ToastContainer />
       <Routes>
         <Route path="/blogData" element={<Dashboard />} />
         <Route path="/blog/:id" element={<SingleBlog />} />
