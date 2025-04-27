@@ -2,6 +2,7 @@ import  { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import RingLoader from "react-spinners/RingLoader";
+import { axiosInstance } from "../service/axiosInterceptor";
 
 const ImageManagement = () => {
   const {
@@ -23,10 +24,8 @@ const ImageManagement = () => {
 
   const handleActivate = async (id) => {
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/crousal/activateimg/${id}` , {
-          withCredentials: true,
-        }
+      const res = await axiosInstance.post(
+        `/api/crousal/activateimg/${id}` 
       );
       console.log(res);
 

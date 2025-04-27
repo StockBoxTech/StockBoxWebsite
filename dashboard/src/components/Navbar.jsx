@@ -14,14 +14,34 @@ import {
   Settings,
   LogOut,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
 } from "lucide-react";
+import { axiosInstance } from "../service/axiosInterceptor";
 
 const Dashboard = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [expanded, setExpanded] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
+
+
+  const handleLogout = async () => { 
+    try {
+
+      const res = await axiosInstance.post(
+        `/api/sec/logout`
+      );
+  
+      if (res.data.status === "success") {
+        navigate("/login");
+        localStorage.removeItem("isLoggedIn"); 
+        toast.success("Logout successful!"); // Changed the toast message
+      }
+    } catch (error) {
+      console.error("Logout error:", error);
+      toast.error("Logout failed. Please try again.");  
+    }
+  };
 
   // Handle window resize
   useEffect(() => {
@@ -30,10 +50,10 @@ const Dashboard = ({ children }) => {
         setExpanded(false);
       }
     };
-    
+
     window.addEventListener("resize", handleResize);
     handleResize(); // Initial check
-    
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -69,48 +89,60 @@ const Dashboard = ({ children }) => {
 
   const navItems = [
     { path: "/tables", label: "Monthly Data", icon: <Database size={20} /> },
-    { path: "/tablesYearly", label: "Yearly Data", icon: <Database size={20} /> },
-    { path: "/dashboard", label: "Add Event", icon: <Calendar size={20} /> },
+    {
+      path: "/tablesYearly",
+      label: "Yearly Data",
+      icon: <Database size={20} />,
+    },
+    { path: "/Event", label: "Add Event", icon: <Calendar size={20} /> },
     { path: "/upload", label: "Add PDF", icon: <FileText size={20} /> },
     { path: "/carousel", label: "Photo Carousel", icon: <Image size={20} /> },
     { path: "/blogData", label: "Blog Data", icon: <PlusCircle size={20} /> },
-    {path: "/category", label: "Category", icon: <PlusCircle size={20} /> },
-    {path: "/jobform", label: "Job Form", icon: <PlusCircle size={20} /> },
+    { path: "/category", label: "Category", icon: <PlusCircle size={20} /> },
+    { path: "/jobform", label: "Job Form", icon: <PlusCircle size={20} /> },
+    { path: "/viewUserDetails" , label: "View Users", icon: <Upload size={20} /> },
   ];
 
   const actionButtons = [
-    { 
-      label: "Fetch Reviews", 
-      onClick: fetchReviews, 
-      icon: <RefreshCw size={20} />, 
-      color: "bg-blue-500 hover:bg-blue-600"
+    {
+      label: "Fetch Reviews",
+      onClick: fetchReviews,
+      icon: <RefreshCw size={20} />,
+      color: "bg-blue-500 hover:bg-blue-600",
     },
-    
   ];
 
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <div className={`${expanded ? "w-64" : "w-20"} bg-gray-800 text-white transition-all duration-300 flex flex-col`}>
+      <div
+        className={`${
+          expanded ? "w-64" : "w-20"
+        } bg-gray-800 text-white transition-all duration-300 flex flex-col`}
+      >
         {/* Logo area */}
         <div className="p-4 flex items-center justify-between border-b border-gray-700">
           {expanded && <span className="text-xl font-bold">Admin Panel</span>}
-           
-          <button 
-            onClick={toggleSidebar} 
+
+          <button
+            onClick={toggleSidebar}
             className="p-2 rounded-lg hover:bg-gray-700 transition-colors"
           >
             {expanded ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
           </button>
-          
         </div>
-        
 
         {/* Navigation Links */}
         <div className="flex-grow overflow-y-auto py-4">
-        
           <ul className="space-y-2 px-2">
-          {expanded? <h1 className="p-3 font-bold text-2xl text-violet-500 "> Dashboard</h1> : ""}
+            {expanded ? (
+              <h1 className="p-3 font-bold text-2xl text-violet-500 ">
+                {" "}
+                Dashboard
+              </h1>
+            ) : (
+              ""
+            )}
             {navItems.map((item, index) => (
               <li key={index}>
                 <button
@@ -130,7 +162,11 @@ const Dashboard = ({ children }) => {
         </div>
 
         {/* Action Buttons */}
-        <div className={`p-4 border-t border-gray-700 space-y-2 ${expanded ? "" : "flex flex-col items-center"}`}>
+        <div
+          className={`p-4 border-t border-gray-700 space-y-2 ${
+            expanded ? "" : "flex flex-col items-center"
+          }`}
+        >
           {actionButtons.map((btn, index) => (
             <button
               key={index}
@@ -143,24 +179,49 @@ const Dashboard = ({ children }) => {
               }`}
               title={btn.label}
             >
-              {loading && btn.label.includes("Fetch") ? 
-                <RefreshCw className="animate-spin" size={20} /> : 
-                btn.icon}
-              {expanded && <span className="ml-2">{loading && (btn.label.includes("Fetch") || btn.label.includes("Publish")) ? 
-                (`${btn.label.includes("Fetch") ? "Fetching..." : "Publishing..."}`) : 
-                btn.label}</span>}
+              {loading && btn.label.includes("Fetch") ? (
+                <RefreshCw className="animate-spin" size={20} />
+              ) : (
+                btn.icon
+              )}
+              {expanded && (
+                <span className="ml-2">
+                  {loading &&
+                  (btn.label.includes("Fetch") || btn.label.includes("Publish"))
+                    ? `${
+                        btn.label.includes("Fetch")
+                          ? "Fetching..."
+                          : "Publishing..."
+                      }`
+                    : btn.label}
+                </span>
+              )}
             </button>
           ))}
         </div>
 
         {/* Settings and Logout */}
-        <div className={`p-4 border-t border-gray-700 ${expanded ? "" : "flex flex-col items-center"}`}>
+        <div
+          className={`p-4 border-t border-gray-700 ${
+            expanded ? "" : "flex flex-col items-center"
+          }`}
+        >
           <div className="flex flex-col space-y-2">
-            <button className={`flex items-center ${expanded ? "w-full" : "justify-center"} p-2 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors`}>
+            <button
+            onClick={() => navigate("/settings")}
+              className={`flex items-center ${
+                expanded ? "w-full" : "justify-center"
+              } p-2 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors`}
+            >
               <Settings size={20} />
               {expanded && <span className="ml-3">Settings</span>}
             </button>
-            <button className={`flex items-center ${expanded ? "w-full" : "justify-center"} p-2 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors`}>
+            <button
+              className={`flex items-center ${
+                expanded ? "w-full" : "justify-center"
+              } p-2 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors`}
+              onClick={() => {handleLogout()}}
+            >
               <LogOut size={20} />
               {expanded && <span className="ml-3">Logout</span>}
             </button>
@@ -168,30 +229,6 @@ const Dashboard = ({ children }) => {
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Top Header */}
-        <header className="bg-white shadow-sm z-10">
-          <div className="px-6 py-4 flex items-center justify-between">
-            <div className="flex items-center">
-              <Menu className="h-6 w-6 md:hidden cursor-pointer" onClick={toggleSidebar} />
-              <h1 className="ml-4 text-xl font-semibold text-gray-800">
-                {navItems.find(item => item.path === location.pathname)?.label || "Dashboard"}
-              </h1>
-            </div>
-            <div>
-              <div className="h-8 w-8 rounded-full bg-indigo-600 text-white flex items-center justify-center">
-                A
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto bg-gray-100 p-6">
-          {children}
-        </main>
-      </div>
     </div>
   );
 };

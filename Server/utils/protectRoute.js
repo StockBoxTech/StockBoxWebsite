@@ -3,7 +3,7 @@ import errorResponse from "../middleware/errorResponse.js";
 
 export const protectRoute = (req, res, next) => {
   const token = req.cookies.jwt;
-
+ 
   if (!token) {
     return res.status(401).json({
       status: "failed",
@@ -14,6 +14,7 @@ export const protectRoute = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded; // attach user info to request
+    console.log("User info:", req.user); // Log user info for debugging
     next();
   } catch (err) {
     return next(new errorResponse("Unauthorized", 401));

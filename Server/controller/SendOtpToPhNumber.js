@@ -116,12 +116,13 @@ export const verifyOTP = async (req, res) => {
 // Get all users
 export const getUsers = async (req, res) => {
     try {
-        const users = await SendOtpToPhNumber.find();
+        const users = await SendOtpToPhNumber.find().sort({ createdAt: -1 }); // -1 for descending order (newest first)
         res.json(users);
     } catch (error) {
         res.status(500).json({ message: 'Server error', error: error.message });
     }
 };
+
 
 // Delete a user by ID
 export const deleteUser = async (req, res) => {
