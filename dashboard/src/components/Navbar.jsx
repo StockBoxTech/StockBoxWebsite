@@ -27,7 +27,6 @@ const Dashboard = ({ children }) => {
 
   const handleLogout = async () => { 
     try {
-
       const res = await axiosInstance.post(
         `/api/sec/logout`
       );

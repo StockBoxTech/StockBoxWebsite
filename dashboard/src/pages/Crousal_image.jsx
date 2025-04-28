@@ -1,8 +1,10 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import RingLoader from "react-spinners/RingLoader";
 import { axiosInstance } from "../service/axiosInterceptor";
+import PropagateLoader from "react-spinners/PropagateLoader";
+
 
 const ImageManagement = () => {
   const {
@@ -15,6 +17,8 @@ const ImageManagement = () => {
   const [uploadStatus, setUploadStatus] = useState(null);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [loadingDelete, setLoadingDelete] = useState(null); // State to track delete button loader
+  const [loadingActivate, setLoadingActivate] = useState(null); // State to track activate button loader
 
   const Closemodal = () => {
     setIsModalOpen(false);
@@ -23,6 +27,7 @@ const ImageManagement = () => {
   };
 
   const handleActivate = async (id) => {
+    setLoadingActivate(id); // Set loader for the activate button
     try {
       const res = await axiosInstance.post(
         `/api/crousal/activateimg/${id}` 
@@ -32,6 +37,8 @@ const ImageManagement = () => {
       fetchImages();
     } catch (err) {
       console.error("Error deleting image", err);
+    } finally {
+      setLoadingActivate(null); // Remove loader after completion
     }
   };
 
@@ -41,7 +48,7 @@ const ImageManagement = () => {
 
   const fetchImages = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_APP_BACKEND_DEV_BASE_URL}/api/crousal/getAll_Images` , {
+      const res = await axiosInstance.get(`/api/crousal/getAll_Images`, {
         withCredentials: true,
       });
       setImages(res.data.data);
@@ -60,7 +67,7 @@ const ImageManagement = () => {
     });
   
     try {
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/crousal/addImg`, formData, {
+      await axiosInstance.post(`/api/crousal/addImg`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setUploadStatus("Upload Successful!");
@@ -85,16 +92,18 @@ const ImageManagement = () => {
   };
 
   const handleDelete = async (id) => {
+    setLoadingDelete(id); // Set loader for the delete button
     try {
-      const res = await axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/api/crousal/delete/${id}`
+      const res = await axiosInstance.delete(
+        `/api/crousal/delete/${id}`
       );
-    fetchImages();
+      fetchImages();
       setImages((prevImages) => prevImages.filter((img) => img._id !== id));
     } catch (err) {
       console.error("Error deleting image", err);
+    } finally {
+      setLoadingDelete(null); // Remove loader after completion
     }
-    fetchImages();
   };
 
   return (
@@ -119,7 +128,7 @@ const ImageManagement = () => {
       <div className="overflow-x-auto whitespace-nowrap p-4 mt-6">
         <div className="flex flex-col gap-4">
           {images.map((imageObj, index) => (
-            <div className="flex flex-col px-8 gap-5  border rounded-md shadow-md" key={index}>
+            <div className="flex flex-col px-8 gap-5 border rounded-md shadow-md" key={index}>
               <div
                 className={`${
                   imageObj.Active ? "text-green-500" : "text-red-500"
@@ -130,7 +139,7 @@ const ImageManagement = () => {
               </div>
               <div
                 key={imageObj._id || index}
-                className="flex flex-row  gap-5  items-center rounded-md "
+                className="flex flex-row gap-5 items-center rounded-md "
               >
                 {Object.values(imageObj)
                   .filter((img) => img.secure_url) // Filter to avoid non-image properties
@@ -146,13 +155,21 @@ const ImageManagement = () => {
                   className="bg-red-500 text-white px-2 py-1 h-10 w-20 rounded-md hover:bg-red-900 cursor-pointer active:scale-95 transition duration-300 ease-in-out"
                   onClick={() => handleDelete(imageObj._id)}
                 >
-                  Delete
+                  {loadingDelete === imageObj._id ? (
+                    <PropagateLoader color="#ffffff" size={20} />
+                  ) : (
+                    "Delete"
+                  )}
                 </button>
                 <button
                   className="bg-green-700 text-white px-2 py-1 h-10 w-20 rounded-md  hover:bg-gren-900 cursor-pointer active:scale-95 transition duration-300 ease-in-out"
                   onClick={() => handleActivate(imageObj._id)}
                 >
-                  Activate
+                  {loadingActivate === imageObj._id ? (
+                    <PropagateLoader color="#ffffff" size={20} />
+                  ) : (
+                    "Activate"
+                  )}
                 </button>
               </div>
             </div>

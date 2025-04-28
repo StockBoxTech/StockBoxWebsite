@@ -20,14 +20,27 @@ import ViewUserDetails from "./pages/ViewUserDetails";
 const App = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const checkLoginStatus = () => {
+      const itemStr = localStorage.getItem("isLoggedIn");
 
-    if (!isLoggedIn) {
-      navigate("/login");
-    }
+      if (!itemStr) {
+        // No login data, redirect
+        navigate("/login");
+        return;
+      }
+
+      const item = JSON.parse(itemStr);
+      const now = new Date();
+
+      if (now.getTime() - item.timestamp > 24 * 60 * 60 * 1000) {
+        // More than 24 hours passed
+        localStorage.removeItem("isLoggedIn");
+        navigate("/login");
+      }
+    };
+
+    checkLoginStatus();
   }, [navigate]);
-
- 
   
 
   return (
