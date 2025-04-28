@@ -1,6 +1,6 @@
 import express from 'express';
 import { deleteUser, getUsers, requestOTP, verifyOTP } from '../controller/SendOtpToPhNumber.js';
-import protectRoute from "../middleware/protectRoute.js";
+import protectRoute from '../utils/protectRoute.js';
 
 const SendOtpToPhNumberRouter = express.Router();
 

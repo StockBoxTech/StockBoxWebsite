@@ -37,7 +37,6 @@ const Login = () => {
 
     try {
       // Here you would typically handle the login logic
-      console.log("Login attempt with:", { email, rememberMe, password });
 
       // Simulate API call
 
@@ -54,9 +53,15 @@ const Login = () => {
         }
       );
       if (res.data.status === "success") {
-        navigate("/dashboard");
-         toast.success("Login successful!");
-         
+        const now = new Date();
+        localStorage.setItem("isLoggedIn", JSON.stringify({
+          value: true,
+          timestamp: now.getTime(),
+        }));
+        
+        navigate("/");
+        toast.success("Login successful!");
+        
        }
 
       setSuccess(true);
