@@ -37,7 +37,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
 
         <Route element={<DashboardLayout />}>
-          <Route path="/blogData" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="/blog/:id" element={<SingleBlog />} />
           <Route path="/tables" element={<TableComponent />} />
           <Route path="/tablesYearly" element={<TableYearComponent />} />

@@ -97,7 +97,7 @@ const Dashboard = ({ children }) => {
     { path: "/Event", label: "Add Event", icon: <Calendar size={20} /> },
     { path: "/upload", label: "Add PDF", icon: <FileText size={20} /> },
     { path: "/carousel", label: "Photo Carousel", icon: <Image size={20} /> },
-    { path: "/blogData", label: "Blog Data", icon: <PlusCircle size={20} /> },
+    { path: "/", label: "Blog Data", icon: <PlusCircle size={20} /> },
     { path: "/category", label: "Category", icon: <PlusCircle size={20} /> },
     { path: "/jobform", label: "Job Form", icon: <PlusCircle size={20} /> },
     { path: "/viewUserDetails" , label: "View Users", icon: <Upload size={20} /> },
