@@ -8,7 +8,7 @@ import "../../components/Css/download.css"
 
 const MobileShowCase = () => {
   return (
-    <div className="w-full md:h-screen h-[90vh] md:mt-[20vh] relative top-[130px] md:top-0 overflow-hidden">
+    <div className="w-full md:h-screen h-[70vh]  md:mt-[20vh] relative top-[130px] md:top-0 overflow-hidden mobile">
         <div className="w-full">
              <a 
                href="https://apps.apple.com/in/app/stockbox-technologies/id6443554700"
@@ -20,7 +20,7 @@ const MobileShowCase = () => {
              </a>
         </div>
  <div className="w-full flex justify-center ">
-    <img src={mobile} alt="no image" className=" md:w-[45vw] rounded-sm absolute z-10 w-full md:top-0 -top-10"/>
+    <img src={mobile} alt="no image" className=" md:w-[55vw]  rounded-sm absolute z-10 w-full md:top-0 sm:-top-[20]"/>
  </div>
  <div className="md:w-full flex  absolute md:h-[100%] md:-top-15 ">
     <img src={div} alt="no image" className=" w-full h-full z-[5] "/>

@@ -44,3 +44,15 @@
       transform: translateX(0px);
     }
   }
+  @media (min-width: 238px) and (max-width: 337px) {
+    /* Styles only for medium mobile devices */
+    .mobile{
+      height: 90vh;
+    }
+  }
+  @media(min-width:337px) and (max-width:768px)
+  {
+    .mobile{
+      height: 120vh;
+    }
+  }

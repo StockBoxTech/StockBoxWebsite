@@ -22,11 +22,11 @@ const PdfUpload = () => {
   const handleUpload = async (e) => {
     e.preventDefault();
     if (!file || !title) return alert("Please select a file and enter a title");
-  
+
     const formData = new FormData();
     formData.append("pdf", file);
     formData.append("title", title);
-  
+
     try {
       await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/pdf/upload`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -36,6 +36,17 @@ const PdfUpload = () => {
       setFile(null); // Clear file selection
     } catch (error) {
       console.error("Error uploading file:", error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this PDF?")) return;
+
+    try {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/pdf/${id}`);
+      fetchPdfs(); // Refresh the list after deletion
+    } catch (error) {
+      console.error("Error deleting PDF:", error);
     }
   };
 
@@ -98,6 +109,20 @@ const PdfUpload = () => {
                   >
                     View
                   </a>
+                  <button
+                    onClick={() => handleDelete(pdf._id)}
+                    style={{
+                      marginLeft: "10px",
+                      padding: "5px 10px",
+                      backgroundColor: "red",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
               ))}
             </div>

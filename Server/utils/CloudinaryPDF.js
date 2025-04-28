@@ -24,3 +24,12 @@ export const uploadPDFToCloudinary = async (file, folder) => {
     ).end(file.buffer); // Use file.buffer for the upload
   });
 };
+
+export const deleteFileFromCloudinaryPdf = async (publicId) => {
+  return new Promise((resolve, reject) => {
+    cloudinary.uploader.destroy(publicId, (error, result) => {
+      if (error) reject(error);
+      else resolve(result);
+    });
+  });
+};

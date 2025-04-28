@@ -11,7 +11,7 @@ import image from "../assets/aboutus/mobile.png"
 
 const Aboutus = () => {
   return (
-    <div className="w-full font-[plus-jakarta-sans] overflow-x-hidden  overflow-y-hidden"  >
+    <div className="w-full font-[plus-jakarta-sans] overflow-x-hidden  overflow-y-hidden bg-gradient-to-b from-[#163132] via-[#1d1818] to-[#0E0C0C]   md:bg-transparent"  >
       {/* Hero Section */}
       <div className="flex  h-[90vh]  w-full ">
         <div className=" md:w-[60%] relative flex w-[55%]">
@@ -49,7 +49,7 @@ const Aboutus = () => {
       </div>
  {/* Vision Section */}
 
-      <div className=" w-full   lg:flex h-full mt-[8vh]">
+      <div className=" w-full   lg:flex h-full mt-[8vh] overflow-x-hidden">
           <img src={principal} alt="no img" className="object-contain"/>
           <div className=" ml-6 flex flex-col mt-[3vh]">
             <div className="w-[300px] md:w-[400px] md:h-[91px] h-[78px] bg-white rounded-[100px] flex  text-center gap-5 items-center px-10">

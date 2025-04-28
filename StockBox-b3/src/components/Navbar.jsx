@@ -205,8 +205,8 @@ const Navbar = () => {
       ))}
       {[
         { name: 'About', path: '/About-us' },
-        { name: 'Services', path: '/services' },
-        { name: 'Contact', path: '/contactus' },
+      
+        { name: 'Contact', path: '/contact-us/' },
         { name: 'Blog', path: '/blogs' },
       ].map((item) => (
         <div

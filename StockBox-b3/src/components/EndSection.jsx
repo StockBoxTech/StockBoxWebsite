@@ -42,7 +42,7 @@ const EndSection = () => {
   ];
 
   return (
-    <footer className="bg-[#0E0C0C] text-white w-full font-plus-jakarta-sans">
+    <footer className="bg-[#0E0C0C] text-white w-full font-plus-jakarta-sans overflow-x-hidden">
       <hr className="h-[2px] mb-12 md:mb-[99px] w-full opacity-10" />
 
       <div className="container mx-auto px-4">
@@ -336,7 +336,7 @@ const EndSection = () => {
           </div>
         </div>
 
-        {/* SEBI & Company Information (same for both mobile and desktop) */}
+        {/* SEBI & Company Information */}
         <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 md:ml-9">
           {/* SEBI Registration Details */}
           <div className="space-y-4 md:space-y-6">
@@ -448,10 +448,10 @@ const EndSection = () => {
         </div>
       </div>
 
-      {/* Footer Bottom */}
+      {/* Footer Bottom - with responsive line break */}
       <div className="w-full flex flex-col md:flex-row justify-between items-center px-4 py-6 mt-6 md:mt-10 border-t border-gray-800">
-        <p className="text-sm md:text-base mb-2 md:mb-0">
-          Copyright @2024 Stockbox Technologies Pvt. Ltd. All Rights Reserved.
+        <p className="text-sm md:text-base mb-2 md:mb-0 text-center md:text-left">
+          Copyright @2024 Stockbox Technologies Pvt. Ltd.<br className="md:hidden" /> All Rights Reserved.
         </p>
         <div className="flex space-x-4">
           <Link to="#" className="text-sm md:text-base hover:text-amber-500">

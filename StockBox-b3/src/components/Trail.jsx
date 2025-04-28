@@ -5,53 +5,61 @@ const Trail = () => {
   const navigator = useNavigate();
 
   return (
-    <div className="relative flex min-h-[500px] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-[#0E0C0C] to-[#0E0C0C] py-16 md:py-24">
-      {/* Mockup Image */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-20 md:opacity-100">
-        <img 
-          src={mockup} 
-          alt="App mockup"
-          className="h-auto w-full max-w-4xl translate-x-[15%] scale-125 transform object-cover md:translate-x-0 md:scale-100"
-        />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-4 text-center">
-        {/* Heading */}
-        <h2 className="mb-6 text-4xl font-bold leading-tight md:mb-8 md:text-5xl lg:text-6xl">
-          <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
-            Start Your Free Trial
-          </span>
-          <br />
-          <span className="text-white">With Our All-In-One Platform</span>
-        </h2>
-
-        {/* Subtext */}
-        <div className="mb-8 max-w-2xl text-lg text-gray-300 md:mb-12 md:text-xl">
-          <p className="mb-3">
-            Experience seamless trading and comprehensive stock analysis
-          </p>
-          <p>
-            Get started with zero commitment - no credit card required
-          </p>
+    <div className="flex relative text-white h-full bg">
+      {/* Animated Image */}
+      <img 
+        src={mockup} 
+        width="20%" 
+        className="absolute animate-float hover:animate-pulse" 
+        alt="App mockup"
+        style={{
+          animationDuration: '6s',
+          transition: 'all 0.3s ease'
+        }}
+      />
+      
+      <div className="flex flex-col w-full items-center mb-20 relative">
+        <h2 className="font-bold mb-4 text-3xl lg:text-5xl">Start Your Free Trial</h2>
+        <div className="text-neutral-400 mb-4 text-sm flex flex-col justify-center items-center">
+          <p>With Our All-In-One Setup</p>
+          <p>Trading And Stock Analysis Are Seamless</p>
         </div>
-
-        {/* CTA Button */}
+        <p className="text-neutral-300 text-sm">Start Your Free Trial</p>
         <button 
-          onClick={() => navigator("/contactus")}
-          className="group relative transform rounded-full bg-gradient-to-r from-amber-400 to-orange-500 px-8 py-4 font-semibold text-black transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-amber-400/20"
+          className="bg-white hover:scale-105 hover:bg-orange-400 hover:text-white text-black font-semibold py-2 pointer px-4 rounded-full mt-4"
+          onClick={() => navigator("/contact-us")}
         >
-          <span className="relative z-10">
-            Get Started Now
-          </span>
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
+          Get Start
         </button>
-
-        {/* Additional Text */}
-        <p className="mt-4 text-sm text-gray-400">
-          Full access to all features for 14 days
-        </p>
       </div>
+
+      {/* Animation styles */}
+      <style>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+        @keyframes pulse {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1.05);
+            opacity: 0.9;
+          }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        .hover\:animate-pulse:hover {
+          animation: pulse 2s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 };

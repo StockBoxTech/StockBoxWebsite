@@ -9,12 +9,12 @@ import "../Css/vision.css"
 
 const Vision = () => {
   return (
-    <div className="relative ">
+    <div className="relative overflow-x-hidden overflow-y-hidden">
 
  
-   <div className=" w-full h-auto  flex mt-25  ">  
+   <div className=" w-full h-auto  flex mt-25  overflow-x-hidden">  
           <Design className="absolute left-0 top-0"/>  
-           <div className=" flex flex-col relative">
+           <div className=" flex flex-col relative overflow-x-hidden">
              
            <div className="w-[300px] md:w-[400px] md:h-[91px] h-[78px] bg-white rounded-[100px] flex  text-center gap-5 items-center px-10">
                  <span>
@@ -43,7 +43,7 @@ const Vision = () => {
                  </span>
                  <h2 className="font-bold lg:text-[30px] text-[20px]"><span>Vision </span>& Mission</h2>
                </div>
-               <p className=" mt-5 space-y-2 text-white list-none lg:text-[16px] md:w-[60%] w-[80%] ">
+               <p className=" mt-5 space-y-2 text-white list-none lg:text-[16px] md:w-[60%] w-[80%] relative z-10">
                Our vision is to be the leading provider of comprehensive, data-driven stock market research and analytics that empowers investors with the insights and knowledge they need to make informed investment decisions. We aim to deliver innovative solutions and cutting-edge technology, coupled with our team’s deep expertise and commitment to excellence, to drive superior outcomes for our clients. Through our relentless focus on delivering actionable insights and exceptional customer service, we aspire to be the trusted partner of choice for investors seeking to maximize their returns in the dynamic world of stock market investing.
                
                </p>
@@ -64,14 +64,12 @@ const Vision = () => {
          <span className="md:block hidden">Meet the Management Team</span> 
          <span className="md:hidden flex flex-col items-start ml-3"> <span>Meet the</span> <span>Management</span> <span>Team</span></span>
         </h2>
-        <div className="absolute top-[48%] md:right-[10%] lg:right-[10%] ball">
-          <Ball2 className="ball" />
-        </div>
+     
         <div className="absolute md:top-[85%]  z-10 top-[66vh] ball1">
           <Ball3 className=""/>
         </div>
         <div className="absolute top-[118%] md:right-[10%] lg:right-[10%] ball">
-          <Ball2 className="ball" />
+          <Ball2 className="ball " />
         </div>
         <div className="absolute md:top-[155%]  z-10 top-[66vh] ball1">
           <Ball3 className=""/>
@@ -80,14 +78,14 @@ const Vision = () => {
 
 
         <div className="absolute top-[218%] md:right-[10%] lg:right-[10%] ball">
-          <Ball2 className="ball" />
+          <Ball2 className="" />
         </div>
         <div className="absolute md:top-[245%]  z-10 top-[66vh] ball1">
           <Ball3 className=""/>
         </div>
       </div>
          <Management/>
-         <div className="mb-[200px]"></div>
+         
         
         
          </div>

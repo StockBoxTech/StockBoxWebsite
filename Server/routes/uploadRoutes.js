@@ -2,6 +2,7 @@ import express from "express";
 import multer from "multer";
 import PdfModel from "../models/PdfModel.js";
 import { uploadPDFToCloudinary } from "../utils/CloudinaryPDF.js";
+import { deleteFileFromCloudinaryPdf } from "../utils/CloudinaryPDF.js";
 
 const router = express.Router();
 const upload = multer({ storage: multer.memoryStorage() }); // Store files in memory
@@ -44,6 +45,31 @@ router.get("/all", async (req, res) => {
   } catch (error) {
     console.error("Error fetching PDFs:", error);
     res.status(500).json({ error: "Failed to fetch PDFs" });
+  }
+});
+
+// Delete PDF by ID
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Find the PDF in the database
+    const pdf = await PdfModel.findById(id);
+    if (!pdf) {
+      return res.status(404).json({ message: "PDF not found" });
+    }
+
+    // Delete the file from Cloudinary
+    const publicId = pdf.pdfUrl.split("/").pop().split(".")[0]; // Extract public ID from the URL
+    await deleteFileFromCloudinaryPdf(publicId);
+
+    // Delete the PDF from the database
+    await PdfModel.findByIdAndDelete(id);
+
+    res.status(200).json({ message: "PDF deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting PDF:", error);
+    res.status(500).json({ error: "Failed to delete PDF" });
   }
 });
 
