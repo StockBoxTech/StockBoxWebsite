@@ -9,24 +9,31 @@ const Investments = () => {
     <div className="w-full min-h-screen  px-4 md:px-8 lg:px-16 py-12">
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto mb-16 md:mb-24">
+        <div className="flex"> 
+
+       
         <div className="text-center md:text-left mb-16">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
             <span className="block mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               FII/DII
             </span>
             <span className="flex flex-col md:flex-row items-center gap-4">
-              <img 
-                src={span} 
-                alt="Market trends" 
-                className="w-64 md:w-80 h-auto" 
-              />
+             
               <span className="text-orange-400">Investments</span>
             </span>
           </h1>
           <h2 className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto md:mx-0">
             Unlock the power of expert investing with personalized stock recommendations, delivered straight to your phone inbox.
           </h2>
+          
         </div>
+        <img 
+                src={span} 
+                alt="Market trends" 
+                className="w-100 h-auto" 
+              />
+
+         </div>
 
         {/* Content Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">

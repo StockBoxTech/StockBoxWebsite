@@ -100,6 +100,7 @@ const Dashboard = ({ children }) => {
     { path: "/category", label: "Category", icon: <PlusCircle size={20} /> },
     { path: "/jobform", label: "Job Form", icon: <PlusCircle size={20} /> },
     { path: "/viewUserDetails" , label: "View Users", icon: <Upload size={20} /> },
+     { path: "/comany-ipo-form", label: "Add IPO", icon: <Calendar size={20} /> },
   ];
 
   const actionButtons = [

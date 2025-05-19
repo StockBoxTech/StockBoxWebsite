@@ -22,6 +22,7 @@ import Media from "./pages/Media";
 import Report from "./pages/Report";
 import Partnet from "./pages/Partnet";
 import ScrollToTop from "./components/Scroll_to_top";
+import ShowIpos from "./pages/ShowIpos";
 
 const App = () => {
   gsap.registerPlugin(useGSAP);
@@ -64,7 +65,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#163132] via-[#0E0C0C] to-[#0E0B0B] font-[plus-jakarta-sans] Display">
+    <div className="min-h-screen font-[plus-jakarta-sans] Display">
       <Toaster
             position="top-center"
             reverseOrder={false}/>
@@ -97,6 +98,7 @@ const App = () => {
             <Route path="/media/" element={<Media/>}/>
             <Route path="/report" element={<Report/>}/>
             <Route path="partner-with-us/" element={<Partnet/>}/>
+            <Route path="/comapny-ipos" element={<ShowIpos/>}/>
 
           </Routes>
         </main>

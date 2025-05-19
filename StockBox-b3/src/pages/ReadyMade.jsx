@@ -34,11 +34,7 @@ const ReadyMade = () => {
 
       {/* Second Section */}
       <div className="max-w-7xl mx-auto mb-24 grid md:grid-cols-2 gap-12 items-center">
-        <img 
-          src={ready} 
-          alt="Stockbox interface" 
-          className="rounded-2xl shadow-xl w-full object-contain" 
-        />
+      
         
         <div className="space-y-6">
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
@@ -50,6 +46,12 @@ const ReadyMade = () => {
             at every fixed interval. Our goal is to maximize clients’ returns with flexible and adaptive long-term investment strategies.
           </p>
         </div>
+  <img 
+          src={ready} 
+          alt="Stockbox interface" 
+          className="rounded-2xl shadow-xl w-full object-contain" 
+        />
+
       </div>
 
       {/* Features Section */}

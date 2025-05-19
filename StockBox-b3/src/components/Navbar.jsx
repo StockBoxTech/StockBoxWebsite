@@ -89,8 +89,8 @@ const Navbar = () => {
         <div className="max-w-full md:mx-20 px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <div className="flex-shrink-0">
-              <img src={logo} alt="Logo" className="w-12 h-12 cursor-pointer" onClick={() => navigate('/')} />
+            <div className="flex-shrink-0 overflow-hidden">
+              <img src={logo} alt="Logo" className="w-[13em]  cursor-pointer" onClick={() => navigate('/')} />
             </div>
 
             {/* Desktop Menu */}
@@ -156,7 +156,7 @@ const Navbar = () => {
               ))}
               <a href='https://stockboxtech.smallcase.com/'className='text-white' target='_blank'>SmallCase</a>
 
-              <button className="bg-amber-400 hover:bg-amber-500 text-black px-4 py-2 
+              <button className="bg-[#dbf169] hover:bg-[#ebff86] text-black px-4 py-2 
                 rounded-lg text-sm font-medium transition-colors duration-300" onClick={()=>redirectToStore()}>
                 Get Started
               </button>
@@ -222,7 +222,7 @@ const Navbar = () => {
         </div>
       ))}
       <button 
-        className="bg-amber-400 hover:bg-amber-500 text-black px-4 py-2 
+        className=" text-black px-4 py-2  bg-[#DDEE8C]
         rounded-lg text-sm font-medium transition-colors duration-300 mt-4"
         onClick={() => {
           redirectToStore();

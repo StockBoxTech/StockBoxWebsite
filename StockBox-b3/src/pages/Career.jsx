@@ -23,7 +23,7 @@ const Careers = () => {
   };
 
   return (
-    <div className="flex flex-col h-full justify-between items-center bg-gray-900 min-h-screen">
+    <div className="flex flex-col h-full justify-between items-center  min-h-screen">
       <div className="flex flex-col justify-center items-center text-center mt-10 w-full px-4">
         <h1 className="font-bold text-5xl md:text-7xl text-white pb-6">Careers</h1>
         <p className="text-lg text-neutral-300 max-w-4xl hidden md:block mb-6">

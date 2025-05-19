@@ -191,6 +191,47 @@ const ListBlogs = () => {
           </div>
         </div>
       </section>
+      {totalPages > 1 && (
+  <div className="flex justify-center items-center gap-2 p-4">
+    <button
+      onClick={() => handlePageClick(currentPage - 1)}
+      disabled={currentPage === 1}
+      className={`px-3 py-1 rounded-md border ${
+        currentPage === 1 ? "bg-gray-200 text-gray-500 cursor-not-allowed" : "bg-white text-gray-700 hover:bg-gray-100"
+      }`}
+    >
+      Prev
+    </button>
+
+    {[...Array(totalPages)].map((_, index) => {
+      const page = index + 1;
+      return (
+        <button
+          key={page}
+          onClick={() => handlePageClick(page)}
+          className={`px-3 py-1 rounded-md border ${
+            currentPage === page
+              ? "bg-blue-600 text-white"
+              : "bg-white text-gray-700 hover:bg-gray-100"
+          }`}
+        >
+          {page}
+        </button>
+      );
+    })}
+
+    <button
+      onClick={() => handlePageClick(currentPage + 1)}
+      disabled={currentPage === totalPages}
+      className={`px-3 py-1 rounded-md border ${
+        currentPage === totalPages ? "bg-gray-200 text-gray-500 cursor-not-allowed" : "bg-white text-gray-700 hover:bg-gray-100"
+      }`}
+    >
+      Next
+    </button>
+  </div>
+)}
+
     </div>
   );
 };

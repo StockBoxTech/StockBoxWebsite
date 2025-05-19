@@ -5,59 +5,59 @@ const Trail = () => {
   const navigator = useNavigate();
 
   return (
-    <div className="flex relative text-white h-full bg">
-      {/* Animated Image */}
-      <img 
-        src={mockup} 
-        width="20%" 
-        className="absolute animate-float hover:animate-pulse" 
-        alt="App mockup"
-        style={{
-          animationDuration: '6s',
-          transition: 'all 0.3s ease'
-        }}
-      />
-      
-      <div className="flex flex-col w-full items-center mb-20 relative">
-        <h2 className="font-bold mb-4 text-3xl lg:text-5xl">Start Your Free Trial</h2>
-        <div className="text-neutral-400 mb-4 text-sm flex flex-col justify-center items-center">
-          <p>With Our All-In-One Setup</p>
-          <p>Trading And Stock Analysis Are Seamless</p>
+    <div className="relative  flex items-center justify-center overflow-hidden  mb-3 md:mb-0">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -left-20 -top-20 w-96 h-96 rounded-full blur-3xl" />
+        <div className="absolute -right-20 -bottom-20 w-96 h-96  rounded-full blur-3xl" />
+      </div>
+
+      {/* Content container */}
+      <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 max-w-6xl w-full">
+        {/* Mockup image */}
+        <div className="lg:w-1/2 flex justify-center">
+          <img 
+            src={mockup} 
+            alt="App mockup"
+            className="w-full max-w-md xl:max-w-xl hover:scale-[1.02] transition-transform duration-300 animate-float"
+            style={{ animationDuration: '8s' }}
+          />
         </div>
-        <p className="text-neutral-300 text-sm">Start Your Free Trial</p>
-        <button 
-          className="bg-white hover:scale-105 hover:bg-orange-400 hover:text-white text-black font-semibold py-2 pointer px-4 rounded-full mt-4"
-          onClick={() => navigator("/contact-us")}
-        >
-          Get Start
-        </button>
+
+        {/* Text content */}
+        <div className="lg:w-1/2 text-center lg:text-left space-y-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#97ee8c] to-blue-400 bg-clip-text text-transparent">
+            Start Your Free Trial
+          </h2>
+          
+          <div className="space-y-4">
+            <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
+              With Our All-In-One Platform
+            </p>
+            <p className="text-gray-400 max-w-xl mx-auto lg:mx-0">
+              Experience seamless trading and stock analysis with professional-grade tools 
+              designed for both beginners and experts.
+            </p>
+          </div>
+
+          <button 
+            onClick={() => navigator("/contact-us")}
+            className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-lg rounded-full bg-gradient-to-r from-[#e3ff59] to-[#DDEE8C] hover:from-[#d5ff02] hover:to-[#e6c120] transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/30"
+          >
+            <span className="relative z-10">Get Started</span>
+            <div className="absolute inset-0 bg-white/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </button>
+        </div>
       </div>
 
       {/* Animation styles */}
-      <style>{`
+      <style jsx>{`
         @keyframes float {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-20px);
-          }
-        }
-        @keyframes pulse {
-          0%, 100% {
-            transform: scale(1);
-            opacity: 1;
-          }
-          50% {
-            transform: scale(1.05);
-            opacity: 0.9;
-          }
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
         }
         .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        .hover\:animate-pulse:hover {
-          animation: pulse 2s ease-in-out infinite;
+          animation: float 8s ease-in-out infinite;
         }
       `}</style>
     </div>

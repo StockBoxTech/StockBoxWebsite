@@ -9,12 +9,12 @@ const Brokers = () => {
   return (
     <div className="md:mt-[40vh] mb-[10%] relative mt-[10vh]">
       <div className="absolute left-0 top-0 w-[100px] h-full  z-10"></div>
-      <div className="bg-[#1615151b]  overflow-hidden ">
+      <div className=" overflow-hidden ">
  <h1 className="md:text-[4rem] lg:text-[7vh] text-white text-center text-3xl">Easy One Tap Execution</h1>
  <p className="md:text-[2rem] lg:text-[3vh] text-[#909090] text-center text-sm">We Support 16 brokers</p>
  <div className="fle flex-col h-[40%] mt-10">
    {/* first row */}
-   <div className="flex  md:gap-30 scrolling  gap-10 ">
+   <div className="flex  md:gap-30   gap-10 ">
    <Marquee 
               className="flex flex-row gap-10 md:gap-10" 
               speed={30} 
@@ -32,7 +32,7 @@ const Brokers = () => {
       </Marquee>
     </div>
 {/* second row */}
-    <div className="flex  md:gap-30 scrolling2  mt-10 gap-10">
+    <div className="flex  md:gap-30   mt-10 gap-10">
 
     <Marquee 
               className="flex flex-row gap-10 md:gap-10" 
@@ -55,7 +55,7 @@ const Brokers = () => {
 
  </div>
       </div>
-      <div className="absolute right-0 top-0 w-[100px] h-full bg-gradient-to-l from-[#161515] to-transparent z-10"></div>
+   
     </div>
   )
 }

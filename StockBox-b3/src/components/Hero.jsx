@@ -53,7 +53,7 @@ const Hero = () => {
 
       <div className="container2 mx-auto px-4">
         <h1
-          className="md:text-[80px] text-3xl lg:text-[5vw]  text-center  mx-auto leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#f7f6f6] to-[#858585]  font-bold "
+          className="md:text-[80px] text-3xl lg:text-[5vw]  text-center  mx-auto leading-tight text-white  font-bold "
           style={{ fontFamily: "plus-jakarta-sans" }}
         >
           Invest in Your Future, With a
@@ -61,7 +61,7 @@ const Hero = () => {
           <span className="md:block mt-2">{""} Research Analyst</span>
         </h1>
       </div>
-      <div className="w-full max-w-[90%] sm:max-w-[80%] lg:max-w-[92%]  mt-4 container3">
+      <div className="w-[60%] max-w-[60%] sm:max-w-[80%] lg:max-w-[80%]  mt-4 container3">
         <p className="text-sm sm:text-base md:text-lg text- text-center text-white
           leading-relaxed sm:leading-loose">
           We are a SEBI Registered Research Analyst firm that assists in
@@ -72,10 +72,10 @@ const Hero = () => {
       </div>
       <button onClick={() => navigator("/Download")}
         className="w-[205px]  px-1  h-[48px] sm:h-[56px] 
-          bg-neutral-900 mt-6 sm:mt-10 text-neutral-300
+          bg-[#ebff86] mt-6 sm:mt-10 text-gray-700
           text-base sm:text-lg font-semibold rounded-2xl 
-          hover:bg-amber-800 transition-colors duration-1000 container4
-          font-[plus-jakarta-sans] shadow-lg  shadow-[#ffffff3a] drop-shadow-md"
+          hover:bg-[#e4ebc1] transition-colors duration-1000 container4
+          font-[plus-jakarta-sans] shadow-lg   drop-shadow-md"
       >
        <div className="flex items-center justify-center gap-3">
         <p className=" font-bold"> Download Now  </p> 
@@ -87,7 +87,7 @@ const Hero = () => {
   viewBox="0 0 30 24"
   xmlns="http://www.w3.org/2000/svg"
 >
-<MdDownloadForOffline className="text-white h-20 w-40" size={30} />
+<MdDownloadForOffline className="text-gray-700 h-20 w-40" size={30} />
 
 </svg></div>
         

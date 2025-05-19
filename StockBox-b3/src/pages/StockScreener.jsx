@@ -34,11 +34,7 @@ const StockScreener = () => {
 
       {/* Ratings Section */}
       <div className="max-w-7xl mx-auto mb-24 grid md:grid-cols-2 gap-12 items-center">
-        <img 
-          src={ready} 
-          alt="Stock ratings" 
-          className="rounded-2xl shadow-xl w-full object-contain" 
-        />
+     
         
         <div className="space-y-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -68,6 +64,11 @@ const StockScreener = () => {
             ))}
           </ul>
         </div>
+        <img 
+          src={ready} 
+          alt="Stock ratings" 
+          className="rounded-2xl shadow-xl w-full object-contain" 
+        />
       </div>
 
       {/* Features Section */}

@@ -16,6 +16,7 @@ import imgRouter from "./routes/ImageRoute.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 import router from "./routes/blog/blogRoutes.js";
 import SendOtpToPhNumberRouter from "./routes/SendOtpToPhNumber.js";
+import iporouter from "./routes/ipoRoutes.js";
 dotenv.config();
 
 // Initialize Express app
@@ -37,6 +38,9 @@ app.use(bodyParser.json());
 // Establish MongoDB connection
 connectdb();
 
+app.get('/',(req,res)=>{
+  res.send('Hello from server')
+})
 // Routes
 app.use("/api/blogs", router) // blogs
 app.use("/api", blogRoute); // review table 
@@ -45,6 +49,7 @@ app.use("/api/crousal" , imgRouter); //hero image
 app.use("/api/pdf", uploadRoutes);  //pdf upload
 app.use("/api/jobs", jobRoutes); // job routes
 app.use("/api/Otp", SendOtpToPhNumberRouter); // OTP routes
+app.use("/api/company",iporouter)
 // Error handling middleware
 app.use(errorHandler);
 

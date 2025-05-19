@@ -203,7 +203,7 @@ const Report = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen  p-6">
       {/* Verification Modal */}
       {showForm && (
         <div className="fixed inset-0  bg-opacity-50 flex items-center justify-center p-4 z-50">
@@ -301,8 +301,8 @@ const Report = () => {
 
       <div className="max-w-7xl mx-auto">
         <header className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800">Document Library</h1>
-          <p className="text-gray-600 mt-2">Browse and download all uploaded PDF documents</p>
+          <h1 className="text-3xl font-bold text-white">Document Library</h1>
+          <p className="text-gray-200 mt-2">Browse and download all uploaded PDF documents</p>
         </header>
 
         {isLoading ? (
@@ -338,7 +338,7 @@ const Report = () => {
                   <svg className="h-6 w-6 text-gray-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                   </svg>
-                  <h3 className="text-lg font-medium text-gray-900">{title}</h3>
+                  <h3 className="text-lg font-medium text-gray-200">{title}</h3>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -350,8 +350,8 @@ const Report = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                           </svg>
                           <div className="min-w-0">
-                            <p className="text-sm font-medium text-gray-900 truncate">{pdf.originalName}</p>
-                            <p className="text-xs text-gray-500">{new Date(pdf.createdAt).toLocaleDateString()}</p>
+                            <p className="text-sm font-medium text-gray-100 truncate">{pdf.originalName}</p>
+                           {/*  <p className="text-xs text-gray-500">{new Date(pdf.createdAt).toLocaleDateString()}</p> */}
                           </div>
                         </div>
                         <div className="mt-auto">

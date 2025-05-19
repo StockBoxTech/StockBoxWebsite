@@ -35,7 +35,7 @@ const Home = () => {
   };
 
   return (
-    <section className="w-full h-full bg-transparent">
+    <section className="w-full h-full bg-[#1A2521]">
       {/* Pop-up Banner */}
       {event && event.image && showPopup && (
   <div

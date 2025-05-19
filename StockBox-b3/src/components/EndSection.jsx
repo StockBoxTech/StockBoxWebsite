@@ -42,18 +42,18 @@ const EndSection = () => {
   ];
 
   return (
-    <footer className="bg-[#0E0C0C] text-white w-full font-plus-jakarta-sans overflow-x-hidden">
+    <footer className="bg-[#0d1311] text-white w-full font-plus-jakarta-sans overflow-x-hidden">
       <hr className="h-[2px] mb-12 md:mb-[99px] w-full opacity-10" />
 
       <div className="container mx-auto px-4">
         {/* Mobile Accordion Layout */}
         <div className="lg:hidden">
           {/* Logo and Social */}
-          <div className="flex flex-col items-center mb-8">
+          <div className="flex flex-col items-center mb-8 ">
             <img
               src={logo}
               alt="StockBox Logo"
-              className="w-32 h-32 md:w-[152px] md:h-[152px] hover:scale-105 transition-transform duration-300"
+              className="  hover:scale-105 transition-transform duration-300"
             />
             <p className="text-lg font-light mt-4">Follow us</p>
             <div className="flex gap-4 mt-2">
@@ -216,13 +216,14 @@ const EndSection = () => {
         </div>
 
         {/* Desktop Layout */}
+        <div></div>
         <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Company Info & Social */}
-          <div className="space-y-6 flex flex-col items-center">
+          <div className="space-y-1 flex flex-col items-center w-full">
             <img
               src={logo}
               alt="StockBox Logo"
-              className="w-[152px] h-[152px] hover:scale-105 transition-transform duration-300"
+              className="w-[25em] h-[14em] hover:scale-105 transition-transform duration-300"
             />
             <p className="text-lg font-light">Follow us</p>
             <div className="flex gap-6">

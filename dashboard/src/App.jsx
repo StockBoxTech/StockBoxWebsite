@@ -12,10 +12,11 @@ import SingleBlog from "./pages/Blog";
 import JobForm from "./pages/JobForm";
 import Category from "./pages/Category";
 import { ToastContainer } from "react-toastify";
-import Cookies from "js-cookie"; // Optional: You can also use plain cookie handling if not using js-cookie
+
 import DashboardLayout from "./Layout/Layout";
 import UpdateCredentials from "./pages/Setting/UpdateCredential";
 import ViewUserDetails from "./pages/ViewUserDetails";
+import IpoTabel from "./pages/IpoTabel";
 
 const App = () => {
   const navigate = useNavigate();
@@ -63,6 +64,7 @@ const App = () => {
           <Route path="/update_blog/:id" element={<CreateBlogs />} />
           <Route path="/settings" element={<UpdateCredentials />} />
           <Route path="/ViewUserDetails" element={<ViewUserDetails />} />
+          <Route path="/comany-ipo-form" element={<IpoTabel/>}/>
 
           
         </Route>
