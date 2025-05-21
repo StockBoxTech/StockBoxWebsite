@@ -30,58 +30,62 @@ const MainContent = () => {
   });
 
   return (
-    <div className="mainContent md:flex  items-center  ">
+    <div className="mainContent md:flex  items-center ml-[2em] md:ml-0 ">
       <div className=" w-full">
         <img src={man} alt="" className="w-[80%] man" />
       </div>
       <div className="md:w-1/2 text-white text-lg para w-[90%]">
-        <ul className="md:block hidden">
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Smart Investing Made Easy:</span> No need to track market trends—our tool does it for you!
-          </li>
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Expert Stock Picks:</span> Get curated stock recommendations directly on your smartphone.
-          </li>
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Perfect for All Investors:</span> Ideal for both beginners and experienced traders.
-          </li>
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Timely & Reliable:</span> Receive expert-backed insights for informed decisions.
-          </li>
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Customizable & User-Friendly:</span> Set preferences based on your investment goals.
-          </li>
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Maximize Returns, Save Time:</span> Focus on profits while we handle the research.
-          </li>
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Join & Invest Smarter:</span> Subscribe now for high-growth stock recommendations!
-          </li>
-        </ul>
-        <ul className="text-[12px] md:hidden mt-10">
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Smart Investing Made Easy:</span> No need to track market trends—our tool does it for you!
-          </li>
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Expert Stock Picks:</span> Get curated stock recommendations directly on your smartphone.
-          </li>
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Perfect for All Investors:</span> Ideal for both beginners and experienced traders.
-          </li>
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Timely & Reliable:</span> Receive expert-backed insights for informed decisions.
-          </li>
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Customizable & User-Friendly:</span> Set preferences based on your investment goals.
-          </li>
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Maximize Returns, Save Time:</span> Focus on profits while we handle the research.
-          </li>
-          <li className="text-white">
-            <span className="font-bold text-gray-400">Join & Invest Smarter:</span> Subscribe now for high-growth stock recommendations!
-          </li>
-        </ul>
-      </div>
+  {/* Desktop view */}
+  <ul className="md:block hidden list-disc pl-5 space-y-2">
+    <li>
+      <span className="font-bold text-amber-100">Smart Investing Made Easy:</span> No need to track market trends—our tool does it for you!
+    </li>
+    <li>
+      <span className="font-bold text-amber-100">Expert Stock Picks:</span> Get curated stock recommendations directly on your smartphone.
+    </li>
+    <li>
+      <span className="font-bold text-amber-100">Perfect for All Investors:</span> Ideal for both beginners and experienced traders.
+    </li>
+    <li>
+      <span className="font-bold text-amber-100">Timely & Reliable:</span> Receive expert-backed insights for informed decisions.
+    </li>
+    <li>
+      <span className="font-bold text-amber-100">Customizable & User-Friendly:</span> Set preferences based on your investment goals.
+    </li>
+    <li>
+      <span className="font-bold text-amber-100">Maximize Returns, Save Time:</span> Focus on profits while we handle the research.
+    </li>
+    <li>
+      <span className="font-bold text-amber-100">Join & Invest Smarter:</span> Subscribe now for high-growth stock recommendations!
+    </li>
+  </ul>
+
+  {/* Mobile view */}
+  <ul className="text-[12px] md:hidden mt-10 list-disc pl-5 space-y-2">
+    <li>
+      <span className="font-bold text-amber-100">Smart Investing Made Easy:</span> No need to track market trends—our tool does it for you!
+    </li>
+    <li>
+      <span className="font-bold text-amber-100">Expert Stock Picks:</span> Get curated stock recommendations directly on your smartphone.
+    </li>
+    <li>
+      <span className="font-bold text-amber-100">Perfect for All Investors:</span> Ideal for both beginners and experienced traders.
+    </li>
+    <li>
+      <span className="font-bold text-amber-100">Timely & Reliable:</span> Receive expert-backed insights for informed decisions.
+    </li>
+    <li>
+      <span className="font-bold text-amber-100">Customizable & User-Friendly:</span> Set preferences based on your investment goals.
+    </li>
+    <li>
+      <span className="font-bold text-amber-100">Maximize Returns, Save Time:</span> Focus on profits while we handle the research.
+    </li>
+    <li>
+      <span className="font-bold text-amber-100">Join & Invest Smarter:</span> Subscribe now for high-growth stock recommendations!
+    </li>
+  </ul>
+</div>
+
     </div>
   );
 };

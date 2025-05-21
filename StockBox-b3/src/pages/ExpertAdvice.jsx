@@ -1,5 +1,4 @@
-import span from "../assets/expert/span.png";
-import rocket from "../assets/expert/rocket.png";
+
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import MainContent from "../components/expert/MainContent";
@@ -51,20 +50,16 @@ const ExpertAdvice = () => {
   return (
     <div className="container lg:mx-10 mx-auto  md:px-8    overflow-x-hidden">
       {/* Hero Section */}
-      <section className="grid md:grid-cols-2 gap-12 mb-20  relative">
+      <section className="grid md:grid-cols-2 gap-12 mb-20  relative md:mt-10">
         {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-3xl -z-10" />
+        <div className="absolute inset-0  rounded-3xl -z-10" />
         
         {/* Heading */}
         <div className="flex flex-col justify-center items-start ">
           <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-white mb-6">
             <span className="hero-heading block mb-4">Expert</span>
             <span className="hero-heading flex items-center gap-4 md:gap-6">
-              <img 
-                src={span} 
-                alt="Decorative highlight" 
-                className="w-20 md:w-32 h-auto rotate-12 animate-float" 
-              />
+            
               <span className="relative">
                 Advice
                 <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-purple-400 rounded-full" />
@@ -75,11 +70,7 @@ const ExpertAdvice = () => {
 
         {/* Rocket Section */}
         <div className="flex flex-col items-center md:items-end  space-y-8">
-          <img 
-            src={rocket} 
-            alt="Investment growth rocket" 
-            className="rocket w-56 md:w-72 h-auto transition-transform duration-300 hover:scale-105" 
-          />
+         
           <div className="hero-text  text-white max-w-md">
             <h2 className="text-2xl md:text-3xl leading-tight font-medium bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Unlock the power of expert investing with personalized stock recommendations, 

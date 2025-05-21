@@ -5,18 +5,34 @@ import { format } from 'date-fns';
 const ShowIpos = () => {
   const [ipos, setIpos] = useState([]);
   const [filteredIpos, setFilteredIpos] = useState([]);
+  const [upcomingIpos, setUpcomingIpos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [todayIpo, setTodayIpo] = useState([]);
 
   useEffect(() => {
     const fetchIpos = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/company/ipos');
-        setIpos(response.data);
-        setFilteredIpos(response.data);
+        const ipoRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/company/ipos`);
+        setIpos(ipoRes.data);
+        setFilteredIpos(ipoRes.data);
       } catch (err) {
         setError('Failed to fetch IPOs. Please try again later.');
+      }
+
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/company`);
+        setUpcomingIpos(res.data);
+      } catch (err) {
+        console.log("Failed to fetch upcoming IPOs");
+      }
+
+      try {
+        const todayRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/company/list`);
+        setTodayIpo(todayRes.data);
+      } catch (err) {
+        console.error("Error fetching today's IPOs");
       } finally {
         setIsLoading(false);
       }
@@ -26,14 +42,10 @@ const ShowIpos = () => {
   }, []);
 
   useEffect(() => {
-    if (searchTerm.trim() === '') {
-      setFilteredIpos(ipos);
-    } else {
-      const filtered = ipos.filter(ipo =>
-        ipo.company.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredIpos(filtered);
-    }
+    const filtered = ipos.filter(ipo =>
+      ipo.company.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredIpos(filtered);
   }, [searchTerm, ipos]);
 
   const formatDate = (dateString) => {
@@ -44,14 +56,6 @@ const ShowIpos = () => {
       return dateString;
     }
   };
-
-  const upcomingIpos = [
-    "Belrise Industries IPO",
-    "Borana Weaves IPO",
-    "Unified Data-Tech IPO",
-    "Leela Hotels IPO",
-    "Dar Credit and Capital IPO"
-  ];
 
   if (isLoading) {
     return (
@@ -72,7 +76,6 @@ const ShowIpos = () => {
 
   return (
     <div className="min-h-screen bg-[#1A2521] text-white py-10 px-4 sm:px-6 lg:px-8">
-      {/* Header */}
       <div className="bg-gradient-to-r from-green-700 to-green-900 rounded-xl p-6 mb-8 shadow-lg">
         <h1 className="text-3xl font-bold mb-2">📈 Latest IPO Updates</h1>
         <p className="text-lg text-green-200">Track current and upcoming IPOs</p>
@@ -82,13 +85,23 @@ const ShowIpos = () => {
           <div className="flex flex-wrap gap-2 text-black">
             {upcomingIpos.map((ipo, index) => (
               <span key={index} className="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
-                {ipo}
+                {ipo.upcomingIpos}
               </span>
             ))}
           </div>
-          <p className="mt-4 text-yellow-200 font-medium">
-            🚀 IPO listing today: <span className="underline">Virtual Galaxy Infotech IPO</span>
-          </p>
+
+          {todayIpo && todayIpo.length > 0 ? (
+            todayIpo.map((item) => (
+              <div key={item._id} className="mt-4 text-yellow-200 font-medium">
+                🚀 IPO listing today:
+                <span className="ml-2 text-white underline">
+                  {item.ipoListingsToday || "N/A"}
+                </span>
+              </div>
+            ))
+          ) : (
+            <p className="mt-4 text-gray-400">No IPO listings today.</p>
+          )}
         </div>
       </div>
 
@@ -120,11 +133,10 @@ const ShowIpos = () => {
                 <th className="px-6 py-3">Opening Date</th>
                 <th className="px-6 py-3">Closing Date</th>
                 <th className="px-6 py-3">Listing Date</th>
-                <th className="px-6 py-3">IssuePrice (₹)</th>
+                <th className="px-6 py-3">Issue Price (₹)</th>
                 <th className="px-6 py-3">Issue Amount (Cr.)</th>
                 <th className="px-6 py-3">Listing At</th>
-                <th className='px-6 py-3'>Blogs</th>
-
+                <th className="px-6 py-3">About the IPOs</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-600">
@@ -133,30 +145,26 @@ const ShowIpos = () => {
                   <td className="px-6 py-4 font-semibold">{ipo.company}</td>
                   <td className="px-6 py-4 text-sm">{formatDate(ipo.openingDate)}</td>
                   <td className="px-6 py-4 text-sm">{formatDate(ipo.closingDate)}</td>
-                  <td className="px-6 py-4 text-sm">{formatDate(ipo.listingDate) || 'N/A'}</td>
+                  <td className="px-6 py-4 text-sm">{formatDate(ipo.listingDate)}</td>
                   <td className="px-6 py-4 text-sm">{ipo.issuePrice}</td>
                   <td className="px-6 py-4 text-sm text-green-300">
-                    {ipo.issuePrice ? `₹${ipo.issueAmountCr}` : 'N/A'}
-                     
-
-                  </td> 
+                    {ipo.issueAmountCr ? `₹${ipo.issueAmountCr}` : 'N/A'}
+                  </td>
                   <td className="px-6 py-4 text-sm">{ipo.listingAt}</td>
-                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      {ipo.blogLink ? (
-                        <a
-                          href={ipo.blogLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:text-blue-900 hover:underline"
-                        >
-                          View
-                        </a>
-                      ) : (
-                        <span className="text-gray-400">N/A</span>
-                      )}
-                    </td>
-
-
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    {ipo.blogLink ? (
+                      <a
+                        href={ipo.blogLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-900 hover:underline"
+                      >
+                        View
+                      </a>
+                    ) : (
+                      <span className="text-gray-400">N/A</span>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

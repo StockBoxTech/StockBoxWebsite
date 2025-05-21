@@ -8,6 +8,8 @@ const IpoTable = () => {
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
   const [editingId, setEditingId] = useState(null);
+   const [ipoInput, setIpoInput] = useState("");
+  const [ipoList, setIpoList] = useState([]);
   
   const [formData, setFormData] = useState({
     company: '',
@@ -28,7 +30,7 @@ const IpoTable = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await axios.get('http://localhost:5000/api/company/ipos');
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/company/ipos`);
       setIpos(response.data);
     } catch (error) {
       setError("Failed to fetch IPOs. Please try again later.");
@@ -50,10 +52,10 @@ const IpoTable = () => {
     
     try {
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/company/ipos/${editingId}`, formData);
+        await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/company/ipos/${editingId}`, formData);
         setSuccessMessage('IPO updated successfully!');
       } else {
-        await axios.post('http://localhost:5000/api/company/ipos', formData);
+        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/company/ipos`, formData);
         setSuccessMessage('IPO added successfully!');
       }
       
@@ -98,7 +100,7 @@ const IpoTable = () => {
     
     setIsLoading(true);
     try {
-      await axios.delete(`http://localhost:5000/api/company/ipos/${id}`);
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/company/ipos/${id}`);
       setSuccessMessage('IPO deleted successfully!');
       fetchIpos();
     } catch (error) {
@@ -119,8 +121,182 @@ const IpoTable = () => {
     }
   };
 
+
+
+
+  const fetchIPOs = async () => {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/company/`);
+      setIpoList(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleAddIPO = async () => {
+    const ipoArray = ipoInput
+      .split(",")
+      .map(item => item.trim())
+      .filter(item => item);
+
+    if (ipoArray.length === 0) return alert("Add valid IPO names");
+
+    try {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/company/add`, { upcomingIpos: ipoArray });
+      setIpoInput("");
+      fetchIPOs();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteIPOName = async (name) => {
+    try {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/company/delete/${name}`);
+      fetchIPOs();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteEntry = async (id) => {
+    try {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/company/entry/${id}`);
+      fetchIPOs();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchIPOs();
+  }, []);
+
+
+  const [input, setInput] = useState("");
+  const [listings, setListings] = useState("");
+
+  const fetchListings = async () => {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/company/list`);
+      setListings(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleAdd = async () => {
+    const entries = input
+      .split(",")
+      .map((e) => e.trim())
+      .filter((e) => e);
+     
+
+    if (entries.length === 0) return alert("Enter valid listings");
+
+    try {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/company/addlist`, { ipoListingsToday: entries });
+      setInput("");
+      fetchListings();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+ 
+
+  const handleDeleteEntrys = async (id) => {
+    try {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/company/entrylist/${id}`);
+      fetchListings();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchListings();
+  }, []);
+
+
+
   return (
     <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
+
+ <div className="container">
+
+ <h2>📆 IPO Listings Today</h2>
+
+      <input
+        type="text"
+        placeholder="Enter comma-separated listings"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        style={{ width: "60%", padding: "10px", marginRight: "10px" }}
+      />
+      <button onClick={handleAdd}>Add Listings</button>
+
+      <div style={{ marginTop: "30px" }}>
+        {Array.isArray(listings) &&
+          listings.map((entry) => (
+            <div key={entry._id} style={{ border: "1px solid #ccc", margin: "15px", padding: "10px" }}>
+              <h4> {entry.ipoListingsToday}</h4>
+             
+              <button onClick={() => handleDeleteEntrys(entry._id)}>🗑️ Delete Entry</button>
+            </div>
+          ))}
+      </div>
+
+
+
+      <h2>📈 IPO Manager</h2>
+
+      <input
+        type="text"
+        placeholder="Enter IPOs (comma separated)"
+        value={ipoInput}
+        onChange={(e) => setIpoInput(e.target.value)}
+        style={{ width: "60%", padding: "10px", marginRight: "10px" }}
+      />
+      <button onClick={handleAddIPO}>Add IPOs</button>
+
+      <div style={{ marginTop: "30px" }}>
+        {Array.isArray(ipoList) && ipoList.map((entry)  => (
+          <div
+            key={entry._id}
+            style={{
+              border: "1px solid gray",
+              padding: "15px",
+              marginBottom: "15px",
+              borderRadius: "8px",
+            }}
+          >
+            <h4>ID: {entry._id}</h4>
+            <ul>
+              {entry.upcomingIpos.map((ipo, idx) => (
+                <li key={idx}>
+                  {ipo}{" "}
+                  <button
+                    onClick={() => handleDeleteIPOName(ipo)}
+                    style={{ marginLeft: "10px" }}
+                  >
+                    ❌ Remove IPO
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => handleDeleteEntry(entry._id)}
+              style={{ color: "red", marginTop: "10px" }}
+            >
+              🗑️ Delete Entire Entry
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+
+
       <h2>{editingId ? 'Edit IPO' : 'Add New IPO'}</h2>
       
       {successMessage && (

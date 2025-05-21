@@ -143,6 +143,7 @@ const Navbar = () => {
                
                 { name: 'Contact', path: '/contact-us/' },
                 {name: 'Blog', path: '/blogs/'},
+                 {name:'IPOS',path:'/comapny-ipos'}
                 
               ].map((item) => (
                 <Link
@@ -208,6 +209,7 @@ const Navbar = () => {
       
         { name: 'Contact', path: '/contact-us/' },
         { name: 'Blog', path: '/blogs' },
+        {name:'IPOS',path:'/comapny-ipos'}
       ].map((item) => (
         <div
           key={item.name}

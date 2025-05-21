@@ -11,4 +11,4 @@ const ipoSchema = new mongoose.Schema({
   blogLink: { type: String }
 });
 
-export default mongoose.model('Ipo', ipoSchema);
+export default mongoose.model('Iposlist', ipoSchema);

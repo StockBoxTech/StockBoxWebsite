@@ -42,7 +42,7 @@ const EndSection = () => {
   ];
 
   return (
-    <footer className="bg-[#0d1311] text-white w-full font-plus-jakarta-sans overflow-x-hidden">
+    <footer className=" text-white w-full font-plus-jakarta-sans overflow-x-hidden">
       <hr className="h-[2px] mb-12 md:mb-[99px] w-full opacity-10" />
 
       <div className="container mx-auto px-4">

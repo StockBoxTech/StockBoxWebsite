@@ -7,6 +7,9 @@ const PortfolioHedger = () => {
     <div className="w-full min-h-screen  px-4 md:px-8 lg:px-16 ">
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center mb-16 md:mb-24">
+
+
+        
         <div className="relative group overflow-hidden rounded-3xl order-2 md:order-1">
           <img 
             src={paper} 
@@ -31,15 +34,7 @@ const PortfolioHedger = () => {
 
       {/* Protection Section */}
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center mb-24">
-        <div className="relative overflow-hidden rounded-2xl shadow-xl">
-          <img 
-            src={headge} 
-            alt="Risk management" 
-            className="w-full h-[400px] object-cover" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60" />
-        </div>
-
+      
         <div className="space-y-6">
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Intelligent Portfolio Protection
@@ -50,10 +45,30 @@ const PortfolioHedger = () => {
             risks and maximize portfolio stability.
           </p>
         </div>
+
+          <div className="relative overflow-hidden rounded-2xl shadow-xl">
+          <img 
+            src={headge} 
+            alt="Risk management" 
+            className="w-full h-[400px] object-cover" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60" />
+        </div>
+
       </div>
 
       {/* Advantages Section */}
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center mb-24">
+
+<div className="hidden md:block relative overflow-hidden rounded-2xl shadow-xl">
+          <img 
+            src={headge1} 
+            alt="Hedging benefits" 
+            className="w-full h-[500px] object-cover" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-black/60" />
+        </div>
+        
         <div className="md:hidden">
           <img 
             src={headge1} 
@@ -108,14 +123,7 @@ const PortfolioHedger = () => {
           </div>
         </div>
 
-        <div className="hidden md:block relative overflow-hidden rounded-2xl shadow-xl">
-          <img 
-            src={headge1} 
-            alt="Hedging benefits" 
-            className="w-full h-[500px] object-cover" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-l from-black/60" />
-        </div>
+        
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
-import Ipo from '../../models/IPOModel.js';
+import Ipos from '../../models/IPOModel.js';
 
 export const createIpo = async (req, res) => {
   try {
-    const ipo = new Ipo(req.body);
+    const ipo = new Ipos(req.body);
     await ipo.save();
     res.status(201).json(ipo);
   } catch (err) {
@@ -12,7 +12,7 @@ export const createIpo = async (req, res) => {
 
 export const getAllIpos = async (req, res) => {
   try {
-    const ipos = await Ipo.find();
+    const ipos = await Ipos.find();
     res.json(ipos);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -21,7 +21,7 @@ export const getAllIpos = async (req, res) => {
 
 export const deleteIpo = async (req, res) => {
   try {
-    const ipo = await Ipo.findByIdAndDelete(req.params.id);
+    const ipo = await Ipos.findByIdAndDelete(req.params.id);
     if (!ipo) {
       return res.status(404).json({ error: 'IPO not found' });
     }
@@ -33,7 +33,7 @@ export const deleteIpo = async (req, res) => {
 
 export const updateIpo = async (req, res) => {
   try {
-    const ipo = await Ipo.findByIdAndUpdate(req.params.id, req.body, {
+    const ipo = await Ipos.findByIdAndUpdate(req.params.id, req.body, {
       new: true, // return the updated document
       runValidators: true,
     });
