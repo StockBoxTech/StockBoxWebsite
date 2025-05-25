@@ -11,26 +11,52 @@ function generateOTP() {
 }
 
 // Send OTP using your given structure
+// async function sendOTP(phoneNumber, otp) {
+//     console.log(`Sending OTP ${otp} to ${phoneNumber}`);
+//     try {
+//         const response = await axios.post('http://162.55.22.113/api/pushsmsjson.php', {
+//             "Authorization": {
+//                 "User": 't5bholak',   // Replace with your actual User
+//                 "Key": '010Sg19G40UKMXdThBXb', // Replace with your actual Key
+//             },
+//             "Data": {
+//                 "Sender": 'STOKBX',
+//                 "Message": `${otp} is your verification code to activate your account with Stockbox, please do not share it with anyone. STOCKBOX TECHNOLOGIES Pvt Ltd.`,
+//                 "Flash": 1,
+//                 "ReferenceId": '1564879',
+//                 "EntityId": '1601891165424815864',
+//                 "TemplateId": '1607100000000214861',
+//                 "Mobile": [phoneNumber]
+//             }
+            
+              
+//         });
+
+//         console.log('OTP sent successfully:', response.data);
+//     } catch (error) {
+//         console.error('Failed to send OTP:',error.response || error.response?.data || error.message);
+//         throw new Error('Failed to send OTP');
+//     }
+// }
+
+
 async function sendOTP(phoneNumber, otp) {
     console.log(`Sending OTP ${otp} to ${phoneNumber}`);
     try {
-        const response = await axios.post('http://162.55.22.113/api/pushsmsjson.php', {
-            "Authorization": {
-                "User": 't5bholak',   // Replace with your actual User
-                "Key": '010Sg19G40UKMXdThBXb', // Replace with your actual Key
-            },
-            "Data": {
-                "Sender": 'STOKBX',
-                "Message": `${otp} is your verification code to activate your account with Stockbox, please do not share it with anyone. STOCKBOX TECHNOLOGIES Pvt Ltd.`,
-                "Flash": 1,
-                "ReferenceId": '1564879',
-                "EntityId": '1601891165424815864',
-                "TemplateId": '1607100000000214861',
-                "Mobile": [phoneNumber]
-            }
-            
-              
-        });
+        const response = await axios.post('http://14.97.212.62/Api/smsapi/SendSms',
+            {
+    "UserId": "t5bholak",
+    "Password": "M0yz!RnC",
+    "SenderID": "STOKBX",
+    "Phno": `${phoneNumber}`,
+    "Msg": `${otp} is your verification code to activate your account with Stockbox, please do not share it with anyone. STOCKBOX TECHNOLOGIES PVt Ltd.`,
+    "EntityID": "1601891165424815864",
+    "TemplateID": "1607100000000214861",
+    "DlrUrl": "http://example.com/dlr",
+    "FlashMsg": 0,
+    "CampaignName": "Test Campaign"
+}
+        );
 
         console.log('OTP sent successfully:', response.data);
     } catch (error) {
