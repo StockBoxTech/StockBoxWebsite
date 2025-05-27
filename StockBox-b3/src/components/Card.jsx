@@ -12,9 +12,16 @@ const Card = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/crousal/getAll_Images`);
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/crousal/getAll_Images`
+        );
         const activeData = res.data.data.filter((item) => item.Active === true);
-        const imgs = activeData.flatMap((item) => [item.img1, item.img2, item.img3, item.img4]);
+        const imgs = activeData.flatMap((item) => [
+          item.img1,
+          item.img2,
+          item.img3,
+          item.img4,
+        ]);
         setActiveImages(imgs);
       } catch (err) {
         console.error("Error fetching images", err);

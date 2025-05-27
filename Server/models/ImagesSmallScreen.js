@@ -23,5 +23,5 @@ const imgSchema = new mongoose.Schema({
   },
 });
 
-const CrousalImagesForDeskTop = mongoose.model("CrousalImagesForDeskTop", imgSchema);
-export default CrousalImagesForDeskTop;
+const CrousalImagesForSmallScreen = mongoose.model("CrousalImagesForSmallScreen", imgSchema);
+export default CrousalImagesForSmallScreen;

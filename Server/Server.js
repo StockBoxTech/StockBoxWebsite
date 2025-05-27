@@ -17,6 +17,7 @@ import uploadRoutes from "./routes/uploadRoutes.js";
 import router from "./routes/blog/blogRoutes.js";
 import SendOtpToPhNumberRouter from "./routes/SendOtpToPhNumber.js";
 import iporouter from "./routes/ipoRoutes.js";
+import CrousalImagesForSmallScreen from "./routes/ImagesForSmallScreenRoute.js";
 
 dotenv.config();
 
@@ -51,6 +52,7 @@ app.use("/api/pdf", uploadRoutes);  //pdf upload
 app.use("/api/jobs", jobRoutes); // job routes
 app.use("/api/Otp", SendOtpToPhNumberRouter); // OTP routes
 app.use("/api/company",iporouter);
+app.use("/api/crousal/smallScreen" , CrousalImagesForSmallScreen)
 
 // Error handling middleware
 app.use(errorHandler);
