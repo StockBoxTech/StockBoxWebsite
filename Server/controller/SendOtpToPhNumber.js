@@ -52,12 +52,6 @@ async function sendOTP(phoneNumber, otp) {
         throw new Error('Failed to send OTP');
     }
 }
-        console.log('OTP sent successfully:', response.data);
-    } catch (error) {
-        console.error('Failed to send OTP:',error.response || error.response?.data || error.message);
-        throw new Error('Failed to send OTP');
-    }
-}
 
 // Step 1: Request OTP
 export const requestOTP = async (req, res) => {
