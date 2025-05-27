@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./blogpost.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faUser, faBookmark, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faClock, 
+  faUser, 
+  faBookmark, 
+  faShareAlt, 
+  faArrowLeft 
+} from '@fortawesome/free-solid-svg-icons';
 import { 
   faFacebookF, 
   faTwitter, 
@@ -14,6 +20,7 @@ import { Helmet } from "react-helmet";
 
 const Blogpost = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [blogData, setBlogData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -45,36 +52,41 @@ const Blogpost = () => {
   const title = blogData?.title || "Check out this blog post";
   
   const socialLinks = [
-    {
-      name: "Facebook",
-      url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
-      icon: faFacebookF,
-      color: "hover:bg-blue-100"
-    },
-    {
-      name: "Twitter",
-      url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`,
-      icon: faTwitter,
-      color: "hover:bg-blue-50"
-    },
-    {
-      name: "WhatsApp",
-      url: `https://api.whatsapp.com/send?text=${encodeURIComponent(title + " " + shareUrl)}`,
-      icon: faWhatsapp,
-      color: "hover:bg-green-50"
-    },
-    {
-      name: "LinkedIn",
-      url: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(title)}`,
-      icon: faLinkedinIn,
-      color: "hover:bg-blue-50"
-    }
-  ];
+  {
+    name: "Facebook",
+    url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+    icon: faFacebookF,
+    bgColor: "bg-[#1877F2]" // Facebook blue
+  },
+  {
+    name: "Twitter",
+    url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`,
+    icon: faTwitter,
+    bgColor: "bg-[#1DA1F2]" // Twitter blue
+  },
+  {
+    name: "WhatsApp",
+    url: `https://api.whatsapp.com/send?text=${encodeURIComponent(title + " " + shareUrl)}`,
+    icon: faWhatsapp,
+    bgColor: "bg-[#25D366]" // WhatsApp green
+  },
+  {
+    name: "LinkedIn",
+    url: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(title)}`,
+    icon: faLinkedinIn,
+    bgColor: "bg-[#0A66C2]" // LinkedIn blue
+  }
+];
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shareUrl);
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
+  };
+
+  const toggleBookmark = () => {
+    setIsBookmarked(!isBookmarked);
+    // Here you would typically also save to localStorage or make an API call
   };
 
   const formatDate = (dateString) => {
@@ -113,6 +125,12 @@ const Blogpost = () => {
           >
             Try Again
           </button>
+          <button 
+            onClick={() => navigate('/blogs')}
+            className="mt-4 px-6 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors font-medium block w-full"
+          >
+            Back to Blog List
+          </button>
         </div>
       </div>
     );
@@ -129,8 +147,17 @@ const Blogpost = () => {
           <meta property="og:image" content={blogData.thumbImage.secure_url} />
         )}
       </Helmet>
-
+          
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Back Button */}
+        <button 
+          onClick={() => navigate('/blogs')}
+          className="flex items-center text-[#ebff86] hover:text-[#acbd55] mb-6 transition-colors font-medium"
+        >
+          <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
+          Back to All Blogs
+        </button>
+
         {/* Article Container */}
         <article className="bg-white rounded-2xl shadow-md overflow-hidden">
           {/* Featured Image */}
@@ -188,15 +215,15 @@ const Blogpost = () => {
             <div className="flex justify-between items-center">
               <div className="flex space-x-2">
                 <button 
-                  onClick={() => setIsBookmarked(!isBookmarked)}
-                  className={`p-2 rounded-full ${isBookmarked ? 'text-indigo-600 bg-indigo-50' : 'text-gray-500 hover:bg-gray-100'}`}
+                  onClick={toggleBookmark}
+                  className={`p-2 rounded-full ${isBookmarked ? 'text-indigo-600' : 'text-gray-500 hover:text-indigo-600'}`}
                   aria-label={isBookmarked ? "Remove bookmark" : "Bookmark this article"}
                 >
                   <FontAwesomeIcon icon={faBookmark} />
                 </button>
                 <button 
                   onClick={copyToClipboard}
-                  className="p-2 rounded-full text-gray-500 hover:bg-gray-100"
+                  className="p-2 rounded-full text-gray-500 hover:text-indigo-600"
                   aria-label="Share this article"
                 >
                   <FontAwesomeIcon icon={faShareAlt} />
@@ -204,20 +231,20 @@ const Blogpost = () => {
               </div>
 
               {/* Social Share Buttons */}
-              <div className="flex space-x-2">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-2 rounded-full text-gray-600 ${social.color} transition-colors`}
-                    aria-label={`Share on ${social.name}`}
-                  >
-                    <FontAwesomeIcon icon={social.icon} />
-                  </a>
-                ))}
-              </div>
+              <div className="flex space-x-2 ">
+  {socialLinks.map((social) => (
+    <a
+      key={social.name}
+      href={social.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`p-2 rounded-full text-white ${social.bgColor} hover:opacity-90 transition-opacity`}
+      aria-label={`Share on ${social.name}`}
+    >
+      <FontAwesomeIcon icon={social.icon} />
+    </a>
+  ))}
+</div>
             </div>
           </div>
 
@@ -228,13 +255,7 @@ const Blogpost = () => {
             </div>
           )}
         </article>
-
-        {/* Author Bio (optional) */}
-       
       </div>
-
-      {/* Custom CSS for animations */}
-      
     </>
   );
 };

@@ -78,11 +78,11 @@ const ExpertAdvice = () => {
             </h2>
             <button
               onClick={() => navigator("/report")}
-              className="group relative bg-gradient-to-br from-orange-400 to-purple-500 hover:from-purple-500 hover:to-orange-400 
+              className="group relative bg-gradient-to-br from-[#ddff32] to-[#ebff86] hover:from-[#ebff86] hover:to-[#d4ff00]
                         text-white font-semibold py-4 px-8 rounded-xl shadow-2xl hover:shadow-purple-500/30
                         transform transition-all duration-300 hover:-translate-y-1 mt-10  "
             >
-              <span className="relative z-10">Get the Performance Report</span>
+              <span className="relative z-10 text-black">Get the Performance Report</span>
               <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300" />
             </button>
           </div>

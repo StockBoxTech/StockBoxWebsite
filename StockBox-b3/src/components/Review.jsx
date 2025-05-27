@@ -38,7 +38,7 @@ const Review = () => {
         <h2 className="text-center mb-10 sm:mb-14">
           <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-[plus-jakarta-sans] relative pb-2
             after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 
-            after:w-20 sm:after:w-24 after:h-1 after:bg-amber-400
+            after:w-20 sm:after:w-24 after:h-1 after:bg-[#ebff86]
             after:transition-all after:duration-500 after:hover:w-full">
             Client Testimonials
           </span>
@@ -80,10 +80,10 @@ const Review = () => {
                       </div>
                       <div>
                         <h3 className="text-base font-semibold text-white mb-1 truncate max-w-[120px] 
-                          transition-all group-hover:text-amber-400">
+                          transition-all group-hover:text-[#ebff86]">
                           {item.userName}
                         </h3>
-                        <div className="text-amber-400 text-sm transition-transform group-hover:scale-105">
+                        <div className="text-[#ebff86] text-sm transition-transform group-hover:scale-105">
                           {renderStars(item.score)}
                         </div>
                       </div>
@@ -133,10 +133,10 @@ const Review = () => {
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-white mb-1 
-                          transition-all group-hover:text-amber-400">
+                          transition-all group-hover:text-[#ebff86]">
                           {item.userName}
                         </h3>
-                        <div className="text-amber-400 text-sm tracking-wide 
+                        <div className="text-[#ebff86] text-sm tracking-wide 
                           transition-transform group-hover:scale-105">
                           {renderStars(item.score)}
                         </div>

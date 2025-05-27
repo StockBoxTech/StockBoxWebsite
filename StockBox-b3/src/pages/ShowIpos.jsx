@@ -77,14 +77,14 @@ const ShowIpos = () => {
   return (
     <div className="min-h-screen bg-[#1A2521] text-white py-10 px-4 sm:px-6 lg:px-8">
       <div className="bg-gradient-to-r from-green-700 to-green-900 rounded-xl p-6 mb-8 shadow-lg">
-        <h1 className="text-3xl font-bold mb-2">📈 Latest IPO Updates</h1>
+        <h1 className="text-3xl font-bold mb-2 text-[#ebff86]">📈 Latest IPO Updates</h1>
         <p className="text-lg text-green-200">Track current and upcoming IPOs</p>
 
         <div className="bg-[#ffffff12] p-4 mt-4 rounded-lg">
           <p className="font-semibold mb-3">Upcoming IPOs:</p>
           <div className="flex flex-wrap gap-2 text-black">
             {upcomingIpos.map((ipo, index) => (
-              <span key={index} className="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+              <span key={index} className="bg-[#ebff86] bg-opacity-20 px-3 py-1 rounded-full text-sm">
                 {ipo.upcomingIpos}
               </span>
             ))}
@@ -127,7 +127,7 @@ const ShowIpos = () => {
           </div>
         ) : (
           <table className="min-w-full text-left divide-y divide-gray-700">
-            <thead className="bg-[#1a1f1c] text-green-300 text-sm uppercase">
+            <thead className="bg-[#1a1f1c] text-green-300 text-sm ">
               <tr>
                 <th className="px-6 py-3">Company</th>
                 <th className="px-6 py-3">Opening Date</th>
@@ -146,7 +146,7 @@ const ShowIpos = () => {
                   <td className="px-6 py-4 text-sm">{formatDate(ipo.openingDate)}</td>
                   <td className="px-6 py-4 text-sm">{formatDate(ipo.closingDate)}</td>
                   <td className="px-6 py-4 text-sm">{formatDate(ipo.listingDate)}</td>
-                  <td className="px-6 py-4 text-sm">{ipo.issuePrice}</td>
+                  <td className="px-6 py-4 text-sm text-green-300">₹{ipo.issuePrice}</td>
                   <td className="px-6 py-4 text-sm text-green-300">
                     {ipo.issueAmountCr ? `₹${ipo.issueAmountCr}` : 'N/A'}
                   </td>

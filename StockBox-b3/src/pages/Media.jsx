@@ -124,13 +124,13 @@ const styles = {
     minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#f9f9f9',
+  //page color
     fontFamily: "'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
     color: '#333',
   },
   header: {
-    backgroundColor: '#F26710',
-    color: 'white',
+    backgroundColor: '#ebff86',
+    color: 'black',
     padding: '2rem 1rem',
     textAlign: 'center',
     boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
@@ -159,7 +159,7 @@ const styles = {
     padding: '1rem 0',
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: '#ebff86',
     borderRadius: '8px',
     overflow: 'hidden',
     boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
@@ -176,7 +176,7 @@ const styles = {
     paddingBottom: '56.25%', // 16:9 aspect ratio
     height: '0',
     overflow: 'hidden',
-    backgroundColor: '#000',
+    backgroundColor: 'black',
   },
   video: {
     position: 'absolute',

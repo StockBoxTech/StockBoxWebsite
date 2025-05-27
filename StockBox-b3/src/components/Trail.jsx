@@ -19,7 +19,7 @@ const Trail = () => {
           <img 
             src={mockup} 
             alt="App mockup"
-            className="w-full max-w-md xl:max-w-xl hover:scale-[1.02] transition-transform duration-300 animate-float"
+            className="w-full max-w-md xl:max-w-xl hover:scale-[1.02] transition-transform duration-300 animate-float lg:block hidden"
             style={{ animationDuration: '8s' }}
           />
         </div>

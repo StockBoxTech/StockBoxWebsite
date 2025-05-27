@@ -69,7 +69,7 @@ const App = () => {
       <Toaster
             position="top-center"
             reverseOrder={false}/>
-      <div className=" hidden md:block cursor-border fixed w-10 h-10 rounded-full border border-orange-500 pointer-events-none z-50 mix-blend-difference backdrop-blur-sm "></div>
+      <div className=" hidden md:block cursor-border fixed w-10 h-10 rounded-full border border-[#ebff86] pointer-events-none z-50 mix-blend-difference backdrop-blur-sm "></div>
       <div className="">
         <Router>  {" "}
         {/* Container  lg:mx-[140px] md:mx-[10px]*/}

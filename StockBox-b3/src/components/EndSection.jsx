@@ -33,12 +33,12 @@ const EndSection = () => {
   ];
 
   const socialLinks = [
-    { icon: faFacebook, link: "https://facebook.com/stockbox" },
-    { icon: faTwitter, link: "https://twitter.com/stockboxtech" },
-    { icon: faInstagram, link: "https://instagram.com/stockboxtech" },
-    { icon: faLinkedin, link: "https://www.linkedin.com/company/stockbox-technologies-pvt-ltd/posts/?feedView=all" },
-    { icon: faYoutube, link: "https://www.youtube.com/@stockboxtech" },
-    { icon: faQuora, link: "https://www.quora.com/profile/Stockbox-Technologies-1?q=stockbox%20tec" },
+    { icon: faFacebook, link: "https://facebook.com/stockbox", color: "#1877F2" },
+    { icon: faTwitter, link: "https://twitter.com/stockboxtech", color: "#1DA1F2" },
+    { icon: faInstagram, link: "https://instagram.com/stockboxtech", color: "#C13584" },
+    { icon: faLinkedin, link: "https://linkedin.com/company/stockbox-technologies-pvt-ltd", color: "#0A66C2" },
+    { icon: faYoutube, link: "https://youtube.com/@stockboxtech", color: "#FF0000" },
+    { icon: faQuora, link: "https://quora.com/profile/Stockbox-Technologies-1", color: "#B92B27" },
   ];
 
   return (
@@ -56,14 +56,15 @@ const EndSection = () => {
               className="  hover:scale-105 transition-transform duration-300"
             />
             <p className="text-lg font-light mt-4">Follow us</p>
-            <div className="flex gap-4 mt-2">
+           <div className="flex gap-4 mt-2">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-amber-500 transform hover:scale-110 transition-all duration-300"
+                  className="hover:text-[#ebff86] transform hover:scale-110 transition-all duration-300"
+                  style={{ color: social.color }}
                 >
                   <FontAwesomeIcon icon={social.icon} size="lg" />
                 </a>
@@ -96,7 +97,7 @@ const EndSection = () => {
                   <li key={index}>
                     <Link
                       to={item.path}
-                      className="text-gray-400 hover:text-amber-500 flex items-center group transition-colors duration-300"
+                      className="text-gray-400 hover:text-[#ebff86] flex items-center group transition-colors duration-300"
                     >
                       <span>{item.name}</span>
                       <FontAwesomeIcon
@@ -132,7 +133,7 @@ const EndSection = () => {
                   <li key={index}>
                     <Link
                       to={item.path}
-                      className="text-gray-400 hover:text-amber-500 flex items-center group transition-colors duration-300"
+                      className="text-gray-400 hover:text-[#ebff86] flex items-center group transition-colors duration-300"
                     >
                       <span>{item.name}</span>
                       <FontAwesomeIcon
@@ -166,7 +167,7 @@ const EndSection = () => {
               <div className="space-y-4 mt-3 pl-4">
                 <Link
                   to="#"
-                  className="text-gray-400 hover:text-amber-500 transition-colors duration-300 block"
+                  className="text-gray-400 hover:text-[#ebff86] transition-colors duration-300 block"
                 >
                   FAQ
                 </Link>
@@ -176,13 +177,13 @@ const EndSection = () => {
                   <div className="space-y-1 mt-1">
                     <a
                       href="tel:+917217019005"
-                      className="text-white hover:text-amber-500 block transition-colors duration-300"
+                      className="text-white hover:text-[#ebff86] block transition-colors duration-300"
                     >
                       +91 72170 19005
                     </a>
                     <a
                       href="tel:+917217019001"
-                      className="text-white hover:text-amber-500 block transition-colors duration-300"
+                      className="text-white hover:text-[#ebff86] block transition-colors duration-300"
                     >
                       +91 72170 19001
                     </a>
@@ -199,13 +200,13 @@ const EndSection = () => {
                   <h3 className="text-gray-400">Email us:</h3>
                   <a
                     href="mailto:customercare@stockboxtech.com"
-                    className="text-white hover:text-amber-500 block transition-colors duration-300"
+                    className="text-white hover:text-[#ebff86] block transition-colors duration-300"
                   >
                     customercare@stockboxtech.com
                   </a>
                   <a
                     href="mailto:support@stockboxtech.com"
-                    className="text-white hover:text-amber-500 block transition-colors duration-300"
+                    className="text-white hover:text-[#ebff86] block transition-colors duration-300"
                   >
                     support@stockboxtech.com
                   </a>
@@ -223,17 +224,18 @@ const EndSection = () => {
             <img
               src={logo}
               alt="StockBox Logo"
-              className="w-[25em] h-[14em] hover:scale-105 transition-transform duration-300"
+              className=" hover:scale-105 transition-transform duration-300"
             />
             <p className="text-lg font-light">Follow us</p>
-            <div className="flex gap-6">
+           <div className="flex gap-4">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-amber-500 transform hover:scale-125 transition-all duration-300"
+                  className="hover:text-[#ebff86] transform hover:scale-110 transition-all duration-300"
+                  style={{ color: social.color }}
                 >
                   <FontAwesomeIcon icon={social.icon} size="2x" />
                 </a>
@@ -249,7 +251,7 @@ const EndSection = () => {
                 <li key={index}>
                   <Link
                     to={item.path}
-                    className="text-gray-400 hover:text-amber-500 flex items-center group transition-colors duration-300"
+                    className="text-gray-400 hover:text-[#ebff86] flex items-center group transition-colors duration-300"
                   >
                     <span>{item.name}</span>
                     <FontAwesomeIcon
@@ -270,7 +272,7 @@ const EndSection = () => {
                 <li key={index}>
                   <Link
                     to={item.path}
-                    className="text-gray-400 hover:text-amber-500 flex items-center group transition-colors duration-300"
+                    className="text-gray-400 hover:text-[#ebff86] flex items-center group transition-colors duration-300"
                   >
                     <span>{item.name}</span>
                     <FontAwesomeIcon
@@ -289,7 +291,7 @@ const EndSection = () => {
             <div className="space-y-6">
               <Link
                 to="#"
-                className="text-gray-400 hover:text-amber-500 transition-colors duration-300"
+                className="text-gray-400 hover:text-[#ebff86] transition-colors duration-300"
               >
                 FAQ
               </Link>
@@ -299,13 +301,13 @@ const EndSection = () => {
                 <div className="space-y-2">
                   <a
                     href="tel:+917217019005"
-                    className="text-white hover:text-amber-500 block transition-colors duration-300"
+                    className="text-white hover:text-[#ebff86] block transition-colors duration-300"
                   >
                     +91 72170 19005
                   </a>
                   <a
                     href="tel:+917217019001"
-                    className="text-white hover:text-amber-500 block transition-colors duration-300"
+                    className="text-white hover:text-[#ebff86] block transition-colors duration-300"
                   >
                     +91 72170 19001
                   </a>
@@ -322,13 +324,13 @@ const EndSection = () => {
                 <h3 className="text-gray-400">Email us:</h3>
                 <a
                   href="mailto:customercare@stockboxtech.com"
-                  className="text-white hover:text-amber-500 block transition-colors duration-300"
+                  className="text-white hover:text-[#ebff86] block transition-colors duration-300"
                 >
                   customercare@stockboxtech.com
                 </a>
                 <a
                   href="mailto:support@stockboxtech.com"
-                  className="text-white hover:text-amber-500 block transition-colors duration-300"
+                  className="text-white hover:text-[#ebff86] block transition-colors duration-300"
                 >
                   support@stockboxtech.com
                 </a>
@@ -452,13 +454,13 @@ const EndSection = () => {
       {/* Footer Bottom - with responsive line break */}
       <div className="w-full flex flex-col md:flex-row justify-between items-center px-4 py-6 mt-6 md:mt-10 border-t border-gray-800">
         <p className="text-sm md:text-base mb-2 md:mb-0 text-center md:text-left">
-          Copyright @2024 Stockbox Technologies Pvt. Ltd.<br className="md:hidden" /> All Rights Reserved.
+          Copyright @2025 Stockbox Technologies Pvt. Ltd.<br className="md:hidden" /> All Rights Reserved.
         </p>
         <div className="flex space-x-4">
-          <Link to="#" className="text-sm md:text-base hover:text-amber-500">
+          <Link to="#" className="text-sm md:text-base hover:text-[#ebff86]">
             Terms of Service
           </Link>
-          <Link to="#" className="text-sm md:text-base hover:text-amber-500">
+          <Link to="#" className="text-sm md:text-base hover:text-[#ebff86]">
             Privacy Policy
           </Link>
         </div>
