@@ -4,6 +4,7 @@ import {
   activateImage,
   addImg,
   delete_images,
+  getActiveImage,
   getAll_Images,
   updateImg,
 } from "../controller/CrousalUploadImages/CrousalImagesForSmallScreen.js";
@@ -28,6 +29,9 @@ CrousalImagesForSmallScreen.patch(
   updateImg
 );
 CrousalImagesForSmallScreen.get("/getall_images", getAll_Images);
+CrousalImagesForSmallScreen.get("/get-active-image", getActiveImage);
+
+
 CrousalImagesForSmallScreen.delete("/delete/:id", protectRoute, delete_images);
 CrousalImagesForSmallScreen.post(
   "/activateimg/:id",

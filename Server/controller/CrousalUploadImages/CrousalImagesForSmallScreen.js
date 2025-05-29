@@ -149,3 +149,24 @@ export const addImg = async (req, res) => {
       });
     }
   };
+
+  export const getActiveImage = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const data = await CrousalImagesForSmallScreen.findOne(
+        { Active: true },
+        
+      );
+      res.status(200).json({
+         data,
+        status: "success",
+        message: "image activated successfully",
+      });
+    } catch (err) {
+      console.log("Error in activating image", err);
+      res.status(500).json({
+        status: "error",
+        message: "failed to activate image",
+      });
+    }
+  };

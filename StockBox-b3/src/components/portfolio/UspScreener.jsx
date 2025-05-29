@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import mobile from "../../assets/expert/mobile.webp";
+import mobile from "../../assets/expert/mobile.png";
 
 gsap.registerPlugin(ScrollTrigger);
 

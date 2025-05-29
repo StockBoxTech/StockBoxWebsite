@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useState } from "react";
-import handPhone from "../assets/handphone.png";
+
+
 import backLight from "../assets/backlight.png";
 import phoneReplace from "../assets/phoneReplace.png";
 import { useGSAP } from "@gsap/react";
-import axios from "axios";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faLightbulb, 
@@ -61,7 +61,7 @@ const ServiceAnimation= () => {
   };
 
   gsap.registerPlugin(useGSAP, ScrollTrigger);
-  const [GapBtwSection, setGapBtwSection] = useState(100);
+
 
   useGSAP(() => {
     gsap.from(".service-title", {
@@ -83,38 +83,91 @@ const ServiceAnimation= () => {
       <div className="hidden lg:flex max-w-7xl mx-auto">
         
         {/* Left Column */}
-        <div className="w-1/2 sticky top-20 h-[calc(100vh-160px)] flex items-center justify-center">
-       
-          <div className="relative w-full max-w-xl">
-            <motion.h1 
-              className="service-title text-4xl font-bold text-center mb-8  bg-clip-text text-transparent"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-            
-            </motion.h1>
-            
-            <div className="relative">
-              <img 
-                src={backLight} 
-                alt="background" 
-                className="absolute inset-0 w-full opacity-40 animate-pulse-slow" 
-              />
-              <img
-                src={handPhone}
-                className="relative z-10 w-full"
-                alt="Smartphone mockup"
-              />
-              <img
-                src={phoneReplace}
-                className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45%] phoneReplace"
-                alt="Screen content"
-              />
-            </div>
-          </div>
-        </div>
+      <div className="w-1/2 sticky top-30 h-[calc(100vh-160px)] flex items-center justify-center mt-5">
+  <div className="relative w-full max-w-xl flex flex-col items-center">
+    {/* Animated background elements */}
+    <div className="relative w-full h-[500px] flex items-center justify-center">
+      {/* Floating light effect */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <motion.div
+          className="absolute w-[600px] h-[600px] rounded-full bg-[#cef702] opacity-20 blur-[100px]"
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.15, 0.25, 0.15],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
 
+      {/* Pulsing backlight */}
+      <motion.img 
+        src={backLight} 
+        alt="background" 
+        className="absolute w-[80%] opacity-40 z-10"
+        animate={{
+          rotate: [0, 5, 0, -5, 0],
+          scale: [1, 1.03, 1],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      
+      {/* Floating phone with depth effect */}
+      <motion.div
+        className="absolute z-30"
+        animate={{ 
+          y: [0, -20, 0],
+        }}
+        transition={{ 
+          duration: 4, 
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        <img
+          src={phoneReplace}
+          className="w-[80em] max-w-none drop-shadow-[0_25px_50px_rgba(206,247,2,0.3)]"
+          alt="Smartphone mockup"
+        />
+      </motion.div>
+      
+      {/* Glow effect behind phone */}
+      <div className="absolute z-20 w-[320px] h-[640px] bg-[#cef702] rounded-[60px] opacity-10 blur-[40px] mt-2" />
+    </div>
+    
+    {/* Animated title */}
+    <motion.h2 
+      className="text-center text-[2.5rem] font-bold mt-8 bg-gradient-to-r from-[#e6ff6a] to-[#cef702] bg-clip-text text-transparent"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ 
+        delay: 0.5,
+        duration: 0.8 
+      }}
+    >
+      Premium Investment Insights
+    </motion.h2>
+    
+    <motion.p 
+      className="text-neutral-400 text-center mt-4 max-w-md"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ 
+        delay: 0.8,
+        duration: 0.8 
+      }}
+    >
+      Access expert analysis and real-time market intelligence
+    </motion.p>
+  </div>
+</div>
         {/* Right Column */}
         <div className="w-1/2 pl-16 space-y-24 pt-20">
           {Object.keys(Data).map((key, index) => (
@@ -200,15 +253,7 @@ const ServiceAnimation= () => {
         </div>
       </div>
 
-      <style jsx global>{`
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 0.4; }
-          50% { opacity: 0.6; }
-        }
-        .animate-pulse-slow {
-          animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-      `}</style>
+     
     </div>
   );
 };

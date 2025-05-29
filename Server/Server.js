@@ -41,7 +41,7 @@ app.use(bodyParser.json());
 connectdb();
 
 app.get('/',(req,res)=>{
-  res.send('Hello from server')
+  res.send('Hello from server') 
 })
 // Routes
 app.use("/api/blogs", router) // blogs

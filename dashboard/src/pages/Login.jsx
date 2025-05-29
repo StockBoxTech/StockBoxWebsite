@@ -11,6 +11,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import { toast } from "react-toastify";
+import { axiosInstance } from "../service/axiosInterceptor";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -41,8 +42,8 @@ const Login = () => {
       // Simulate API call
 
       // Actual API call (commented out for demo)
-      const res = await axios.post(
-        `${import.meta.env.VITE_APP_BACKEND_DEV_BASE_URL}/api/sec/login`,
+      const res = await axiosInstance.post(
+        `/api/sec/login`,
         {
           email,
           password,

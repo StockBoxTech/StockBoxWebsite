@@ -3,26 +3,25 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import axios from "axios";
 import SideAnimateCard from "./SideAnimateCard";
+import { axiosInstance } from "../../../dashboard/src/service/axiosInterceptor";
 
 const Card = () => {
   const cardRefs = useRef([]);
   const [activeImages, setActiveImages] = useState([]);
 
-  // Fetch only active images
+  
+
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/crousal/getAll_Images`
+        const res = await axiosInstance.get(
+          `/api/crousal/smallScreen/get-active-image`
         );
-        const activeData = res.data.data.filter((item) => item.Active === true);
-        const imgs = activeData.flatMap((item) => [
-          item.img1,
-          item.img2,
-          item.img3,
-          item.img4,
-        ]);
-        setActiveImages(imgs);
+         const activeImageData = res?.data?.data;
+
+    // Convert the object into an array of images
+    const imageArray = [activeImageData.img1, activeImageData.img2, activeImageData.img3, activeImageData.img4];
+    setActiveImages(imageArray);
       } catch (err) {
         console.error("Error fetching images", err);
       }
@@ -31,31 +30,37 @@ const Card = () => {
     fetchImages();
   }, []);
 
+  useEffect(() => {
+    console.log("Active images fetched:", activeImages);
+  }, [activeImages]);
+
   // GSAP animation for mobile view
   useGSAP(() => {
-    const rotateCards = () => {
-      if (cardRefs.current.length < 2) return;
+  let index = 0;
 
-      const firstCard = cardRefs.current.shift();
-      cardRefs.current.push(firstCard);
+  const rotateCards = () => {
+    cardRefs.current.forEach((card, i) => {
+      const position = (i + index) % cardRefs.current.length;
 
-      cardRefs.current.forEach((card, i) => {
-        gsap.to(card, {
-          duration: 1.5,
-          zIndex: cardRefs.current.length - i,
-          width: `${290 + i * 10}px`,
-          height: "370px",
-          scale: 1 - i * 0.05,
-          x: i * 10,
-          y: i * 20,
-          opacity: 1 - i * 0.3,
-        });
+      gsap.to(card, {
+        duration: 1,
+        zIndex: cardRefs.current.length - position,
+        width: `${290 + position * 10}px`,
+        height: "370px",
+        scale: 1 - position * 0.05,
+        x: position * 10,
+        y: position * 20,
+        opacity: 1 - position * 0.3,
       });
-    };
+    });
 
-    const interval = setInterval(rotateCards, 2800);
-    return () => clearInterval(interval);
-  }, [activeImages]);
+    index = (index + 1) % cardRefs.current.length;
+  };
+
+  const interval = setInterval(rotateCards, 2000);
+  return () => clearInterval(interval);
+}, [activeImages]);
+
 
   return (
     <div className="">
