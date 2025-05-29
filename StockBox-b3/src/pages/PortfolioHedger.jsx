@@ -1,6 +1,6 @@
 import paper from "../assets/portfoliohedger/paper.png";
-import headge from "../assets/portfoliohedger/headge.webp";
-import headge1 from "../assets/portfoliohedger/headge1.webp";
+import headge from "../assets/portfoliohedger/headge.png";
+import headge1 from "../assets/portfoliohedger/headge1.png";
 
 const PortfolioHedger = () => {
   return (

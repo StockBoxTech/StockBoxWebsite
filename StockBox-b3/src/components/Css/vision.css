@@ -93,16 +93,16 @@
 }
 
 .neon-text {
-  color: #fff;
+  color: #ebff86;
   font-size: 4em;
   text-transform: uppercase;
-  text-shadow: 
-    0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 15px #ebff86,
-    0 0 20px #ebff86,
-    0 0 30px #ebff86;
-  animation: neonPulse 1.5s ease-in-out infinite alternate;
+ /*  text-shadow: 
+    0 0 1px #fff,
+    0 0 2px #fff,
+    0 0 3px #ebff86,
+    0 0 4px #ebff86,
+    0 0 5px #ebff86;
+  animation: neonPulse 1.5s ease-in-out infinite alternate; */
 }
 
 .neon-underline {
@@ -123,24 +123,24 @@
   animation: underlineGrow 2s ease-out forwards;
 }
 
-@keyframes neonPulse {
+/* @keyframes neonPulse {
   from {
     text-shadow: 
       0 0 2px #fff,
-      0 0 5px #fff,
-      0 0 10px #ebff86,
-      0 0 15px #ebff86,
-      0 0 20px #ebff86;
+      0 0 3px #fff,
+      0 0 4px #ebff86,
+      0 0 5px #ebff86,
+      0 0 6px #ebff86;
   }
   to {
     text-shadow: 
-      0 0 5px #fff,
-      0 0 10px #fff,
-      0 0 20px #ebff86,
-      0 0 30px #ebff86,
-      0 0 40px #ebff86;
+      0 0 2px #fff,
+      0 0 3px #fff,
+      0 0 4px #ebff86,
+      0 0 5px #ebff86,
+      0 0 6px #ebff86;
   }
-}
+} */
 
 @keyframes underlineGrow {
   0% {

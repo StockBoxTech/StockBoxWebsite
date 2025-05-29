@@ -42,7 +42,7 @@ const Management = () => {
             <img
               src={team}
               alt="Founder - Mr. R S Chauhan"
-              className="relative w-full max-w-md h-auto rounded-lg shadow-2xl "
+              className="relative w-full max-w-md h-auto rounded-lg "
             />
             <h3 className="text-[28px] mt-3 font-bold text-gray-300 mb-6 text-center">Mr. R S Chauhan</h3>
           </div>
@@ -79,7 +79,7 @@ const Management = () => {
             <img
               src={cofond}
               alt="Co-Founder & CEO - Dr. Shushant Singh"
-              className="relative w-full max-w-md h-auto rounded-lg shadow-2xl  transform scale-x-[-1]"
+              className="relative w-full max-w-md h-auto rounded-lg  transform scale-x-[-1]"
             />
             <h3 className="text-[28px] mt-3 font-bold text-gray-300 mb-6 text-center">Dr. Shushant Singh</h3>
           </div>
@@ -112,7 +112,7 @@ const Management = () => {
             <img
               src={manager}
               alt="HR Manager - Dolly Singh"
-              className="relative w-full max-w-md h-auto rounded-lg shadow-2xl "
+              className="relative w-full max-w-md h-auto rounded-lg "
             />
             <h3 className="text-[28px] mt-3 font-bold text-gray-300 mb-6 text-center">Dolly Singh</h3>
           </div>
@@ -149,7 +149,7 @@ const Management = () => {
             <img
               src={ResearchHead}
               alt="Research Head - Mr. Siddhart Rai Mangla"
-              className="relative w-full max-w-md h-auto rounded-lg shadow-2xl transform scale-x-[-1]"
+              className="relative w-full max-w-md h-auto rounded-lg transform scale-x-[-1]"
             />
             <h3 className="text-[28px] mt-3 font-bold text-gray-300 mb-6 text-center">Mr. Siddhart Rai Mangla</h3>
           </div>
@@ -185,7 +185,7 @@ const Management = () => {
             <img
               src={coo}
               alt="COO"
-              className="relative w-full max-w-md h-auto rounded-lg shadow-2xl "
+              className="relative w-full max-w-md h-auto rounded-lg "
             />
                <h3 className="text-[28px] mt-3 font-bold text-gray-300 mb-6 text-center">Vishal Sharma</h3>
           </div>

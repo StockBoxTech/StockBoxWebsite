@@ -1,5 +1,5 @@
 import span from "../assets/expert/span.png";
-import pc from "../assets/expert/pc.webp";
+import pc from "../assets/expert/pc.png";
 import { useNavigate } from "react-router-dom";
 
 const Investments = () => {

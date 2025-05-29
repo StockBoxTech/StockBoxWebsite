@@ -32,7 +32,7 @@ const MainContent = () => {
   return (
     <div className="mainContent md:flex  items-center ml-[2em] md:ml-0 ">
       <div className=" w-full">
-        <img src={man} alt="" className="w-[80%] man" />
+        <img src={man} alt="" className="w-[180em] " />
       </div>
       <div className="md:w-1/2 text-white text-lg para w-[90%]">
   {/* Desktop view */}
