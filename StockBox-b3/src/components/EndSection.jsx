@@ -457,12 +457,16 @@ const EndSection = () => {
           Copyright @2025 Stockbox Technologies Pvt. Ltd.<br className="md:hidden" /> All Rights Reserved.
         </p>
         <div className="flex space-x-4">
-          <Link to="#" className="text-sm md:text-base hover:text-[#ebff86]">
+          <Link to="/terms-conditions/" className="text-sm md:text-base hover:text-[#ebff86]">
             Terms of Service
           </Link>
-          <Link to="#" className="text-sm md:text-base hover:text-[#ebff86]">
+          <Link to="/privacy-policy/" className="text-sm md:text-base hover:text-[#ebff86]">
             Privacy Policy
           </Link>
+          <Link to="/grievancepolicy/" className="text-sm md:text-base hover:text-[#ebff86]">
+          Grievance Policy</Link>
+          <Link to="/regulatory-details/" className="text-sm md:text-base hover:text-[#ebff86]">
+          Regulatory Details</Link>
         </div>
       </div>
     </footer>

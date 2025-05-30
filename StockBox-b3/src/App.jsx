@@ -23,6 +23,10 @@ import Report from "./pages/Report";
 import Partnet from "./pages/Partnet";
 import ScrollToTop from "./components/Scroll_to_top";
 import ShowIpos from "./pages/ShowIpos";
+import Privacy from "./pages/Privacy";
+import Grievance from "./pages/Grievance";
+import Terms from "./pages/Terms";
+import Regulatory from "./pages/Regulatory";
 
 const App = () => {
   gsap.registerPlugin(useGSAP);
@@ -99,6 +103,10 @@ const App = () => {
             <Route path="/report" element={<Report/>}/>
             <Route path="partner-with-us/" element={<Partnet/>}/>
             <Route path="/comapny-ipos" element={<ShowIpos/>}/>
+            <Route path="/privacy-policy/" element={<Privacy/>}/>
+            <Route path='/grievancepolicy/' element={<Grievance/>}/>
+            <Route path="/terms-conditions/" element={<Terms/>}/>
+            <Route path="/regulatory-details/"element={<Regulatory/>}/>
 
           </Routes>
         </main>
