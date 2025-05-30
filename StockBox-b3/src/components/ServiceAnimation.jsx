@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import backLight from "../assets/backlight.png";
-import phoneReplace from "../assets/phoneReplace.png";
+import HandImage from "/assets/HandImage.png";
 import { useGSAP } from "@gsap/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -96,7 +96,7 @@ const ServiceAnimation = () => {
               <motion.img
                 src={backLight}
                 alt="background"
-                className="absolute w-[80%] opacity-40 z-10"
+                className="absolute w-[90%]  opacity-80 z-10"
                 animate={{
                   rotate: [0, 5, 0, -5, 0],
                   scale: [1, 1.03, 1],
@@ -109,11 +109,9 @@ const ServiceAnimation = () => {
               />
 
               {/* Floating phone with depth effect */}
+              {/* Floating phone with depth effect */}
               <motion.div
-                className="absolute z-30"
-                animate={{
-                  y: [0, -20, 0],
-                }}
+                className="absolute z-30 flex items-center justify-center h-[140%] mt-40 mr-20"
                 transition={{
                   duration: 4,
                   repeat: Infinity,
@@ -121,19 +119,19 @@ const ServiceAnimation = () => {
                 }}
               >
                 <img
-                  src={phoneReplace}
-                  className="w-[80em] max-w-none " //drop-shadow-[0_25px_50px_rgba(206,247,2,0.3)]
+                  src={HandImage}
+                  className="h-full object-contain"
                   alt="Smartphone mockup"
                 />
               </motion.div>
 
               {/* Glow effect behind phone */}
-              <div className="absolute z-20 w-[320px] h-[640px] bg-[#cef702] rounded-[60px] opacity-10 blur-[40px] mt-2" />
+              <div className="absolute z-20 w-[320px] h-[640px]  rounded-[60px] opacity-10 blur-[40px] mt-2" />
             </div>
 
             {/* Animated title */}
             <motion.h2
-              className="text-center text-[2.5rem] font-bold mt-8 bg-gradient-to-r from-[#e6ff6a] to-[#cef702] bg-clip-text text-transparent"
+              className="text-center text-[2.5rem] font-bold mt-8  bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
