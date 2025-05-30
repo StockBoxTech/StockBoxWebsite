@@ -1,32 +1,26 @@
-
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 
 import backLight from "../assets/backlight.png";
 import phoneReplace from "../assets/phoneReplace.png";
 import { useGSAP } from "@gsap/react";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faLightbulb, 
-  faChartLine, 
-  faBookOpen, 
-  faClipboardCheck, 
-  faUsers, 
-  faShieldAlt, 
-  faCogs 
-} from '@fortawesome/free-solid-svg-icons';
-import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLightbulb,
+  faChartLine,
+  faBookOpen,
+  faClipboardCheck,
+  faUsers,
+  faShieldAlt,
+  faCogs,
+} from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 
-const ServiceAnimation= () => {
+const ServiceAnimation = () => {
   const Data = {
     Set1: {
-      icons: [
-        faLightbulb,
-        faChartLine,
-        faBookOpen,
-      ],
+      icons: [faLightbulb, faChartLine, faBookOpen],
       titles: [
         "Knowledge and Expertise",
         "Comprehensive Market Coverage",
@@ -39,12 +33,7 @@ const ServiceAnimation= () => {
       ],
     },
     Set2: {
-      icons: [
-        faClipboardCheck,
-        faUsers,
-        faShieldAlt,
-        faCogs,
-      ],
+      icons: [faClipboardCheck, faUsers, faShieldAlt, faCogs],
       titles: [
         "In-depth Analysis and Insights",
         "Access to the Team",
@@ -62,7 +51,6 @@ const ServiceAnimation= () => {
 
   gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-
   useGSAP(() => {
     gsap.from(".service-title", {
       opacity: 0,
@@ -78,100 +66,101 @@ const ServiceAnimation= () => {
 
   return (
     <div className="min-h-screen  md:py-20 px-4 ">
-      {/* Desktop View */} 
-      <h2 className="text-center text-white text-[4em] hidden lg:block pb-10">Trusted by Thousands of Investors</h2>
+      {/* Desktop View */}
+      <h2 className="text-center text-white text-[4em] hidden lg:block pb-10">
+        Trusted by Thousands of Investors
+      </h2>
       <div className="hidden lg:flex max-w-7xl mx-auto">
-        
         {/* Left Column */}
-      <div className="w-1/2 sticky top-30 h-[calc(100vh-160px)] flex items-center justify-center mt-5">
-  <div className="relative w-full max-w-xl flex flex-col items-center">
-    {/* Animated background elements */}
-    <div className="relative w-full h-[500px] flex items-center justify-center">
-      {/* Floating light effect */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <motion.div
-          className="absolute w-[600px] h-[600px] rounded-full bg-[#cef702] opacity-20 blur-[100px]"
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-      </div>
+        <div className="w-1/2 sticky top-30 h-[calc(100vh-160px)] flex items-center justify-center mt-5">
+          <div className="relative w-full max-w-xl flex flex-col items-center">
+            {/* Animated background elements */}
+            <div className="relative w-full h-[500px] flex items-center justify-center">
+              {/* Floating light effect */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div
+                  className="absolute w-[600px] h-[600px] rounded-full bg-[#cef702] opacity-20 blur-[100px]"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.15, 0.25, 0.15],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              </div>
 
-      {/* Pulsing backlight */}
-      <motion.img 
-        src={backLight} 
-        alt="background" 
-        className="absolute w-[80%] opacity-40 z-10"
-        animate={{
-          rotate: [0, 5, 0, -5, 0],
-          scale: [1, 1.03, 1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      
-      {/* Floating phone with depth effect */}
-      <motion.div
-        className="absolute z-30"
-        animate={{ 
-          y: [0, -20, 0],
-        }}
-        transition={{ 
-          duration: 4, 
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      >
-        <img
-          src={phoneReplace}
-          className="w-[80em] max-w-none drop-shadow-[0_25px_50px_rgba(206,247,2,0.3)]"
-          alt="Smartphone mockup"
-        />
-      </motion.div>
-      
-      {/* Glow effect behind phone */}
-      <div className="absolute z-20 w-[320px] h-[640px] bg-[#cef702] rounded-[60px] opacity-10 blur-[40px] mt-2" />
-    </div>
-    
-    {/* Animated title */}
-    <motion.h2 
-      className="text-center text-[2.5rem] font-bold mt-8 bg-gradient-to-r from-[#e6ff6a] to-[#cef702] bg-clip-text text-transparent"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ 
-        delay: 0.5,
-        duration: 0.8 
-      }}
-    >
-      Premium Investment Insights
-    </motion.h2>
-    
-    <motion.p 
-      className="text-neutral-400 text-center mt-4 max-w-md"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ 
-        delay: 0.8,
-        duration: 0.8 
-      }}
-    >
-      Access expert analysis and real-time market intelligence
-    </motion.p>
-  </div>
-</div>
+              {/* Pulsing backlight */}
+              <motion.img
+                src={backLight}
+                alt="background"
+                className="absolute w-[80%] opacity-40 z-10"
+                animate={{
+                  rotate: [0, 5, 0, -5, 0],
+                  scale: [1, 1.03, 1],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+
+              {/* Floating phone with depth effect */}
+              <motion.div
+                className="absolute z-30"
+                animate={{
+                  y: [0, -20, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <img
+                  src={phoneReplace}
+                  className="w-[80em] max-w-none " //drop-shadow-[0_25px_50px_rgba(206,247,2,0.3)]
+                  alt="Smartphone mockup"
+                />
+              </motion.div>
+
+              {/* Glow effect behind phone */}
+              <div className="absolute z-20 w-[320px] h-[640px] bg-[#cef702] rounded-[60px] opacity-10 blur-[40px] mt-2" />
+            </div>
+
+            {/* Animated title */}
+            <motion.h2
+              className="text-center text-[2.5rem] font-bold mt-8 bg-gradient-to-r from-[#e6ff6a] to-[#cef702] bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.5,
+                duration: 0.8,
+              }}
+            >
+              Premium Investment Insights
+            </motion.h2>
+
+            <motion.p
+              className="text-white text-center mt-4 max-w-md"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                delay: 0.8,
+                duration: 0.8,
+              }}
+            >
+              Access expert analysis and real-time market intelligence
+            </motion.p>
+          </div>
+        </div>
         {/* Right Column */}
         <div className="w-1/2 pl-16 space-y-24 pt-20">
           {Object.keys(Data).map((key, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               className="space-y-12"
               initial={{ opacity: 0 }}
@@ -179,25 +168,25 @@ const ServiceAnimation= () => {
               viewport={{ once: true, margin: "-20%" }}
             >
               {Data[key].titles.map((title, titleIndex) => (
-                <motion.div 
+                <motion.div
                   key={titleIndex}
-                  className="group relative p-6 rounded-xl bg-gradient-to-br from-[#e6ff6a] to-[#cef702] hover:bg-[#DDEE8C] transition-all duration-300 shadow-xl"
+                  className="group relative p-6 rounded-xl bg-gradient-to-br from-[#424242] to-[#2a302e] hover:bg-[#DDEE8C] transition-all duration-300 shadow-xl"
                   initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: titleIndex * 0.1 }}
                 >
                   <div className="flex items-start gap-6">
                     <div className="p-4 rounded-lg bg-gradient-to-br from-[#8a8888] to-[black] group-hover:rotate-[15deg] transition-transform">
-                      <FontAwesomeIcon 
-                        icon={Data[key].icons[titleIndex]} 
-                        className="text-white text-2xl" 
+                      <FontAwesomeIcon
+                        icon={Data[key].icons[titleIndex]}
+                        className="text-white text-2xl"
                       />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-gray-700 mb-3">
+                      <h3 className="text-xl font-bold text-white mb-3">
                         {title}
                       </h3>
-                      <p className="text-neutral-400 leading-relaxed">
+                      <p className="text-neutral-300 leading-relaxed">
                         {Data[key].infos[titleIndex]}
                       </p>
                     </div>
@@ -211,7 +200,7 @@ const ServiceAnimation= () => {
 
       {/* Mobile View */}
       <div className="lg:hidden max-w-3xl mx-auto">
-        <motion.h1 
+        <motion.h1
           className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent px-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -232,16 +221,16 @@ const ServiceAnimation= () => {
                 >
                   <div className="flex items-start gap-5">
                     <div className="p-3 rounded-lg bg-gradient-to-br from-cyan-500 to-[#9812db]">
-                      <FontAwesomeIcon 
-                        icon={Data[key].icons[titleIndex]} 
-                        className="text-white text-xl" 
+                      <FontAwesomeIcon
+                        icon={Data[key].icons[titleIndex]}
+                        className="text-white text-xl"
                       />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-neutral-100 mb-2">
+                      <h3 className="text-lg font-semibold text-white mb-2">
                         {title}
                       </h3>
-                      <p className="text-neutral-400 text-sm">
+                      <p className="text-white text-sm ">
                         {Data[key].infos[titleIndex]}
                       </p>
                     </div>
@@ -252,8 +241,6 @@ const ServiceAnimation= () => {
           ))}
         </div>
       </div>
-
-     
     </div>
   );
 };
