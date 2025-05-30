@@ -2,7 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRef } from "react";
-import mobile from "../../assets/expert/mobile.png";
+import mobile from "/assets/portfolio basket.png";
 
 const USP = () => {
   const containerRef = useRef(null);
@@ -32,7 +32,7 @@ const USP = () => {
   return (
     <div
       ref={containerRef}
-      className="usp-section mt-20 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between gap-12"
+      className="usp-section  px-6 md:px-20 flex flex-col md:flex-row items-center justify-between gap-12"
     >
       {/* Text Section */}
       <div className="text-white text-lg md:w-1/2 w-full space-y-6">
@@ -47,11 +47,11 @@ const USP = () => {
       </div>
 
       {/* Image Section */}
-      <div className="md:w-[30%] hidden md:block">
+      <div className="md:w-[40%] hidden md:block">
         <img
           src={mobile}
           alt="Mobile Interface"
-          className="w-[90%] rounded-2xl shadow-lg"
+          className="w-[100%] rounded-2xl "
         />
       </div>
     </div>

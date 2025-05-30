@@ -1,5 +1,5 @@
 import art from "../assets/readymade/art.png";
-import ready from "../assets/ready/ready.png";
+import ready from "/assets/portfolio basket.png";
 import place from "../assets/ready/place.webp";
 
 const ReadyMade = () => {
@@ -11,12 +11,12 @@ const ReadyMade = () => {
           <img 
             src={art} 
             alt="Investment art" 
-            className="rounded-3xl object-cover w-full h-[400px] shadow-xl" 
+            className="rounded-3xl object-cover w-full h-auto max-h-[400px] md:max-h-[500px]" 
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent rounded-3xl" />
+          <div className="absolute inset-0 rounded-3xl" />
           <div className="absolute bottom-8 left-8">
             <h1 className="text-4xl md:text-6xl font-bold text-white">
-              <span className="block mb-2">Ready</span>
+              <span className="block mb-2">ReadyMade</span>
               <span className="flex items-center gap-4">
                 <span className="text-orange-400">Stockbox</span>
               </span>
@@ -34,24 +34,22 @@ const ReadyMade = () => {
 
       {/* Second Section */}
       <div className="max-w-7xl mx-auto mb-24 grid md:grid-cols-2 gap-12 items-center">
-      
-        
         <div className="space-y-6">
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-            Stockbox’s Wizard Box/Readymade Stockbox allows users to access our specially curated basket of stocks. 
+            Stockbox's Wizard Box/Readymade Stockbox allows users to access our specially curated basket of stocks. 
             These readymade baskets are diligently managed by the Stockbox research team using time-tested investment models.
           </p>
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
             We have tailored different baskets of stocks that are re-balanced and updated as per the change in the market trends 
-            at every fixed interval. Our goal is to maximize clients’ returns with flexible and adaptive long-term investment strategies.
+            at every fixed interval. Our goal is to maximize clients' returns with flexible and adaptive long-term investment strategies.
           </p>
         </div>
-  <img 
+        
+        <img 
           src={ready} 
           alt="Stockbox interface" 
-          className="rounded-2xl shadow-xl w-full object-contain" 
+          className="w-full max-w-[500px] mx-auto object-contain" 
         />
-
       </div>
 
       {/* Features Section */}
@@ -113,7 +111,7 @@ const ReadyMade = () => {
           <img 
             src={place} 
             alt="Investment chart" 
-            className="rounded-2xl shadow-xl w-full h-[300px] object-cover transform group-hover:scale-95 transition-all duration-300" 
+            className="rounded-2xl shadow-xl w-full h-auto max-h-[300px] object-contain" 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 rounded-2xl" />
         </div>
