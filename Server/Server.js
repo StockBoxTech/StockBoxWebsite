@@ -18,6 +18,7 @@ import router from "./routes/blog/blogRoutes.js";
 import SendOtpToPhNumberRouter from "./routes/SendOtpToPhNumber.js";
 import iporouter from "./routes/ipoRoutes.js";
 import CrousalImagesForSmallScreen from "./routes/ImagesForSmallScreenRoute.js";
+import path from "path";
 
 dotenv.config();
 
@@ -40,19 +41,22 @@ app.use(bodyParser.json());
 // Establish MongoDB connection
 connectdb();
 
-app.get('/',(req,res)=>{
-  res.send('Hello from server') 
-})
+app.get("/", (req, res) => {
+  res.send("Hello from server");
+});
+
+app.use("/uploads", express.static(path.join(path.resolve(), "uploads")));
+
 // Routes
-app.use("/api/blogs", router) // blogs
-app.use("/api", blogRoute); // review table 
-app.use("/api/sec",UserRoute);  //login, signup, logout
-app.use("/api/crousal" , imgRouter); //hero image
-app.use("/api/pdf", uploadRoutes);  //pdf upload
+app.use("/api/blogs", router); // blogs
+app.use("/api", blogRoute); // review table
+app.use("/api/sec", UserRoute); //login, signup, logout
+app.use("/api/crousal", imgRouter); //hero image
+app.use("/api/pdf", uploadRoutes); //pdf upload
 app.use("/api/jobs", jobRoutes); // job routes
 app.use("/api/Otp", SendOtpToPhNumberRouter); // OTP routes
-app.use("/api/company",iporouter);
-app.use("/api/crousal/smallScreen" , CrousalImagesForSmallScreen)
+app.use("/api/company", iporouter);
+app.use("/api/crousal/smallScreen", CrousalImagesForSmallScreen);
 
 // Error handling middleware
 app.use(errorHandler);

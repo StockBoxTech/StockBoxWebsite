@@ -45,7 +45,7 @@ const Card = () => {
       gsap.to(card, {
         duration: 1,
         zIndex: cardRefs.current.length - position,
-        width: `${290 + position * 10}px`,
+        width: `${260 + position * 10}px`,
         height: "370px",
         scale: 1 - position * 0.05,
         x: position * 10,
