@@ -35,12 +35,7 @@ const PortfolioScreener = () => {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
               <span className="main block mb-4">Portfolio</span>
               <span className="main flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                <img
-                  src={span}
-                  alt=""
-                  className="w-28 sm:w-32 md:w-36 lg:w-40 h-auto transition-transform hover:scale-105"
-                  aria-hidden="true"
-                />
+                
                 <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                   Screener
                 </span>
@@ -62,7 +57,7 @@ const PortfolioScreener = () => {
       </section>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-0">
         <MainScreener />
         <UspScreener />
       </div>
