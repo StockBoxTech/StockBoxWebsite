@@ -1,5 +1,5 @@
 import art from "../assets/readymade/art.png";
-import ready from "/assets/portfolio basket.png";
+import ready from "/assets/portfoliobasket.png";
 import place from "../assets/ready/place.webp";
 
 const ReadyMade = () => {
