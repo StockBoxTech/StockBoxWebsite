@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import mobile from "../../assets/expert/mobile.png";
+import portfoliobasket from "/assets/portfoliobasket.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,7 +41,7 @@ const UspScreener = () => {
 
       {/* Image */}
       <div className="w-full md:w-1/2 flex justify-center">
-        <img src={mobile} alt="mobile view" className="w-[80%] md:w-full max-w-[400px]" />
+        <img src={portfoliobasket} alt="mobile view" className="w-[80%] md:w-full max-w-[400px]" />
       </div>
     </div>
   );
