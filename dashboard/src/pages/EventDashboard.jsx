@@ -16,7 +16,7 @@ const EventDashboard = () => {
 
   const fetchEvent = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/event`);
+      const res = await axiosInstance.get(`/api/event`);
       if (res.data.image) {
         setEventImage(res.data.image);
       }
@@ -29,7 +29,7 @@ const EventDashboard = () => {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
-    
+
     // Create preview URL
     if (file) {
       const url = URL.createObjectURL(file);
@@ -56,7 +56,7 @@ const EventDashboard = () => {
     formData.append("image", selectedFile);
 
     setIsUploading(true);
-    
+
     try {
       const res = await axiosInstance.post(`/api/event/upload`, formData);
 
@@ -72,7 +72,7 @@ const EventDashboard = () => {
   // Delete the event image
   const handleDelete = async () => {
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/event`);
+      await axiosInstance.delete(`/api/event`);
       setEventImage(null);
     } catch (err) {
       console.error("Error deleting event:", err);
@@ -89,14 +89,18 @@ const EventDashboard = () => {
               <ImageIcon className="w-8 h-8" />
               Event Management
             </h2>
-            <p className="text-blue-100 mt-2">Upload and manage your event images</p>
+            <p className="text-blue-100 mt-2">
+              Upload and manage your event images
+            </p>
           </div>
 
           <div className="p-8">
             {/* Upload Section */}
             <div className="mb-8">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Upload New Image</h3>
-              
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                Upload New Image
+              </h3>
+
               {/* File Input */}
               <div className="relative">
                 <input
@@ -111,8 +115,12 @@ const EventDashboard = () => {
                   className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-blue-400 hover:bg-blue-50 transition-all duration-200"
                 >
                   <Upload className="w-8 h-8 text-gray-400 mb-2" />
-                  <span className="text-gray-600">Click to select an image</span>
-                  <span className="text-sm text-gray-400 mt-1">PNG, JPG, GIF up to 10MB</span>
+                  <span className="text-gray-600">
+                    Click to select an image
+                  </span>
+                  <span className="text-sm text-gray-400 mt-1">
+                    PNG, JPG, GIF up to 10MB
+                  </span>
                 </label>
               </div>
 
@@ -129,9 +137,9 @@ const EventDashboard = () => {
                     </button>
                   </div>
                   <div className="relative overflow-hidden rounded-lg border border-gray-200">
-                    <img 
-                      src={previewUrl} 
-                      alt="Preview" 
+                    <img
+                      src={previewUrl}
+                      alt="Preview"
                       className="w-full h-48 object-cover"
                     />
                   </div>
@@ -162,7 +170,9 @@ const EventDashboard = () => {
             {eventImage && (
               <div className="border-t border-gray-200 pt-8">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-gray-800">Current Event Image</h3>
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    Current Event Image
+                  </h3>
                   <button
                     onClick={handleDelete}
                     className="flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
@@ -171,11 +181,11 @@ const EventDashboard = () => {
                     Delete
                   </button>
                 </div>
-                
+
                 <div className="relative overflow-hidden rounded-xl border border-gray-200 shadow-lg">
-                  <img 
-                    src={eventImage} 
-                    alt="Current Event" 
+                  <img
+                    src={eventImage}
+                    alt="Current Event"
                     className="w-full h-64 object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
@@ -187,7 +197,9 @@ const EventDashboard = () => {
             {!eventImage && !previewUrl && (
               <div className="text-center py-12 border-t border-gray-200">
                 <ImageIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-600 mb-2">No Event Image</h3>
+                <h3 className="text-lg font-medium text-gray-600 mb-2">
+                  No Event Image
+                </h3>
                 <p className="text-gray-400">Upload an image to get started</p>
               </div>
             )}
