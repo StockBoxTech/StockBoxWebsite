@@ -24,21 +24,18 @@ const Dashboard = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-
-  const handleLogout = async () => { 
+  const handleLogout = async () => {
     try {
-      const res = await axiosInstance.post(
-        `/api/sec/logout`
-      );
-  
+      const res = await axiosInstance.post(`/api/sec/logout`);
+
       if (res.data.status === "success") {
         navigate("/login");
-        localStorage.removeItem("isLoggedIn"); 
+        localStorage.removeItem("isLoggedIn");
         toast.success("Logout successful!"); // Changed the toast message
       }
     } catch (error) {
       console.error("Logout error:", error);
-      toast.error("Logout failed. Please try again.");  
+      toast.error("Logout failed. Please try again.");
     }
   };
 
@@ -93,14 +90,31 @@ const Dashboard = ({ children }) => {
       label: "Yearly Data",
       icon: <Database size={20} />,
     },
-    { path: "/Event", label: "Add Event", icon: <Calendar size={20} /> },
+    {
+      path: "/Event ",
+      label: "Add Event (Popup-event)",
+      icon: <Calendar size={20} />,
+    },
     { path: "/upload", label: "Add PDF", icon: <FileText size={20} /> },
     { path: "/carousel", label: "Photo Carousel", icon: <Image size={20} /> },
     { path: "/", label: "Blog Data", icon: <PlusCircle size={20} /> },
     { path: "/category", label: "Category", icon: <PlusCircle size={20} /> },
     { path: "/jobform", label: "Job Form", icon: <PlusCircle size={20} /> },
-    { path: "/viewUserDetails" , label: "View Users", icon: <Upload size={20} /> },
-     { path: "/comany-ipo-form", label: "Add IPO", icon: <Calendar size={20} /> },
+    {
+      path: "/viewUserDetails",
+      label: "View Users",
+      icon: <Upload size={20} />,
+    },
+    {
+      path: "/comany-ipo-form",
+      label: "Add IPO",
+      icon: <Calendar size={20} />,
+    },
+    {
+      path: "/employee",
+      label: "Employee",
+      icon: <PlusCircle size={20} />,
+    },
   ];
 
   const actionButtons = [
@@ -208,7 +222,7 @@ const Dashboard = ({ children }) => {
         >
           <div className="flex flex-col space-y-2">
             <button
-            onClick={() => navigate("/settings")}
+              onClick={() => navigate("/settings")}
               className={`flex items-center ${
                 expanded ? "w-full" : "justify-center"
               } p-2 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors`}
@@ -220,7 +234,9 @@ const Dashboard = ({ children }) => {
               className={`flex items-center ${
                 expanded ? "w-full" : "justify-center"
               } p-2 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors`}
-              onClick={() => {handleLogout()}}
+              onClick={() => {
+                handleLogout();
+              }}
             >
               <LogOut size={20} />
               {expanded && <span className="ml-3">Logout</span>}
@@ -228,7 +244,6 @@ const Dashboard = ({ children }) => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };

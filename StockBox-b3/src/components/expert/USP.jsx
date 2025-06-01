@@ -2,7 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRef } from "react";
-import mobile from "/assets/portfolio basket.png";
+import mobile from "/assets/portfoliobasket.png";
 
 const USP = () => {
   const containerRef = useRef(null);

@@ -39,7 +39,7 @@ useGSAP(()=>{
   return (
     <div className="mainContent md:flex h-full items-center">
     <div className="md:w-1/2 w-full ">
-        <img src={particularTrade} alt="" className="w-[80%]  bg-cover" /> 
+        <img src={particularTrade} alt="" className="w-[80%] " /> 
     </div>
    <div className="md:w-1/2 text-white text-lg para w-[90%]">
   <ul className="md:block hidden list-disc pl-5 space-y-2">
