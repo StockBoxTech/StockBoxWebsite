@@ -17,6 +17,8 @@ import DashboardLayout from "./Layout/Layout";
 import UpdateCredentials from "./pages/Setting/UpdateCredential";
 import ViewUserDetails from "./pages/ViewUserDetails";
 import IpoTabel from "./pages/IpoTabel";
+import AddEmployee from "./components/Employee/AddEmploye";
+import Employee from "./pages/Employee";
 
 const App = () => {
   const navigate = useNavigate();
@@ -42,7 +44,6 @@ const App = () => {
 
     checkLoginStatus();
   }, [navigate]);
-  
 
   return (
     <>
@@ -64,9 +65,11 @@ const App = () => {
           <Route path="/update_blog/:id" element={<CreateBlogs />} />
           <Route path="/settings" element={<UpdateCredentials />} />
           <Route path="/ViewUserDetails" element={<ViewUserDetails />} />
-          <Route path="/comany-ipo-form" element={<IpoTabel/>}/>
+          <Route path="/comany-ipo-form" element={<IpoTabel />} />
+          <Route path="/employee" element={<Employee />} />
+          <Route path="/employees/edit/:id" element={<AddEmployee />} />
+          <Route path="/employees/add" element={<AddEmployee />} />
 
-          
         </Route>
       </Routes>
     </>

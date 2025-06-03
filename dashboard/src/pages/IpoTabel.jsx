@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { format, parseISO } from 'date-fns';
+import { axiosInstance } from '../service/axiosInterceptor';
 
 const IpoTable = () => {
   const [ipos, setIpos] = useState([]);
@@ -30,7 +31,7 @@ const IpoTable = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/company/ipos`);
+      const response = await axiosInstance.get(`/api/company/ipos`);
       setIpos(response.data);
     } catch (error) {
       setError("Failed to fetch IPOs. Please try again later.");
@@ -52,10 +53,10 @@ const IpoTable = () => {
     
     try {
       if (editingId) {
-        await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/company/ipos/${editingId}`, formData);
+        await axiosInstance.put(`/api/company/ipos/${editingId}`, formData);
         setSuccessMessage('IPO updated successfully!');
       } else {
-        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/company/ipos`, formData);
+        await axiosInstance.post(`/api/company/ipos`, formData);
         setSuccessMessage('IPO added successfully!');
       }
       
@@ -100,7 +101,7 @@ const IpoTable = () => {
     
     setIsLoading(true);
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/company/ipos/${id}`);
+      await axiosInstance.delete(`/api/company/ipos/${id}`);
       setSuccessMessage('IPO deleted successfully!');
       fetchIpos();
     } catch (error) {
@@ -126,7 +127,7 @@ const IpoTable = () => {
 
   const fetchIPOs = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/company/`);
+      const res = await axiosInstance.get(`/api/company/`);
       setIpoList(res.data);
     } catch (err) {
       console.error(err);
@@ -142,7 +143,7 @@ const IpoTable = () => {
     if (ipoArray.length === 0) return alert("Add valid IPO names");
 
     try {
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/company/add`, { upcomingIpos: ipoArray });
+      await axiosInstance.post(`/api/company/add`, { upcomingIpos: ipoArray });
       setIpoInput("");
       fetchIPOs();
     } catch (err) {
@@ -152,7 +153,7 @@ const IpoTable = () => {
 
   const handleDeleteIPOName = async (name) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/company/delete/${name}`);
+      await axiosInstance.delete(`/api/company/delete/${name}`);
       fetchIPOs();
     } catch (err) {
       console.error(err);
@@ -161,7 +162,7 @@ const IpoTable = () => {
 
   const handleDeleteEntry = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/company/entry/${id}`);
+      await axiosInstance.delete(`/api/company/entry/${id}`);
       fetchIPOs();
     } catch (err) {
       console.error(err);
@@ -178,7 +179,7 @@ const IpoTable = () => {
 
   const fetchListings = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/company/list`);
+      const res = await axiosInstance.get(`/api/company/list`);
       setListings(res.data);
     } catch (err) {
       console.error(err);
@@ -195,7 +196,7 @@ const IpoTable = () => {
     if (entries.length === 0) return alert("Enter valid listings");
 
     try {
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/company/addlist`, { ipoListingsToday: entries });
+      await axiosInstance.post(`/api/company/addlist`, { ipoListingsToday: entries });
       setInput("");
       fetchListings();
     } catch (err) {
@@ -207,7 +208,7 @@ const IpoTable = () => {
 
   const handleDeleteEntrys = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/company/entrylist/${id}`);
+      await axiosInstance.delete(`/api/company/entrylist/${id}`);
       fetchListings();
     } catch (err) {
       console.error(err);

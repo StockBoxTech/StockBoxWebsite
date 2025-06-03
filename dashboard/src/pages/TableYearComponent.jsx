@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { axiosInstance } from "../service/axiosInterceptor";
 
 const TableYearComponent = () => {
   const [tableData, setTableData] = useState([]);
@@ -18,7 +18,7 @@ const TableYearComponent = () => {
 
   const fetchTableData = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/tableYearly`);
+      const response = await axiosInstance.get(`/api/tableYearly`);
       setTableData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -38,12 +38,12 @@ const TableYearComponent = () => {
     try {
       if (editingId) {
         // Update existing entry
-        await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/tableYearly/${editingId}`, formData);
+        await axiosInstance.put(`/api/tableYearly/${editingId}`, formData);
         setTableData((prev) => prev.map((item) => (item._id === editingId ? { ...item, ...formData } : item)));
         setEditingId(null);
       } else {
         // Add new entry
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/tableYearly`, formData);
+        const response = await axiosInstance.post(`/api/tableYearly`, formData);
         setTableData((prev) => [...prev, response.data.data]);
       }
       setFormData({ Year: "", carriedForward: "", received: "", resolved: "", pending: "" });
@@ -60,7 +60,7 @@ const TableYearComponent = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/tableYearly/${id}`);
+      await axiosInstance.delete(`/api/tableYearly/${id}`);
       setTableData((prev) => prev.filter((item) => item._id !== id));
     } catch (error) {
       console.error("Error deleting entry:", error);

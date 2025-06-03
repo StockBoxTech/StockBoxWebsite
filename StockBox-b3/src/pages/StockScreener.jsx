@@ -19,13 +19,13 @@ const StockScreener = () => {
               <span className="block mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Stock
               </span>
-              <span className="text-orange-400">Screener</span>
+              <span className="text-[#ebff86]">Screener</span>
             </h1>
           </div>
         </div>
 
         <div className="md:pl-8">
-          <h2 className="text-2xl md:text-3xl text-white/90 leading-relaxed font-medium border-l-4 border-orange-500 pl-6">
+          <h2 className="text-2xl md:text-3xl text-white/90 leading-relaxed font-medium border-l-4 border-[#ebff86] pl-6">
             Get a competitive edge with a tool that provides in-depth analysis and ratings on every stock listed in Nifty 500, giving you the information you need to invest smarter.
           </h2>
         </div>
@@ -35,7 +35,7 @@ const StockScreener = () => {
       <div className="max-w-7xl mx-auto mb-24 grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Stockbox <span className="text-orange-500">Ratings</span>
+            Stockbox <span className="text-[#ebff86]">Ratings</span>
           </h2>
           <p className="text-lg text-white/80">
             Introducing the ultimate tool for every investor and trader in the stock market – our StockboxRating tool! Simplify your investment decisions with comprehensive analysis.
@@ -54,7 +54,7 @@ const StockScreener = () => {
                 key={index}
                 className="flex items-start space-x-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300"
               >
-                <div className="text-orange-500 text-xl mt-1">▹</div>
+                <div className="text-[#ebff86] text-xl mt-1">▹</div>
                 <p className="text-white/80 flex-1">{item}</p>
               </li>
             ))}
@@ -72,7 +72,7 @@ const StockScreener = () => {
       {/* Features Section */}
       <div className="max-w-7xl mx-auto mb-24">
         <h2 className="text-4xl md:text-6xl font-bold text-white text-center mb-16">
-          Key <span className="text-orange-500">Features</span>
+          Key <span className="text-[#ebff86]">Features</span>
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -112,7 +112,7 @@ const StockScreener = () => {
               key={index}
               className="p-6 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
             >
-              <div className="text-white bg-orange-500 rounded-full w-12 h-12 flex items-center justify-center text-xl mb-4 shadow-lg">
+              <div className="text-white bg-[#ebff86] rounded-full w-12 h-12 flex items-center justify-center text-xl mb-4 shadow-lg">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">
@@ -125,14 +125,14 @@ const StockScreener = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center bg-gradient-to-r from-orange-500/20 to-green-500/10 p-8 rounded-3xl">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center bg-gradient-to-r from-[#ebff86]/20 to-green-500/10 p-8 rounded-3xl">
         <div className="space-y-6">
           <div className="space-y-4">
             <h2 className="text-2xl md:text-3xl font-semibold text-white">
               Achieve Your Investment Goals
             </h2>
             <h1 className="text-4xl md:text-5xl font-bold text-white">
-              Curated <span className="text-orange-500">Stock Baskets</span>
+              Curated <span className="text-[#ebff86]">Stock Baskets</span>
             </h1>
             <p className="text-lg text-white/80">
               Professionally managed stock portfolios by our Research Desk
@@ -141,8 +141,8 @@ const StockScreener = () => {
 
           <button
             aria-label="Discover curated stock baskets"
-            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 
-              text-white font-semibold py-3 px-8 rounded-full transition duration-300 hover:scale-105 cursor-pointer shadow-lg"
+            className="bg-[#ebff86]  hover:to-orange-700 
+              text-gray-600 font-semibold py-3 px-8 rounded-full transition duration-300 hover:scale-105 cursor-pointer shadow-lg"
             onClick={() =>
               window.open("https://stockboxtech.smallcase.com/", "_blank")
             }

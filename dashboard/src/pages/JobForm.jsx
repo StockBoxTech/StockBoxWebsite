@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { axiosInstance } from "../service/axiosInterceptor";
 
 const JobForm = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +18,7 @@ const JobForm = () => {
 
   const fetchJobs = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/jobs`);
+      const response = await axiosInstance.get(`/api/jobs`);
       setJobs(response.data.data); // Access the `data` key
     } catch (error) {
       console.error("Error fetching jobs:", error);
@@ -30,7 +31,7 @@ const JobForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/jobs/add`, formData);
+      const response = await axiosInstance.post(`/api/jobs/add`, formData);
       alert(response.data.message);
       setFormData({ title: "", description: "", salary: "", googleFormLink: "" });
       fetchJobs(); // Refresh the job list
@@ -42,7 +43,7 @@ const JobForm = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/jobs/delete/${id}`);
+      const response = await axiosInstance.delete(`/api/jobs/delete/${id}`);
       alert(response.data.message);
       fetchJobs(); // Refresh the job list
     } catch (error) {

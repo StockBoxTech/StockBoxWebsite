@@ -32,13 +32,13 @@ const MainContent = () => {
   });
 
   return (
-    <div className="mainContent flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-6">
+    <div className="mainContent flex flex-col md:flex-row items-center justify-between px-4 md:px-8 md:py-6">
       {/* Image Container - Reduced height */}
       <div className="w-full md:w-[45%] flex justify-center mb-6 md:mb-0">
         <img 
           src={man} 
           alt="Investment platform interface" 
-          className=" w-full max-w-[300px] md:max-w-[400px] h-auto object-contain"
+          className=" w-[90%]  h-auto object-contain"
         />
       </div>
 

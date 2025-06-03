@@ -4,6 +4,7 @@ import manager from "../../assets/aboutus/manager.png";
 import coo from "../../assets/aboutus/coo.png";
 import ResearchHead from "../../assets/aboutus/ResearchHead.png";
 import "../Css/management.css"
+import Employees from "./Employees";
 
 const Management = () => {
   return (
@@ -191,6 +192,7 @@ const Management = () => {
           </div>
         </div>
       </div>
+      <Employees/>
     </div>
   );
 };

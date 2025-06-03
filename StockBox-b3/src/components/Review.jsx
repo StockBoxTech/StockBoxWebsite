@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Marquee from "react-fast-marquee";
 import "./review.css";
+import { axiosInstance } from "../../../dashboard/src/service/axiosInterceptor";
 
 const Review = () => {
   const [data, setData] = useState([]);
@@ -10,7 +11,7 @@ const Review = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/review`);
+        const res = await axiosInstance.get(`${import.meta.env.VITE_API_URL}/api/review`);
         const filteredReviews = res.data
           .filter((review) => review.score >= 4)
           .map((review) => ({

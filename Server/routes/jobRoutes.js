@@ -1,9 +1,10 @@
 import express from "express";
 import Job from "../models/JobModel.js"; // Create a Job model
+import protectRoute from "../utils/protectRoute.js";
 const router = express.Router();
 
 // Route to add a new job
-router.post("/add", async (req, res) => {
+router.post("/add", protectRoute , async (req, res) => {
   try {
     const { title, description, salary, googleFormLink } = req.body;
     const newJob = new Job({ title, description, salary, googleFormLink });
@@ -15,7 +16,7 @@ router.post("/add", async (req, res) => {
 });
 
 // Route to delete a job
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id", protectRoute , async (req, res) => {
   try {
     const { id } = req.params;
     await Job.findByIdAndDelete(id);
