@@ -1,5 +1,5 @@
-import span from "../assets/expert/span.png";
-import pc from "../assets/expert/pc.png";
+import span from "/assets/FI&DI.png";
+import pc from "/assets/Notification.png";
 import { useNavigate } from "react-router-dom";
 
 const Investments = () => {
@@ -37,14 +37,15 @@ const Investments = () => {
 
         {/* Content Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
-          <div className="relative group overflow-hidden rounded-2xl shadow-xl">
-            <img 
-              src={pc} 
-              alt="Investment dashboard" 
-              className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-all duration-300" 
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50" />
-          </div>
+          <div className="relative group overflow-hidden rounded-2xl  ">
+  <img 
+    src={pc} 
+    alt="Investment dashboard" 
+    className="w-full h-[400px] object-contain transform group-hover:scale-105 transition-all duration-300" 
+  />
+  <div className="absolute inset-0" />
+</div>
+
 
           <div className="space-y-6">
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed">

@@ -64,20 +64,16 @@ const Trail = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div 
-            className="relative flex justify-center"
-            variants={floatVariants}
-            animate="float"
-          >
+          
             {/* Larger image with proportional scaling */}
             <img 
               src={mockup} 
               alt="App mockup"
-              className="w-full max-w-[700px] lg:max-w-none lg:w-[190%] xl:w-[190%] "
+              className="md:w-[60%] w-[30%]  "
             />
             {/* Enhanced glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#97ee8c]/20 to-blue-400/20 rounded-[50%] blur-2xl -z-10" />
-          </motion.div>
+            <div className="absolute inset-0  rounded-[50%] blur-2xl -z-10" />
+          
         </motion.div>
 
         {/* Text content with staggered animations */}
@@ -134,7 +130,7 @@ const Trail = () => {
           
           {/* Additional benefit text */}
           <motion.p 
-            className="text-gray-400 text-sm pt-2"
+            className="text-gray-400 text-sm py-2"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 1.2 }}

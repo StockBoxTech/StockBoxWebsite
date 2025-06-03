@@ -22,7 +22,7 @@ const Navbar = () => {
     { title: 'ReadyMade Stockbox', icon: faBriefcase, desc: 'Pre-built portfolios', path:"/readymade-stockbox/" },
     { title: 'Stock Screener', icon: faSearchDollar, path:"/stock-screener", desc: 'Find perfect stocks/' },
     { title:"Portfolio Hedger", icon:faUser, path:"/portfolio-hedger/", desc:"Invest confidently with smart protection." },
-    { title:"Fii/Dii Investments", icon:faUser, path:"/fii-dii-investments/", desc:"Monitor market trends for better investments." },
+    { title:"Fii/dii Investments", icon:faUser, path:"/fii-dii-investments/", desc:"Monitor market trends for better investments." },
   ];
 
   useEffect(() => {
@@ -212,6 +212,12 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
         <div className="fixed inset-0 bg-gray-900/95 backdrop-blur-xl z-50 pt-16">
+         <button 
+          className="absolute top-4 right-4 text-white p-2"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <FontAwesomeIcon icon={faTimes} className="text-xl" />
+        </button>
           <div className="flex flex-col p-6 space-y-6">
             <div className="mb-4">
               <button 

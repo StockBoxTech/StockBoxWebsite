@@ -91,11 +91,11 @@ const Home = () => {
         <ServiceAnimate />
       </section>
 
-      <section className="bg-transparent ">
+      <section className="bg-transparent mt-3 ">
         <Review />
       </section>
 
-      <section className="w-full h-[10px] bg-transparent">
+      <section className="w-full bg-transparent my-[10%]">
         <img
           src={purple}
           alt="no img found"

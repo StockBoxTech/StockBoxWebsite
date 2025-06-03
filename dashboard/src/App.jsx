@@ -58,7 +58,7 @@ const App = () => {
           <Route path="/Event" element={<EventDashboard />} />
           <Route path="/carousel" element={<Crousal_image />} />
           <Route path="/upload" element={<PdfUpload />} />
-          <Route path="/blogData/create-blogs" element={<CreateBlogs />} />
+          <Route path="/create-blogs" element={<CreateBlogs />} />
           <Route path="/jobform" element={<JobForm />} />
           <Route path="/category" element={<Category />} />
           <Route path="/update_blog/:id" element={<CreateBlogs />} />

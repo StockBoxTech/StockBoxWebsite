@@ -33,7 +33,7 @@ const Review = () => {
   };
 
   return (
-    <div className={`w-full px-4 md:py-12 transform transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`w-full px-4  transform transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
       <div className="mx-auto">
         <h2 className="text-center mb-10 sm:mb-14">
           <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-[plus-jakarta-sans] relative pb-2

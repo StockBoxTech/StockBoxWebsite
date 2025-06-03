@@ -23,7 +23,7 @@ const UspScreener = () => {
   });
 
   return (
-    <div className="flex flex-col md:flex-row items-center mt-20 px-4 md:px-[8vw] gap-10 md:gap-[10vw] w-full usp">
+    <div className="flex flex-col md:flex-row items-center  px-4 md:px-[8vw] gap-10 md:gap-[10vw] w-full usp">
       {/* Text content */}
       <div className="text-white text-[14px] md:text-lg md:w-1/2 w-full usp-content">
         <h2 className="font-bold text-xl md:text-2xl mb-4">A few of the USPs of the tool are:</h2>

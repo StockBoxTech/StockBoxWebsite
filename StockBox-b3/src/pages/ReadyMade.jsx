@@ -1,36 +1,40 @@
-import art from "../assets/readymade/art.png";
+import art from "/assets/strategy.png";
 import ready from "/assets/portfoliobasket.png";
 import place from "../assets/ready/place.webp";
 
 const ReadyMade = () => {
   return (
-    <div className="ready-made w-full h-full px-4 md:px-8 lg:px-16 py-12 ">
+    <div className="ready-made w-full h-full px-4 md:px-8 lg:px-16  ">
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto mb-16 md:mb-24 grid md:grid-cols-2 gap-8 items-center">
-        <div className="relative group">
-          <img 
-            src={art} 
-            alt="Investment art" 
-            className="rounded-3xl object-cover w-full h-auto max-h-[400px] md:max-h-[500px]" 
-          />
-          <div className="absolute inset-0 rounded-3xl" />
-          <div className="absolute bottom-8 left-8">
-            <h1 className="text-4xl md:text-6xl font-bold text-white">
-              <span className="block mb-2">ReadyMade</span>
-              <span className="flex items-center gap-4">
-                <span className="text-orange-400">Stockbox</span>
-              </span>
-            </h1>
-          </div>
-        </div>
+   <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+  <div className="relative group">
+    <div className="h-[400px] md:h-[600px] justify-center">
+      <img 
+        src={art} 
+        alt="Investment art" 
+        className="object-contain w-full h-full rounded-3xl" 
+      />
+    </div>
+    <div className="absolute bottom-8 left-8">
+      <h1 className="text-4xl md:text-6xl font-bold text-white">
+        <span className="block mb-2">ReadyMade</span>
+        <span className="flex items-center gap-4">
+          <span className="text-orange-400">Stockbox</span>
+        </span>
+      </h1>
+    </div>
+  </div>
 
-        <div className="md:pl-8">
-          <h2 className="text-2xl md:text-3xl text-white leading-relaxed font-medium">
-            Get a competitive edge in the market with a tool that provides access to meticulously managed baskets of stocks, 
-            ensuring optimal performance based on time-tested investment models.
-          </h2>
-        </div>
-      </div>
+  <div className="md:pl-8">
+    <h2 className="text-2xl md:text-3xl text-white leading-relaxed font-medium">
+      Get a competitive edge in the market with a tool that provides access to meticulously managed baskets of stocks, 
+      ensuring optimal performance based on time-tested investment models.
+    </h2>
+  </div>
+</div>
+
+
+
 
       {/* Second Section */}
       <div className="max-w-7xl mx-auto mb-24 grid md:grid-cols-2 gap-12 items-center">
