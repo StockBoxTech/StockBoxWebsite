@@ -3,12 +3,13 @@ import multer from "multer";
 import PdfModel from "../models/PdfModel.js";
 import { uploadPDFToCloudinary } from "../utils/CloudinaryPDF.js";
 import { deleteFileFromCloudinaryPdf } from "../utils/CloudinaryPDF.js";
+import protectRoute from "../utils/protectRoute.js";
 
 const router = express.Router();
 const upload = multer({ storage: multer.memoryStorage() }); // Store files in memory
 
 // Upload PDF
-router.post("/upload", upload.single("pdf"), async (req, res) => {
+router.post("/upload", protectRoute ,  upload.single("pdf"), async (req, res) => {
   const { title } = req.body;
 
   try {
@@ -49,7 +50,7 @@ router.get("/all", async (req, res) => {
 });
 
 // Delete PDF by ID
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", protectRoute , async (req, res) => {
   const { id } = req.params;
 
   try {

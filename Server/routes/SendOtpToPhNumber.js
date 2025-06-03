@@ -5,7 +5,7 @@ import protectRoute from '../utils/protectRoute.js';
 const SendOtpToPhNumberRouter = express.Router();
 
 // Route for requesting OTP
-SendOtpToPhNumberRouter.post('/request-otp', requestOTP);
+SendOtpToPhNumberRouter.post('/request-otp',  requestOTP);
 
 // Route for verifying OTP
 SendOtpToPhNumberRouter.post('/verify-otp', verifyOTP);
