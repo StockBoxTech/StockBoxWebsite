@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { axiosInstance } from "../service/axiosInterceptor";
 
 const PdfUpload = () => {
   const [file, setFile] = useState(null);
@@ -12,7 +13,7 @@ const PdfUpload = () => {
 
   const fetchPdfs = async () => {
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/pdf/all`);
+      const { data } = await axiosInstance.get(`/api/pdf/all`);
       setPdfList(data);
     } catch (error) {
       console.error("Error fetching PDFs:", error);
@@ -28,7 +29,7 @@ const PdfUpload = () => {
     formData.append("title", title);
 
     try {
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/pdf/upload`, formData, {
+      await axiosInstance.post(`/api/pdf/upload`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       fetchPdfs(); // Refresh the list
@@ -43,7 +44,7 @@ const PdfUpload = () => {
     if (!window.confirm("Are you sure you want to delete this PDF?")) return;
 
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/pdf/${id}`);
+      await axiosInstance.delete(`/api/pdf/${id}`);
       fetchPdfs(); // Refresh the list after deletion
     } catch (error) {
       console.error("Error deleting PDF:", error);

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { axiosInstance } from "../service/axiosInterceptor";
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
@@ -13,7 +14,7 @@ const Category = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/blogs/categories`);
+      const response = await axiosInstance.get(`/api/blogs/categories`);
       setCategories(response.data.data);
     } catch (error) {
       console.error("Error fetching categories:", error);
@@ -26,7 +27,7 @@ const Category = () => {
 
     try {
       setIsLoading(true);
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/blogs/categories`, {
+      const response = await axiosInstance.post(`/api/blogs/categories`, {
         blogCategoryName: newCategory,
       });
       alert(response.data.message || "Category added successfully!");
@@ -44,7 +45,7 @@ const Category = () => {
     if (!window.confirm("Are you sure you want to delete this category?")) return;
 
     try {
-      const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/blogs/categories/${id}`);
+      const response = await axiosInstance.delete(`/api/blogs/categories/${id}`);
       alert(response.data.message || "Category deleted successfully!");
       fetchCategories(); // Refresh the list
     } catch (error) {

@@ -60,7 +60,7 @@ const Dashboard = ({ children }) => {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/fetch-blogs`);
+      await axiosInstance.post(`/api/fetch-blogs`);
       console.log("Published successfully");
       window.location.reload();
     } catch (error) {
@@ -73,7 +73,7 @@ const Dashboard = ({ children }) => {
   const fetchReviews = async () => {
     try {
       setLoading(true);
-      await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/fetch-reviews`);
+      await axiosInstance.get(`/api/fetch-reviews`);
       console.log("Fetched reviews successfully");
       window.location.reload();
     } catch (error) {
