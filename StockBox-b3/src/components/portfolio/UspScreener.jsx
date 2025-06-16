@@ -51,7 +51,7 @@ const UspScreener = () => {
           <h2 className="font-bold text-2xl md:text-3xl mb-6 text-white">
             Key Features of Our Portfolio Screener
           </h2>
-          <ul className="list-disc pl-5 space-y-4 text-white text-base md:text-lg">
+          <ul className="list-disc pl-5 space-y-4 text-white ">
             <li className="usp-point">
               <span className="font-semibold text-[#ebff86]">Comprehensive Evaluation:</span> Generates detailed portfolio assessment reports
             </li>

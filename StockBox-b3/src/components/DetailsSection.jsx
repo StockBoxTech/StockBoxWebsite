@@ -153,9 +153,7 @@ const DetailsSection = () => {
    {/* for mobile */}
    <section className="md:hidden w-full py-8 px-4">
   <div className="bg-[#1D1C1C] rounded-xl p-6 w-[85%] mx-auto neon-background">
-    <h2 className="text-lg font-[plus-jakarta-sans] text-[#7E7E7E] font-bold mb-8 text-center">
-      We take Our Number 1
-    </h2>
+    
 
     {/* Registered Users */}
     <div className="flex flex-col items-center mb-8">

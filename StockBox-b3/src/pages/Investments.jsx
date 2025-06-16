@@ -21,13 +21,14 @@ const Investments = () => {
             <span className="inline-block bg-[#ebff86]/20 text-[#ebff86] text-sm font-medium py-1 px-3 rounded-full mb-4">
               Institutional Insights
             </span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold  mb-6 leading-tight">
               <span className="block mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 FII/DII
               </span>
               <span className="text-[#ebff86]">Investments</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl">
+            <div className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 lg:p-10">
+            <p className="text-lg md:text-xl text-white leading-relaxed">
               Unlock the power of expert investing with personalized stock recommendations, delivered straight to your phone inbox.
             </p>
             <button 
@@ -35,14 +36,14 @@ const Investments = () => {
               onClick={() => navigate("/Download")}
             >
               Get Started
-            </button>
+            </button></div>
           </div>
          
         </div>
 
         {/* Content Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-28">
-           <div className="order-1 md:order-2 relative group overflow-hidden rounded-2xl bg-gray-800/50 border border-gray-700/50 p-6 hidden md:block">
+           <div className="order-1 md:order-2 relative group overflow-hidden rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 p-6 hidden md:block">
             <img 
               src={pc} 
               alt="Investment dashboard" 
@@ -53,7 +54,7 @@ const Investments = () => {
             <h3 className="text-3xl md:text-4xl font-bold text-white">
               Institutional <span className="text-[#ebff86]">Activity</span> Tracking
             </h3>
-            <p className="text-lg text-gray-300 leading-relaxed">
+            <p className=" text-gray-300 leading-relaxed">
               Analyze the daily activity of domestic and foreign institutional investors in the Indian stock market. Enjoy efficient monitoring and tracking of market trends, aiding in informed investment decisions.
             </p>
             <div className="space-y-4">
@@ -63,7 +64,7 @@ const Investments = () => {
                 "Sector-wise investment breakdown",
                 "Customizable alerts and notifications"
               ].map((item, index) => (
-                <div key={index} className="flex items-start">
+                <div key={index} className="flex items-start ">
                   <span className="text-[#ebff86] mr-3 mt-1">•</span>
                   <span className="text-gray-300">{item}</span>
                 </div>
@@ -82,7 +83,7 @@ const Investments = () => {
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Key <span className="text-[#ebff86]">Advantages</span>
             </h3>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className=" text-gray-300 max-w-3xl mx-auto">
               Our institutional tracking provides comprehensive market insights with these powerful features
             </p>
           </div>
@@ -107,7 +108,7 @@ const Investments = () => {
             ].map((feature, index) => (
               <div 
                 key={index}
-                className="p-8 rounded-xl bg-gray-800/50 backdrop-blur-sm hover:bg-gray-700/50 transition-all duration-300 border border-gray-700/50"
+                className="p-8 rounded-xl bg-gradient-to-b from-white/5 to-transparent   hover:bg-gray-700/50 transition-all duration-300 border border-gray-700/50"
               >
                 <div className="text-4xl mb-6">{feature.icon}</div>
                 <h4 className="text-xl font-semibold text-white mb-4">
@@ -122,7 +123,7 @@ const Investments = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-gray-800 to-gray-900 p-8 md:p-12 rounded-2xl border border-gray-700/50">
+        <div className="max-w-4xl mx-auto text-center bg-gradient-to-b from-white/5 to-transparent  p-8 md:p-12 rounded-2xl border border-gray-700/50">
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Elevate Your Investment Strategy?
           </h3>

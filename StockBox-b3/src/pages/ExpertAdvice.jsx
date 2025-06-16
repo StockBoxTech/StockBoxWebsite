@@ -51,13 +51,13 @@ const ExpertAdvice = () => {
   return (
     <div className="container mx-auto px-4 md:px-8 lg:px-10 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="grid md:grid-cols-2 gap-12 mb-20 md:py-10 relative">
+      <section className="grid md:grid-cols-2 gap-12 mt-20 md:mb-0 mb-5  relative">
         {/* Gradient Background */}
         <div className="absolute inset-0  rounded-3xl -z-10" />
         
         {/* Heading */}
         <div className="flex flex-col justify-center items-start">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight flex md:flex-col justify-center w-full ">
             <span className="hero-heading block mb-4">Expert</span>
             <span className="hero-heading flex items-center gap-4">
               <FontAwesomeIcon icon={faRocket} className="rocket text-4xl md:text-5xl text-[#ebff86]" />
@@ -73,8 +73,8 @@ const ExpertAdvice = () => {
 
         {/* Rocket Section */}
         <div className="flex flex-col items-center md:items-start space-y-8">
-          <div className="hero-text text-white max-w-md">
-            <h2 className="text-xl md:text-2xl lg:text-3xl leading-tight font-medium bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+          <div className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 lg:p-10">
+            <h2 className="text-lg md:text-xl text-white leading-relaxed">
               Unlock the power of expert investing with personalized stock recommendations, 
               delivered straight to your phone inbox.
             </h2>

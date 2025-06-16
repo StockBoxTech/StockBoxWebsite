@@ -132,17 +132,7 @@ const ServiceAnimation = () => {
             {/* Animated title */}
            
 
-            <motion.p
-              className="text-white text-center mt-[30%] max-w-md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                delay: 0.8,
-                duration: 0.8,
-              }}
-            >
-              Access expert analysis and real-time market intelligence
-            </motion.p>
+          
           </div>
         </div>
         {/* Right Column */}
@@ -189,7 +179,7 @@ const ServiceAnimation = () => {
       {/* Mobile View */}
       <div className="lg:hidden max-w-3xl mx-auto">
         <motion.h1
-          className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent px-4"
+          className="text-3xl font-bold text-center mb-12  text-white px-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >

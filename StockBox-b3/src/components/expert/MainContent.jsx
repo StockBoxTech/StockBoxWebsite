@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import man from "/assets/TradeHUDC.png";
+import man from "/assets/Notification.png";
 
 const MainContent = () => {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -43,7 +43,7 @@ const MainContent = () => {
       </div>
 
       {/* Text Content */}
-      <div className="para w-full md:w-[50%] text-white text-base md:text-lg">
+      <div className="para w-full md:w-[50%] text-white ">
         <ul className="list-disc pl-5 space-y-2 md:space-y-3">
           <li>
             <span className="font-bold text-amber-100">Smart Investing Made Easy:</span> 

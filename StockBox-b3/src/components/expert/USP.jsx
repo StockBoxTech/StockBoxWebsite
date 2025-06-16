@@ -2,7 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRef } from "react";
-import mobile from "/assets/portfoliobasket.png";
+import mobile from "/assets/particularTrade.png";
 
 const USP = () => {
   const containerRef = useRef(null);
@@ -32,12 +32,12 @@ const USP = () => {
   return (
     <div
       ref={containerRef}
-      className="usp-section  px-6 md:px-20 flex flex-col md:flex-row items-center justify-between gap-12"
+      className="usp-section  px-6 md:px-20 flex flex-col md:flex-row items-center justify-between gap-12 my-10 md:ml-0 ml-3"
     >
       {/* Text Section */}
       <div className="text-white text-lg md:w-1/2 w-full space-y-6">
         <h2 className="font-bold text-3xl mb-4 usp-item">Why Choose Us?</h2>
-        <ul className="space-y-3 list-disc list-inside">
+        <ul className="space-y-3 list-disc ">
           <li className="usp-item">Credentials and Experience</li>
           <li className="usp-item">Investment Philosophy</li>
           <li className="usp-item">Accessibility and Availability</li>

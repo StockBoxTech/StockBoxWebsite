@@ -9,18 +9,22 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const EndSection = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  
   const menuItems = [
     { name: "Home", path: "/" },
     { name: "About us", path: "/about-us/" },
     { name: "Blogs", path: "/blogs/" },
-    { name: "Partner with us", path: "partner-with-us/" },
+    { name: "Partner with us", path: "/partner-with-us/" },
     { name: "Career", path: "/careers/" },
     { name: "Media", path: "/media/" },
     { name: "Contact Us", path: "/contact-us/" },
     { name: "Investor Charter", path: "/investor-charter/" },
+    {name:'Research Report',path:'/researchReport'}
   ];
 
   const products = [
@@ -41,22 +45,35 @@ const EndSection = () => {
     { icon: faQuora, link: "https://quora.com/profile/Stockbox-Technologies-1", color: "#B92B27" },
   ];
 
+  // Helper function to check active link
+   const isActive = (path) => {
+    // Handle home path separately
+    if (path === "/") {
+      return location.pathname === "/" || location.pathname === "";
+    }
+    
+    // For other paths
+    return location.pathname === path || 
+           location.pathname.startsWith(path) ||
+           location.pathname.replace(/\/$/, "") === path.replace(/\/$/, "");
+  };
+
   return (
-    <footer className=" text-white w-full font-plus-jakarta-sans overflow-x-hidden">
+    <footer className="text-white w-full font-plus-jakarta-sans overflow-x-hidden">
       <hr className="h-[2px] mb-12 md:mb-[99px] w-full opacity-10" />
 
       <div className="container mx-auto px-4">
         {/* Mobile Accordion Layout */}
         <div className="lg:hidden">
           {/* Logo and Social */}
-          <div className="flex flex-col items-center mb-8 ">
+          <div className="flex flex-col items-center mb-8">
             <img
               src={logo}
               alt="StockBox Logo"
-              className="  hover:scale-105 transition-transform duration-300"
+              className="hover:scale-105 transition-transform duration-300 w-[65%]"
             />
             <p className="text-lg font-light mt-4">Follow us</p>
-           <div className="flex gap-4 mt-2">
+            <div className="flex gap-4 mt-2">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
@@ -93,20 +110,29 @@ const EndSection = () => {
                 </svg>
               </summary>
               <ul className="space-y-3 mt-3 pl-4">
-                {products.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      to={item.path}
-                      className="text-gray-400 hover:text-[#ebff86] flex items-center group transition-colors duration-300"
-                    >
-                      <span>{item.name}</span>
-                      <FontAwesomeIcon
-                        icon={faArrowRight}
-                        className="ml-2 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-300 text-sm"
-                      />
-                    </Link>
-                  </li>
-                ))}
+                {products.map((item, index) => {
+                  const active = isActive(item.path);
+                  return (
+                    <li key={index}>
+                      <Link
+                        to={item.path}
+                        className={`flex items-center group transition-colors duration-300 ${
+                          active ? "text-[#ebff86] font-medium" : "text-gray-400 hover:text-[#ebff86]"
+                        }`}
+                      >
+                        <span>{item.name}</span>
+                        <FontAwesomeIcon
+                          icon={faArrowRight}
+                          className={`ml-2 ${
+                            active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                          } transform ${
+                            active || "group-hover:translate-x-1"
+                          } transition-all duration-300 text-sm`}
+                        />
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </details>
 
@@ -129,20 +155,29 @@ const EndSection = () => {
                 </svg>
               </summary>
               <ul className="space-y-3 mt-3 pl-4">
-                {menuItems.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      to={item.path}
-                      className="text-gray-400 hover:text-[#ebff86] flex items-center group transition-colors duration-300"
-                    >
-                      <span>{item.name}</span>
-                      <FontAwesomeIcon
-                        icon={faArrowRight}
-                        className="ml-2 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-300 text-sm"
-                      />
-                    </Link>
-                  </li>
-                ))}
+                {menuItems.map((item, index) => {
+                  const active = isActive(item.path);
+                  return (
+                    <li key={index}>
+                      <Link
+                        to={item.path}
+                        className={`flex items-center group transition-colors duration-300 ${
+                          active ? "text-[#ebff86] font-medium" : "text-gray-400 hover:text-[#ebff86]"
+                        }`}
+                      >
+                        <span>{item.name}</span>
+                        <FontAwesomeIcon
+                          icon={faArrowRight}
+                          className={`ml-2 ${
+                            active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                          } transform ${
+                            active || "group-hover:translate-x-1"
+                          } transition-all duration-300 text-sm`}
+                        />
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </details>
 
@@ -217,17 +252,16 @@ const EndSection = () => {
         </div>
 
         {/* Desktop Layout */}
-        <div></div>
         <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Company Info & Social */}
           <div className="space-y-1 flex flex-col items-center w-full">
             <img
               src={logo}
               alt="StockBox Logo"
-              className=" hover:scale-105 transition-transform duration-300"
+              className="hover:scale-105 transition-transform duration-300 w-[15em]"
             />
             <p className="text-lg font-light">Follow us</p>
-           <div className="flex gap-4">
+            <div className="flex gap-4">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
@@ -247,20 +281,29 @@ const EndSection = () => {
           <nav className="space-y-6">
             <h2 className="text-xl font-bold">Products</h2>
             <ul className="space-y-4">
-              {products.map((item, index) => (
-                <li key={index}>
-                  <Link
-                    to={item.path}
-                    className="text-gray-400 hover:text-[#ebff86] flex items-center group transition-colors duration-300"
-                  >
-                    <span>{item.name}</span>
-                    <FontAwesomeIcon
-                      icon={faArrowRight}
-                      className="ml-2 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-2 transition-all duration-300"
-                    />
-                  </Link>
-                </li>
-              ))}
+              {products.map((item, index) => {
+                const active = isActive(item.path);
+                return (
+                  <li key={index}>
+                    <Link
+                      to={item.path}
+                      className={`flex items-center group transition-colors duration-300 ${
+                        active ? "text-[#ebff86] font-medium" : "text-gray-400 hover:text-[#ebff86]"
+                      }`}
+                    >
+                      <span>{item.name}</span>
+                      <FontAwesomeIcon
+                        icon={faArrowRight}
+                        className={`ml-2 ${
+                          active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                        } transform ${
+                          active || "group-hover:translate-x-2"
+                        } transition-all duration-300`}
+                      />
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
@@ -268,20 +311,29 @@ const EndSection = () => {
           <nav className="space-y-6">
             <h2 className="text-xl font-bold">Company</h2>
             <ul className="space-y-4">
-              {menuItems.map((item, index) => (
-                <li key={index}>
-                  <Link
-                    to={item.path}
-                    className="text-gray-400 hover:text-[#ebff86] flex items-center group transition-colors duration-300"
-                  >
-                    <span>{item.name}</span>
-                    <FontAwesomeIcon
-                      icon={faArrowRight}
-                      className="ml-2 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-2 transition-all duration-300"
-                    />
-                  </Link>
-                </li>
-              ))}
+              {menuItems.map((item, index) => {
+                const active = isActive(item.path);
+                return (
+                  <li key={index}>
+                    <Link
+                      to={item.path}
+                      className={`flex items-center group transition-colors duration-300 ${
+                        active ? "text-[#ebff86] font-medium" : "text-gray-400 hover:text-[#ebff86]"
+                      }`}
+                    >
+                      <span>{item.name}</span>
+                      <FontAwesomeIcon
+                        icon={faArrowRight}
+                        className={`ml-2 ${
+                          active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                        } transform ${
+                          active || "group-hover:translate-x-2"
+                        } transition-all duration-300`}
+                      />
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
@@ -372,11 +424,19 @@ const EndSection = () => {
             <h2 className="text-lg font-bold">Stockbox Technologies Pvt. Ltd.</h2>
             <address className="not-italic space-y-3 md:space-y-4">
               <div className="space-y-1">
-                <span className="text-white font-medium">Address</span>
+                <span className="text-white font-medium">Registered Office Address</span>
                 <p className="text-gray-400">
                   9, Lane No.-3, Doon Enclave Extension,
                   <br />
-                  Subhash Nagar, Dehradun, Uttarakhand
+                  Subhash Nagar, Dehradun - 248171, Uttarakhand
+                </p>
+              </div>
+              <div className="space-y-1">
+                <span className="text-white font-medium">Branch Office Address</span>
+                <p className="text-gray-400">
+                 Hall No. 7, STPI Building, Plot No.1,
+                  <br />
+                  IT Park, Sahastradhara Road, Dehradun – 248001, Uttarakhand
                 </p>
               </div>
               {[
@@ -456,17 +516,27 @@ const EndSection = () => {
         <p className="text-sm md:text-base mb-2 md:mb-0 text-center md:text-left">
           Copyright @2025 Stockbox Technologies Pvt. Ltd.<br className="md:hidden" /> All Rights Reserved.
         </p>
-        <div className="flex space-x-4">
-          <Link to="/terms-conditions/" className="text-sm md:text-base hover:text-[#ebff86]">
+        <div className="flex flex-wrap justify-center gap-4">
+          <Link to="/terms-conditions/" className={`text-sm md:text-base ${
+            currentPath === "/terms-conditions/" ? "text-[#ebff86]" : "hover:text-[#ebff86]"
+          }`}>
             Terms of Service
           </Link>
-          <Link to="/privacy-policy/" className="text-sm md:text-base hover:text-[#ebff86]">
+          <Link to="/privacy-policy/" className={`text-sm md:text-base ${
+            currentPath === "/privacy-policy/" ? "text-[#ebff86]" : "hover:text-[#ebff86]"
+          }`}>
             Privacy Policy
           </Link>
-          <Link to="/grievancepolicy/" className="text-sm md:text-base hover:text-[#ebff86]">
-          Grievance Policy</Link>
-          <Link to="/regulatory-details/" className="text-sm md:text-base hover:text-[#ebff86]">
-          Regulatory Details</Link>
+          <Link to="/grievancepolicy/" className={`text-sm md:text-base ${
+            currentPath === "/grievancepolicy/" ? "text-[#ebff86]" : "hover:text-[#ebff86]"
+          }`}>
+            Grievance Policy
+          </Link>
+          <Link to="/regulatory-details/" className={`text-sm md:text-base ${
+            currentPath === "/regulatory-details/" ? "text-[#ebff86]" : "hover:text-[#ebff86]"
+          }`}>
+            Regulatory Details
+          </Link>
         </div>
       </div>
     </footer>

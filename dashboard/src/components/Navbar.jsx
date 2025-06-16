@@ -115,6 +115,11 @@ const Dashboard = ({ children }) => {
       label: "Employee",
       icon: <PlusCircle size={20} />,
     },
+    {
+      path:"/report",
+      label: "Report",
+      icon:<PlusCircle size={20}/>
+    }
   ];
 
   const actionButtons = [

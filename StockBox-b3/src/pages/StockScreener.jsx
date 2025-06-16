@@ -1,5 +1,5 @@
 import art from "/assets/Screener.png";
-import ready from "/assets/particularTrade.png";
+import ready from "/assets/Andra Cement Ltd.png";
 import place from "../assets/ready/place.webp";
 
 const StockScreener = () => {
@@ -15,7 +15,7 @@ const StockScreener = () => {
           />
           <div className="absolute inset-0 via-transparent to-transparent" />
           <div className="absolute bottom-8 left-8">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
               <span className="block mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Stock
               </span>
@@ -24,8 +24,9 @@ const StockScreener = () => {
           </div>
         </div>
 
-        <div className="md:pl-8">
-          <h2 className="text-2xl md:text-3xl text-white/90 leading-relaxed font-medium border-l-4 border-[#ebff86] pl-6">
+        <div className="md:pl-8 bg-gradient-to-br from-white/5 to-white/10 border border-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 lg:p-10">
+          <h2 className="textlg md:text-xl text-white leading-relaxed font-medium border-l-4 border-[#ebff86] pl-6">
+      
             Get a competitive edge with a tool that provides in-depth analysis and ratings on every stock listed in Nifty 500, giving you the information you need to invest smarter.
           </h2>
         </div>
@@ -37,7 +38,7 @@ const StockScreener = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Stockbox <span className="text-[#ebff86]">Ratings</span>
           </h2>
-          <p className="text-lg text-white/80">
+          <p className=" text-white/80">
             Introducing the ultimate tool for every investor and trader in the stock market – our StockboxRating tool! Simplify your investment decisions with comprehensive analysis.
           </p>
 
@@ -54,7 +55,7 @@ const StockScreener = () => {
                 key={index}
                 className="flex items-start space-x-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300"
               >
-                <div className="text-[#ebff86] text-xl mt-1">▹</div>
+                <div className="text-[#ebff86] text-lg mt-1">▹</div>
                 <p className="text-white/80 flex-1">{item}</p>
               </li>
             ))}
@@ -110,12 +111,12 @@ const StockScreener = () => {
           ].map((feature, index) => (
             <div
               key={index}
-              className="p-6 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
+              className="p-6 rounded-xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-orange-400/30 transition-all duration-300 hover:-translate-y-1"
             >
               <div className="text-white bg-[#ebff86] rounded-full w-12 h-12 flex items-center justify-center text-xl mb-4 shadow-lg">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">
+              <h3 className="text-lg font-semibold text-white mb-3">
                 {feature.title}
               </h3>
               <p className="text-gray-400 leading-relaxed">{feature.content}</p>

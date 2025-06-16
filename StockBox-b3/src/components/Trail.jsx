@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import mockup from "../assets/mockup.png";
+import mockup from "/assets/qr.png";
 import { motion } from 'framer-motion';
 import { useRef } from "react";
 
@@ -22,7 +22,7 @@ const Trail = () => {
   return (
     <div 
       ref={containerRef}
-      className="relative flex items-center justify-center overflow-hidden"
+      className="relative flex items-center justify-center overflow-hidden mb-3"
     >
       {/* Enhanced background with gradient animation */}
       <div className="absolute inset-0 overflow-hidden">
@@ -69,7 +69,7 @@ const Trail = () => {
             <img 
               src={mockup} 
               alt="App mockup"
-              className="md:w-[60%] w-[30%]  "
+              className="md:w-[80%] w-[40%]  "
             />
             {/* Enhanced glow effect */}
             <div className="absolute inset-0  rounded-[50%] blur-2xl -z-10" />

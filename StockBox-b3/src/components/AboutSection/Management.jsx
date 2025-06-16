@@ -8,7 +8,7 @@ import Employees from "./Employees";
 
 const Management = () => {
   return (
-    <div className="min-h-screen w-full  md:py-20 px-4 md:px-10 lg:px-20 mt-[35vh] md:mt-0">
+    <div className="min-h-screen w-full  md:py-20 px-4 md:px-10 lg:px-20  md:mt-0">
       {/* Founder Section */}
       <div className="flex flex-col md:flex-row items-center justify-between mb-32 md:mb-40 relative z-10">
         <div className="md:w-1/2 order-2 md:order-1 mt-10 md:mt-0">

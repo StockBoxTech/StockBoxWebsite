@@ -8,21 +8,22 @@ const PortfolioHedger = () => {
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center mb-20 md:mb-32">
         <div className="order-2 md:order-1 text-center md:text-left">
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold  mb-6 leading-tight">
             <span className="block mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Portfolio
             </span>
             <span className="text-[#ebff86]">Hedger</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-lg mx-auto md:mx-0">
+          <div className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 lg:p-10 md:w-[70%]">
+          <p className="text-lg md:text-xl text-white leading-relaxed max-w-sm mx-auto md:mx-0">
             Advanced risk management for sophisticated investors
           </p>
           <button className="bg-[#ebff86]  text-gray-700 font-medium py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
             Learn More
-          </button>
+          </button></div>
         </div>
 
-        <div className="order-1 md:order-2 relative flex items-center justify-center h-[400px] md:h-[500px]">
+        <div className="order-1 md:order-2 relative flex items-center justify-center h-[400px] md:h-[500px] hidden md:block">
           <img
             src={paper}
             alt="Portfolio protection"
@@ -33,7 +34,7 @@ const PortfolioHedger = () => {
 
       {/* Protection Section */}
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center mb-28">
-         <div className="relative flex items-center justify-center h-[400px] bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50">
+         <div className="relative flex items-center justify-center h-[400px]  rounded-2xl p-6 bg-gradient-to-b from-white/5 to-transparent border border-white/10 ">
           <img
             src={headge}
             alt="Risk management"
@@ -47,7 +48,7 @@ const PortfolioHedger = () => {
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-snug">
             Intelligent Portfolio <span className="text-[#ebff86]">Protection</span>
           </h3>
-          <p className="text-lg text-gray-300 leading-relaxed mb-6">
+          <p className=" text-gray-300 leading-relaxed mb-6">
             Get peace of mind knowing your investments are protected with our
             advanced risk management algorithms designed to mitigate drawdown
             risks and maximize portfolio stability.
@@ -79,7 +80,7 @@ const PortfolioHedger = () => {
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Key <span className="text-[#ebff86]">Advantages</span>
           </h3>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className=" text-gray-300 max-w-3xl mx-auto">
             Our hedging solution provides comprehensive protection with these powerful features
           </p>
         </div>
@@ -113,12 +114,12 @@ const PortfolioHedger = () => {
             ].map((advantage, index) => (
               <div
                 key={index}
-                className="p-6 rounded-xl bg-gray-800 backdrop-blur-sm hover:bg-gray-700/50 transition-all duration-300 border border-gray-700/50"
+                className="p-6 rounded-xl bg-[#3F403F] backdrop-blur-sm hover:bg-gray-700/50 transition-all duration-300 border border-gray-700/50"
               >
                 <div className="flex items-start gap-4">
                   <span className="text-3xl">{advantage.icon}</span>
                   <div>
-                    <h4 className="text-xl font-semibold text-white mb-2">
+                    <h4 className="text-lg font-semibold text-white mb-2">
                       {advantage.title}
                     </h4>
                     <p className="text-gray-400">{advantage.content}</p>
@@ -127,7 +128,7 @@ const PortfolioHedger = () => {
               </div>
             ))}
           </div>
-           <div className="relative flex items-center justify-center h-[400px] md:h-[650px] bg-gray-800/50 rounded-2xl p-6 border border-gray-700/50 hidden md:block">
+           <div className="relative flex items-center justify-center h-[400px] md:h-[650px]  rounded-2xl p-6  hidden md:block">
             <img
               src={headge1}
               alt="Hedging benefits"
@@ -138,8 +139,9 @@ const PortfolioHedger = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="max-w-4xl mx-auto md:mt-32 mt-10 mb-16 text-center bg-gradient-to-r from-gray-800 to-gray-900 p-8 md:p-12 rounded-2xl border border-gray-700/50">
+      <div className="max-w-4xl mx-auto md:mt-32 mt-10 mb-16 text-center  p-8 md:p-12 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-orange-400/30 transition-all duration-300 hover:-translate-y-1">
         <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
+    
           Ready to protect your portfolio?
         </h3>
         <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">

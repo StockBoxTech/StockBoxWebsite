@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { axiosInstance } from "../../../../dashboard/src/service/axiosInterceptor"
+import axios from "axios"
+
 
 const Employees = () => {
   const [employees, setEmployees] = useState([])
@@ -17,7 +18,7 @@ const Employees = () => {
   const fetchEmployees = async () => {
     try {
       setLoading(true)
-      const response = await axiosInstance.get("/api/employee/")
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/employee/`)
       console.log(response.data)
       setEmployees(response.data)
       setError(null)

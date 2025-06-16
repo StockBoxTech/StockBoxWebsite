@@ -1,4 +1,4 @@
-import art from "/assets/strategy.png";
+import art from "/assets/PortfolioBaskets.png";
 import ready from "/assets/portfoliobasket.png";
 import place from "../assets/ready/place.webp";
 
@@ -18,15 +18,16 @@ const ReadyMade = () => {
   </div>
 
   {/* Text Section */}
-  <div className="flex-1 space-y-6 text-center md:text-left">
-    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#dbf169]">
+  <div className="flex-1 space-y-6 text-center md:text-left ">
+    <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold  mb-6 leading-tight text-[#dbf169]">
       <span className="block text-gray-200">ReadyMade</span>
       <span className="block">Stockbox</span>
     </h1>
-    <h2 className="text-2xl md:text-3xl lg:text-4xl text-white font-medium leading-tight">
+    <div className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 lg:p-10">
+    <h2 className="text-lg md:text-xl text-white leading-relaxed">
       Get a competitive edge with professionally managed stock baskets
     </h2>
-    <p className="text-lg text-gray-300 leading-relaxed">
+    <p className=" text-gray-300 leading-relaxed">
       Access meticulously curated portfolios optimized by our research team using proven investment models for maximum returns.
     </p>
     <div className="flex flex-wrap gap-4 mt-6 justify-center md:justify-start">
@@ -35,6 +36,7 @@ const ReadyMade = () => {
           {tag}
         </span>
       ))}
+    </div>
     </div>
   </div>
 </div>
@@ -49,11 +51,11 @@ const ReadyMade = () => {
               Expertly Curated <span className="text-[#ebff86]">Portfolios</span>
             </h2>
             <div className="space-y-6">
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className=" text-gray-300 leading-relaxed">
                 Our Wizard Box/Readymade Stockbox provides access to specially curated baskets of stocks, 
                 diligently managed by SEBI-registered research professionals using proven investment models.
               </p>
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className=" text-gray-300 leading-relaxed">
                 We continuously monitor and rebalance these portfolios to adapt to changing market conditions, 
                 ensuring optimal performance for your long-term investment goals.
               </p>
@@ -109,7 +111,7 @@ const ReadyMade = () => {
               className="p-6 rounded-xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-orange-400/30 transition-all duration-300 hover:-translate-y-1"
             >
               <div className="text-3xl mb-4 text-[#ebff86]">{feature.icon}</div>
-              <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
+              <h3 className="text-xl  text-white mb-3">{feature.title}</h3>
               <p className="text-gray-400 leading-relaxed">{feature.content}</p>
             </div>
           ))}

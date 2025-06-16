@@ -21,7 +21,7 @@ const BentoGram = () => {
   }
 
   return (
-    <div className="w-full px-4 md:px-16 py-12 md:py-24 ">
+    <div className="w-full px-4 md:px-16 py-12 md:py-24 hidden">
       {/* Title Section */}
       <div className="max-w-4xl mx-auto text-center mb-12 md:mb-20">
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
