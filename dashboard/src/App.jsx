@@ -19,6 +19,7 @@ import ViewUserDetails from "./pages/ViewUserDetails";
 import IpoTabel from "./pages/IpoTabel";
 import AddEmployee from "./components/Employee/AddEmploye";
 import Employee from "./pages/Employee";
+import Resrpt from "./pages/Resrpt";
 
 const App = () => {
   const navigate = useNavigate();
@@ -69,6 +70,7 @@ const App = () => {
           <Route path="/employee" element={<Employee />} />
           <Route path="/employees/edit/:id" element={<AddEmployee />} />
           <Route path="/employees/add" element={<AddEmployee />} />
+          <Route path="/report" element={<Resrpt/>}/>
 
         </Route>
       </Routes>

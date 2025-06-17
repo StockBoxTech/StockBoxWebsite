@@ -1,118 +1,125 @@
-import paper from "../assets/portfoliohedger/paper.png";
-import headge from "../assets/portfoliohedger/headge.png";
-import headge1 from "../assets/portfoliohedger/headge1.png";
+import paper from "/assets/PortfolioBaskets.png";
+import headge from "/assets/Andra Cement Ltd.png";
+import headge1 from "/assets/Blogs.png";
 
 const PortfolioHedger = () => {
   return (
-    <div className="w-full min-h-screen  px-4 md:px-8 lg:px-16 ">
+    <div className="w-full min-h-screen px-4 md:px-8 lg:px-16 py-12 ">
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center mb-16 md:mb-24">
-
-
-        
-        <div className="relative group overflow-hidden rounded-3xl order-2 md:order-1">
-          <img 
-            src={paper} 
-            alt="Portfolio protection" 
-            className="w-full h-[400px] object-fill transform group-hover:scale-105 transition-all duration-300" 
-          />
-          <div className="" />
-        </div>
-
-        <div className="order-1 md:order-2 text-center md:text-left">
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
-            <span className="block mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center mb-20 md:mb-32">
+        <div className="order-2 md:order-1 text-center md:text-left">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold  mb-6 leading-tight">
+            <span className="block mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Portfolio
             </span>
-            <span className="text-orange-400">Hedger</span>
+            <span className="text-[#ebff86]">Hedger</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-300">
+          <div className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 lg:p-10 md:w-[70%]">
+          <p className="text-lg md:text-xl text-white leading-relaxed max-w-sm mx-auto md:mx-0">
             Advanced risk management for sophisticated investors
           </p>
+          <button className="bg-[#ebff86]  text-gray-700 font-medium py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+            Learn More
+          </button></div>
+        </div>
+
+        <div className="order-1 md:order-2 relative flex items-center justify-center h-[400px] md:h-[500px] hidden md:block">
+          <img
+            src={paper}
+            alt="Portfolio protection"
+            className="object-contain h-full w-full drop-shadow-xl"
+          />
         </div>
       </div>
 
       {/* Protection Section */}
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center mb-24">
-      
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center mb-28">
+         <div className="relative flex items-center justify-center h-[400px]  rounded-2xl p-6 bg-gradient-to-b from-white/5 to-transparent border border-white/10 ">
+          <img
+            src={headge}
+            alt="Risk management"
+            className="object-contain h-full w-full rounded-lg"
+          />
+        </div>
         <div className="space-y-6">
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Intelligent Portfolio Protection
+          <span className="inline-block bg-[#ebff86]/20 text-[#ebff86] text-sm font-medium py-1 px-3 rounded-full mb-4">
+            Risk Management
+          </span>
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-snug">
+            Intelligent Portfolio <span className="text-[#ebff86]">Protection</span>
           </h3>
-          <p className="text-lg text-gray-300 leading-relaxed">
-            Get peace of mind knowing your investments are protected with our 
-            advanced risk management algorithms designed to mitigate drawdown 
+          <p className=" text-gray-300 leading-relaxed mb-6">
+            Get peace of mind knowing your investments are protected with our
+            advanced risk management algorithms designed to mitigate drawdown
             risks and maximize portfolio stability.
           </p>
+          <ul className="space-y-4">
+            {[
+              "Dynamic risk assessment",
+              "Real-time market monitoring",
+              "Automated hedging strategies",
+              "Customizable protection levels"
+            ].map((item, index) => (
+              <li key={index} className="flex items-center">
+                <span className="text-[#ebff86] mr-3">✓</span>
+                <span className="text-gray-300">{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
-          <div className="relative overflow-hidden rounded-2xl shadow-xl">
-          <img 
-            src={headge} 
-            alt="Risk management" 
-            className="w-full h-[400px] object-cover" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60" />
-        </div>
-
+       
       </div>
 
       {/* Advantages Section */}
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center mb-24">
-
-<div className="hidden md:block relative overflow-hidden rounded-2xl shadow-xl">
-          <img 
-            src={headge1} 
-            alt="Hedging benefits" 
-            className="w-full h-[500px] object-cover" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-l from-black/60" />
-        </div>
-        
-        <div className="md:hidden">
-          <img 
-            src={headge1} 
-            alt="Hedging benefits" 
-            className="rounded-2xl shadow-xl w-full h-[300px] object-cover" 
-          />
-        </div>
-
-        <div className="space-y-8">
-          <h3 className="text-3xl md:text-4xl font-bold text-white">
-            Key Advantages
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="inline-block bg-[#ebff86]/20 text-[#ebff86] text-sm font-medium py-1 px-3 rounded-full mb-4">
+            Why Choose Us
+          </span>
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Key <span className="text-[#ebff86]">Advantages</span>
           </h3>
-          
+          <p className=" text-gray-300 max-w-3xl mx-auto">
+            Our hedging solution provides comprehensive protection with these powerful features
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+         
+
           <div className="grid gap-6">
             {[
               {
                 title: "Portfolio Protection",
-                content: "Shields against significant losses using advanced algorithms",
-                icon: "🛡️"
+                content:
+                  "Shields against significant losses using advanced algorithms that continuously monitor market conditions and adjust protection levels accordingly.",
+                icon: "🛡️",
               },
               {
                 title: "Emotion-Free Decisions",
-                content: "Algorithm-driven objective risk management",
-                icon: "🧠"
+                content: "Algorithm-driven objective risk management eliminates human bias and emotional trading decisions.",
+                icon: "🧠",
               },
               {
                 title: "Market Fear Advantage",
-                content: "Optimized performance during market volatility",
-                icon: "📉"
+                content: "Optimized performance during market volatility by capitalizing on fear-driven price movements.",
+                icon: "📉",
               },
               {
                 title: "Statistical Hedging",
-                content: "Sophisticated calculations for optimal coverage",
-                icon: "📊"
-              }
+                content: "Sophisticated calculations for optimal coverage based on historical correlations and real-time market data.",
+                icon: "📊",
+              },
             ].map((advantage, index) => (
-              <div 
+              <div
                 key={index}
-                className="p-6 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
+                className="p-6 rounded-xl bg-[#3F403F] backdrop-blur-sm hover:bg-gray-700/50 transition-all duration-300 border border-gray-700/50"
               >
                 <div className="flex items-start gap-4">
-                  <span className="text-2xl">{advantage.icon}</span>
+                  <span className="text-3xl">{advantage.icon}</span>
                   <div>
-                    <h4 className="text-xl font-semibold text-white mb-2">
+                    <h4 className="text-lg font-semibold text-white mb-2">
                       {advantage.title}
                     </h4>
                     <p className="text-gray-400">{advantage.content}</p>
@@ -121,9 +128,33 @@ const PortfolioHedger = () => {
               </div>
             ))}
           </div>
+           <div className="relative flex items-center justify-center h-[400px] md:h-[650px]  rounded-2xl p-6  hidden md:block">
+            <img
+              src={headge1}
+              alt="Hedging benefits"
+              className="object-contain h-full w-full rounded-lg"
+            />
+          </div>
         </div>
+      </div>
 
-        
+      {/* CTA Section */}
+      <div className="max-w-4xl mx-auto md:mt-32 mt-10 mb-16 text-center  p-8 md:p-12 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-orange-400/30 transition-all duration-300 hover:-translate-y-1">
+        <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
+    
+          Ready to protect your portfolio?
+        </h3>
+        <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          Get started with our advanced hedging solution today and invest with confidence.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button className="bg-[#ebff86]  text-gray-700 font-medium py-3 px-8 rounded-lg transition-all duration-300">
+            Get Started
+          </button>
+          <button className="bg-transparent hover:bg-gray-700/50 text-white font-medium py-3 px-8 rounded-lg border border-gray-500 transition-all duration-300">
+            Contact Sales
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -370,11 +370,11 @@ const IpoTable = () => {
           </div>
           
           <div>
-            <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Listing At</label>
+            <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Rating</label>
             <input 
               type="text" 
               name="listingAt" 
-              placeholder="NSE/BSE" 
+              placeholder="Rating" 
               value={formData.listingAt} 
               onChange={handleChange} 
               style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ced4da' }}
@@ -417,7 +417,7 @@ const IpoTable = () => {
           </div>
           
           <div>
-            <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Blog Link</label>
+            <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Blog Link & research Report</label>
             <input 
               type="url" 
               name="blogLink" 

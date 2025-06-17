@@ -27,6 +27,10 @@ import Privacy from "./pages/Privacy";
 import Grievance from "./pages/Grievance";
 import Terms from "./pages/Terms";
 import Regulatory from "./pages/Regulatory";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import ResReport from "./pages/ResReport";
 
 const App = () => {
   gsap.registerPlugin(useGSAP);
@@ -68,8 +72,47 @@ const App = () => {
     });
   }, []);
 
+
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: 'spring', stiffness: 300, damping: 20 }
+    }
+  };
+
+
+
   return (
     <div className="min-h-screen font-[plus-jakarta-sans] Display">
+
+<div className="fixed bottom-8 right-8 z-[60] flex  items-end gap-4 ">
+  {/* WhatsApp Button */}
+  <a
+    href="https://wa.me/9120031744"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center justify-center bg-[#25D366] hover:bg-[#128C7E] text-white p-3 rounded-full shadow-xl transition-all duration-300 hover:shadow-2xl"
+    aria-label="Contact via WhatsApp"
+  >
+    <FontAwesomeIcon icon={faWhatsapp} size="xl" />
+    
+  </a>
+
+  {/* Call Button */}
+  <a
+    href="tel:7217019001"
+    className="flex items-center justify-center bg-[#4285F4] hover:bg-[#3367D6] text-white p-3 rounded-full shadow-xl transition-all duration-300 hover:shadow-2xl"
+    aria-label="Call us"
+  >
+    <FontAwesomeIcon icon={faPhone} size="xl" />
+    
+  </a>
+</div>
+
+
       <Toaster
             position="top-center"
             reverseOrder={false}/>
@@ -107,6 +150,7 @@ const App = () => {
             <Route path='/grievancepolicy/' element={<Grievance/>}/>
             <Route path="/terms-conditions/" element={<Terms/>}/>
             <Route path="/regulatory-details/"element={<Regulatory/>}/>
+            <Route path="/researchReport" element={<ResReport/>}/>
 
           </Routes>
         </main>

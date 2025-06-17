@@ -49,7 +49,7 @@ const Hero = () => {
   </a>
 
   <a 
-    href="https://play.google.com/store/search?q=stockBox&c=apps&hl=en" 
+    href="https://play.google.com/store/apps/details?id=com.stock_box.stockbox" 
     target="_blank" 
     rel="noopener noreferrer"
     className="flex justify-center items-center  w-[53%]"

@@ -130,29 +130,9 @@ const ServiceAnimation = () => {
             </div>
 
             {/* Animated title */}
-            <motion.h2
-              className="text-center text-[2.5rem] font-bold mt-8  bg-clip-text text-transparent"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.5,
-                duration: 0.8,
-              }}
-            >
-              Premium Investment Insights
-            </motion.h2>
+           
 
-            <motion.p
-              className="text-white text-center mt-4 max-w-md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                delay: 0.8,
-                duration: 0.8,
-              }}
-            >
-              Access expert analysis and real-time market intelligence
-            </motion.p>
+          
           </div>
         </div>
         {/* Right Column */}
@@ -199,7 +179,7 @@ const ServiceAnimation = () => {
       {/* Mobile View */}
       <div className="lg:hidden max-w-3xl mx-auto">
         <motion.h1
-          className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent px-4"
+          className="text-3xl font-bold text-center mb-12  text-white px-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -212,13 +192,13 @@ const ServiceAnimation = () => {
               {Data[key].titles.map((title, titleIndex) => (
                 <motion.div
                   key={titleIndex}
-                  className="p-6 rounded-xl bg-gray-800 shadow-lg"
+                  className="p-6 rounded-xl bg-gradient-to-br from-[#424242] to-[#2a302e]  shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: titleIndex * 0.1 }}
                 >
                   <div className="flex items-start gap-5">
-                    <div className="p-3 rounded-lg bg-gradient-to-br from-cyan-500 to-[#9812db]">
+                    <div className="p-3 rounded-lg bg-gradient-to-br from-[#8a8888] to-[black]">
                       <FontAwesomeIcon
                         icon={Data[key].icons[titleIndex]}
                         className="text-white text-xl"

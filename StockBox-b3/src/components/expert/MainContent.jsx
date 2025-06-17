@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import man from "/assets/TradeHUDC.png";
+import man from "/assets/Notification.png";
 
 const MainContent = () => {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -32,18 +32,18 @@ const MainContent = () => {
   });
 
   return (
-    <div className="mainContent flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-6">
+    <div className="mainContent flex flex-col md:flex-row items-center justify-between px-4 md:px-8 md:py-6">
       {/* Image Container - Reduced height */}
       <div className="w-full md:w-[45%] flex justify-center mb-6 md:mb-0">
         <img 
           src={man} 
           alt="Investment platform interface" 
-          className="man w-full max-w-[300px] md:max-w-[400px] h-auto object-contain"
+          className=" w-[90%]  h-auto object-contain"
         />
       </div>
 
       {/* Text Content */}
-      <div className="para w-full md:w-[50%] text-white text-base md:text-lg">
+      <div className="para w-full md:w-[50%] text-white ">
         <ul className="list-disc pl-5 space-y-2 md:space-y-3">
           <li>
             <span className="font-bold text-amber-100">Smart Investing Made Easy:</span> 

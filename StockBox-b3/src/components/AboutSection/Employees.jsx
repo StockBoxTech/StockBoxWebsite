@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { axiosInstance } from "../../../../dashboard/src/service/axiosInterceptor"
+import axios from "axios"
+
 
 const Employees = () => {
   const [employees, setEmployees] = useState([])
@@ -17,7 +18,7 @@ const Employees = () => {
   const fetchEmployees = async () => {
     try {
       setLoading(true)
-      const response = await axiosInstance.get("/api/employee/")
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/employee/`)
       console.log(response.data)
       setEmployees(response.data)
       setError(null)
@@ -55,8 +56,8 @@ const Employees = () => {
   return (
     <div className="p-6 max-w-6xl mx-auto">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-yellow-800 mb-2">Our Team</h1>
-        <p className="text-yellow-600">Meet our amazing team members</p>
+        <h1 className="text-3xl font-bold text-white mb-2">Our Team</h1>
+        <p className="text-gray-300">Meet our amazing team members</p>
 
       </div>
 
@@ -111,7 +112,7 @@ const Employees = () => {
                 </div>
 
                 <div className="mb-6">
-                  <p className="text-yellow-700 text-base lg:text-lg leading-relaxed">{employee.description}</p>
+                  <p className="text-gray-500 text-base lg:text-lg leading-relaxed">{employee.description}</p>
                 </div>
 
                 <div className="space-y-3">

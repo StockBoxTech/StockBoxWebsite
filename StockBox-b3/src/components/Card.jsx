@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import axios from "axios";
 import SideAnimateCard from "./SideAnimateCard";
-import { axiosInstance } from "../../../dashboard/src/service/axiosInterceptor";
+
 
 const Card = () => {
   const cardRefs = useRef([]);
@@ -14,8 +14,8 @@ const Card = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const res = await axiosInstance.get(
-          `/api/crousal/smallScreen/get-active-image`
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/crousal/smallScreen/get-active-image`
         );
          const activeImageData = res?.data?.data;
 

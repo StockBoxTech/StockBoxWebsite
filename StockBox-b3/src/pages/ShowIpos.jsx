@@ -135,8 +135,8 @@ const ShowIpos = () => {
                 <th className="px-6 py-3">Listing Date</th>
                 <th className="px-6 py-3">Issue Price (₹)</th>
                 <th className="px-6 py-3">Issue Amount (Cr.)</th>
-                <th className="px-6 py-3">Listing At</th>
-                <th className="px-6 py-3">About the IPOs</th>
+                <th className="px-6 py-3">Rating</th>
+                <th className="px-6 py-3">Research Report</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-600">

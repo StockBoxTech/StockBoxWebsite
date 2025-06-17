@@ -7,7 +7,9 @@ import Review from "../components/Review";
 import ServiceAnimate from "../components/ServiceAnimation";
 import purple from "../assets/purple.png";
 import Trail from "../components/Trail";
-import { axiosInstance } from "../../../dashboard/src/service/axiosInterceptor";
+
+import Pop from "../components/DownloadSection/Pop";
+import axios from "axios";
 
 const Home = () => {
   const [event, setEvent] = useState(null);
@@ -18,8 +20,7 @@ const Home = () => {
     const popupExpireTime = 1 * 20 * 700; // Adjust if needed (currently 14,000ms = 14 seconds)
 
     if (!popupData || Date.now() - JSON.parse(popupData) > popupExpireTime) {
-      axiosInstance
-        .get(`/api/event/`)
+      axios.get(`${import.meta.env.VITE_API_URL}/api/event/`)
         .then((res) => {
           const data = res.data;
           if (!data.message) {
@@ -75,6 +76,7 @@ const Home = () => {
       )}
 
       {/* Page Content */}
+      <Pop/>
       <section className="bg-transparent">
         <Hero />
       </section>
@@ -91,11 +93,11 @@ const Home = () => {
         <ServiceAnimate />
       </section>
 
-      <section className="bg-transparent ">
+      <section className="bg-transparent mt-3 ">
         <Review />
       </section>
 
-      <section className="w-full h-[10px] bg-transparent">
+      <section className="w-full bg-transparent my-[10%]">
         <img
           src={purple}
           alt="no img found"

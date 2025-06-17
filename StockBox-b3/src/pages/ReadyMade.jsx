@@ -1,121 +1,158 @@
-import art from "../assets/readymade/art.png";
+import art from "/assets/PortfolioBaskets.png";
 import ready from "/assets/portfoliobasket.png";
 import place from "../assets/ready/place.webp";
 
 const ReadyMade = () => {
   return (
-    <div className="ready-made w-full h-full px-4 md:px-8 lg:px-16 py-12 ">
+    <div className="ready-made w-full h-full px-4 sm:px-6 lg:px-8 md:py-12 space-y-20">
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto mb-16 md:mb-24 grid md:grid-cols-2 gap-8 items-center">
-        <div className="relative group">
-          <img 
-            src={art} 
-            alt="Investment art" 
-            className="rounded-3xl object-cover w-full h-auto max-h-[400px] md:max-h-[500px]" 
-          />
-          <div className="absolute inset-0 rounded-3xl" />
-          <div className="absolute bottom-8 left-8">
-            <h1 className="text-4xl md:text-6xl font-bold text-white">
-              <span className="block mb-2">ReadyMade</span>
-              <span className="flex items-center gap-4">
-                <span className="text-orange-400">Stockbox</span>
-              </span>
-            </h1>
+      <section className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row  gap-12">
+  {/* Image Section */}
+  <div className="relative group overflow-hidden rounded-3xl flex-1 flex justify-center items-center">
+    <img 
+      src={art} 
+      alt="Investment strategy visualization" 
+      className="object-contain w-[85%] h-auto p-4 transform group-hover:scale-105 transition-transform duration-500" 
+    />
+  </div>
+
+  {/* Text Section */}
+  <div className="flex-1 space-y-6 text-center md:text-left ">
+    <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold  mb-6 leading-tight text-[#dbf169]">
+      <span className="block text-gray-200">ReadyMade</span>
+      <span className="block">Stockbox</span>
+    </h1>
+    <div className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 lg:p-10">
+    <h2 className="text-lg md:text-xl text-white leading-relaxed">
+      Get a competitive edge with professionally managed stock baskets
+    </h2>
+    <p className=" text-gray-300 leading-relaxed">
+      Access meticulously curated portfolios optimized by our research team using proven investment models for maximum returns.
+    </p>
+    <div className="flex flex-wrap gap-4 mt-6 justify-center md:justify-start">
+      {['Algorithmic Selection', 'Market Adaptation', 'Risk Management'].map((tag, i) => (
+        <span key={i} className="px-4 py-2 bg-white/10 rounded-full text-white text-sm font-medium">
+          {tag}
+        </span>
+      ))}
+    </div>
+    </div>
+  </div>
+</div>
+
+      </section>
+
+      {/* Value Proposition Section */}
+      <section className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-8">
+            <h2 className="text-3xl font-bold text-white">
+              Expertly Curated <span className="text-[#ebff86]">Portfolios</span>
+            </h2>
+            <div className="space-y-6">
+              <p className=" text-gray-300 leading-relaxed">
+                Our Wizard Box/Readymade Stockbox provides access to specially curated baskets of stocks, 
+                diligently managed by SEBI-registered research professionals using proven investment models.
+              </p>
+              <p className=" text-gray-300 leading-relaxed">
+                We continuously monitor and rebalance these portfolios to adapt to changing market conditions, 
+                ensuring optimal performance for your long-term investment goals.
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex justify-center">
+            <img 
+              src={ready} 
+              alt="Stockbox portfolio interface" 
+              className=" w-[90%]  rounded-xl  object-contain" 
+            />
           </div>
         </div>
+      </section>
 
-        <div className="md:pl-8">
-          <h2 className="text-2xl md:text-3xl text-white leading-relaxed font-medium">
-            Get a competitive edge in the market with a tool that provides access to meticulously managed baskets of stocks, 
-            ensuring optimal performance based on time-tested investment models.
+      {/* Features Section */}
+      <section className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Why Choose <span className="text-[#ebff86]">Stockbox</span>
           </h2>
-        </div>
-      </div>
-
-      {/* Second Section */}
-      <div className="max-w-7xl mx-auto mb-24 grid md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6">
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-            Stockbox's Wizard Box/Readymade Stockbox allows users to access our specially curated basket of stocks. 
-            These readymade baskets are diligently managed by the Stockbox research team using time-tested investment models.
-          </p>
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-            We have tailored different baskets of stocks that are re-balanced and updated as per the change in the market trends 
-            at every fixed interval. Our goal is to maximize clients' returns with flexible and adaptive long-term investment strategies.
+          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+            Our comprehensive approach combines professional expertise with cutting-edge technology
           </p>
         </div>
         
-        <img 
-          src={ready} 
-          alt="Stockbox interface" 
-          className="w-full max-w-[500px] mx-auto object-contain" 
-        />
-      </div>
-
-      {/* Features Section */}
-      <div className="max-w-7xl mx-auto mb-24 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {[
-          { 
-            title: "Transparency",
-            content: "Clear insights on performance, holdings, and fees for informed decisions.",
-            icon: "🔍"
-          },
-          { 
-            title: "Expert Monitoring",
-            content: "SEBI-registered professionals track and adjust stock baskets based on market trends.",
-            icon: "👨💼"
-          },
-          { 
-            title: "Research-Driven",
-            content: "Curated using top-quality research and investment strategies by SEBI-registered experts",
-            icon: "📈"
-          },
-          { 
-            title: "Control & Flexibility",
-            content: "Integrated with broking accounts for real-time tracking, easy withdrawals, and auto-rebalancing",
-            icon: "🎛️"
-          }
-        ].map((feature, index) => (
-          <div key={index} className="p-6 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-            <div className="text-3xl mb-4">{feature.icon}</div>
-            <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
-            <p className="text-gray-400 leading-relaxed">{feature.content}</p>
-          </div>
-        ))}
-      </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { 
+              title: "Complete Transparency",
+              content: "Full visibility into performance metrics, holdings composition, and fee structures",
+              icon: "🔍"
+            },
+            { 
+              title: "Expert Management",
+              content: "SEBI-registered professionals actively monitor and adjust portfolios",
+              icon: "👨‍💼"
+            },
+            { 
+              title: "Research-Backed",
+              content: "Strategies developed using rigorous fundamental and technical analysis",
+              icon: "📊"
+            },
+            { 
+              title: "Smart Technology",
+              content: "Automated rebalancing and real-time performance tracking",
+              icon: "⚡"
+            }
+          ].map((feature, index) => (
+            <div 
+              key={index} 
+              className="p-6 rounded-xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-orange-400/30 transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="text-3xl mb-4 text-[#ebff86]">{feature.icon}</div>
+              <h3 className="text-xl  text-white mb-3">{feature.title}</h3>
+              <p className="text-gray-400 leading-relaxed">{feature.content}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* CTA Section */}
-      <div className="max-w-9xl mx-auto grid md:grid-cols-2 gap-12 items-center bg-gradient-to-r from-orange-500/20 to-green-500/10 p-8 rounded-3xl">
-        <div className="space-y-6">
-          <div className="space-y-4">
-            <h2 className="text-2xl md:text-3xl font-semibold text-white">
-              Achieve your investment goals with
-            </h2>
-            <h1 className="text-4xl md:text-5xl font-bold text-white">
-              Curated Stock Baskets
-            </h1>
-            <p className="text-lg text-gray-300">
-              Smallcases are curated baskets of stocks that are managed by stockbox Research Desk.
-            </p>
+      <section className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 items-center bg-gradient-to-r from-orange-500/20 to-green-500/20 p-8 md:p-12 rounded-3xl border border-white/10 overflow-hidden relative">
+          <div className="absolute inset-0 bg-[url('/assets/grid-pattern.svg')] opacity-10"></div>
+          <div className="relative space-y-6">
+            <div className="space-y-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-white">
+                Start your investment journey with
+              </h2>
+              <h1 className="text-4xl md:text-5xl font-bold text-white">
+                Professionally Managed Portfolios
+              </h1>
+              <p className="text-lg text-gray-300">
+                Our smallcases are carefully constructed baskets of stocks designed by Stockbox Research Team to help you invest smarter.
+              </p>
+            </div>
+            
+            <button 
+              className="bg-[#ebff86] hover:to-amber-600 text-gray-700 font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-orange-500/30"
+              onClick={() => window.open('https://stockboxtech.smallcase.com/', '_blank')}
+            >
+              Explore Portfolios →
+            </button>
           </div>
-          
-          <button 
-            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105"
-            onClick={() => window.open('https://stockboxtech.smallcase.com/', '_blank')}
-          >
-            Discover Baskets →
-          </button>
-        </div>
 
-        <div className="relative group">
-          <img 
-            src={place} 
-            alt="Investment chart" 
-            className="rounded-2xl shadow-xl w-full h-auto max-h-[300px] object-contain" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 rounded-2xl" />
+          <div className="relative group flex justify-center">
+            <img 
+              src={place} 
+              alt="Investment performance chart" 
+              className="rounded-2xl shadow-xl w-full max-w-md border-2 border-white/10 object-cover transform group-hover:scale-95 transition-transform duration-500" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl" />
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

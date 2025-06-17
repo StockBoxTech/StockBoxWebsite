@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useNavigate } from "react-router-dom";
 import { MdDownloadForOffline } from "react-icons/md";
+import Pop from "./DownloadSection/Pop";
 
 
 const Hero = () => {
@@ -44,6 +45,7 @@ const Hero = () => {
 
   return (
     <div className="flex flex-col items-center mt-[7%]  px-4 sm:px-6 lg:px-8">
+      
      <div className="relative w-[230px] md:w-[300px] h-[30px] md:h-[27px] mb-5 md:mb-0">
   <div className="relative  rounded-full box text-white text-xs md:text-sm flex items-center justify-center h-full w-full">
     Your Money is our responsibility

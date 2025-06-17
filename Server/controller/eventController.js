@@ -25,7 +25,8 @@ export const uploadEvent = async (req, res) => {
 
       if (!req.file) return res.status(400).json({ message: "No file uploaded" });
 
-      const imageUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+      const imageUrl = `${process.env.VITE_BACKEND_URL}/uploads/${req.file.filename}`;
+      
 
       let existingEvent = await Event.findOne();
 
@@ -71,7 +72,7 @@ export const getEvent = async (req, res) => {
     if (!event) return res.status(404).json({ message: "No event found" });
 
     // Ensure no double slashes
-    const imagePath = `http://localhost:5000${event.image.startsWith('/') ? '' : '/'}${event.image}`;
+    const imagePath = `${process.env.VITE_BACKEND_URL}${event.image.startsWith('/') ? '' : '/'}${event.image}`;
 
     res.json({ image: imagePath });
   } catch (error) {

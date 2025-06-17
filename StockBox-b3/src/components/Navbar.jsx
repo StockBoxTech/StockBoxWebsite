@@ -18,11 +18,11 @@ const Navbar = () => {
   gsap.registerPlugin(useGSAP);
   const navItems = [
     { title: 'Expert Advice', icon: faUser, desc: 'Get professional guidance', path:"/expert-advice/" },
-    { title: 'Portfolio Screener', icon: faChartLine, desc: 'Analyze your investments', path:"/portfolio-screener/" },
+   /*  { title: 'Portfolio Screener', icon: faChartLine, desc: 'Analyze your investments', path:"/portfolio-screener/" }, */
     { title: 'ReadyMade Stockbox', icon: faBriefcase, desc: 'Pre-built portfolios', path:"/readymade-stockbox/" },
-    { title: 'Stock Screener', icon: faSearchDollar, path:"/stock-screener", desc: 'Find perfect stocks/' },
-    { title:"Portfolio Hedger", icon:faUser, path:"/portfolio-hedger/", desc:"Invest confidently with smart protection." },
-    { title:"Fii/Dii Investments", icon:faUser, path:"/fii-dii-investments/", desc:"Monitor market trends for better investments." },
+    { title: 'Stock Screener', icon: faSearchDollar, path:"/stock-screener", desc: 'Find perfect stocks' }, 
+   /*  { title:"Portfolio Hedger", icon:faUser, path:"/portfolio-hedger/", desc:"Invest confidently with smart protection." }, */
+    { title:"Fii/dii Investments", icon:faUser, path:"/fii-dii-investments/", desc:"Monitor market trends for better investments." },
   ];
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const Navbar = () => {
     var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
     if (/android|windows/i.test(userAgent)) {
-      window.location.href = "https://play.google.com/store/search?q=stockBox&c=apps&hl=en";
+      window.location.href = "https://play.google.com/store/apps/details?id=com.stock_box.stockbox";
     } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
       window.location.href = "https://apps.apple.com/in/app/stockbox-technologies/id6443554700";
     } else {
@@ -88,7 +88,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex-shrink-0 overflow-hidden">
-              <img src={logo} alt="Logo" className="w-[13em] cursor-pointer" onClick={() => navigate('/')} />
+              <img src={logo} alt="Logo" className="w-[10em] cursor-pointer" onClick={() => navigate('/')} />
             </div>
 
             {/* Desktop Menu */}
@@ -156,8 +156,8 @@ const Navbar = () => {
               </div>
 
               {[
-                { name: 'About', path: '/about-us/' },
-                { name: 'Contact', path: '/contact-us/' },
+               /*  { name: 'About', path: '/about-us/' },
+                { name: 'Contact', path: '/contact-us/' }, */
                 { name: 'Blog', path: '/blogs/' },
                 { name: 'IPOs', path: '/comapny-ipos' }
               ].map((item) => (
@@ -212,6 +212,12 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
         <div className="fixed inset-0 bg-gray-900/95 backdrop-blur-xl z-50 pt-16">
+         <button 
+          className="absolute top-4 right-4 text-white p-2"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <FontAwesomeIcon icon={faTimes} className="text-xl" />
+        </button>
           <div className="flex flex-col p-6 space-y-6">
             <div className="mb-4">
               <button 
@@ -250,8 +256,8 @@ const Navbar = () => {
             </div>
 
             {[
-              { name: 'About', path: '/about-us/' },
-              { name: 'Contact', path: '/contact-us/' },
+              /* { name: 'About', path: '/about-us/' },
+              { name: 'Contact', path: '/contact-us/' }, */
               { name: 'Blog', path: '/blogs/' },
               { name: 'IPOs', path: '/comapny-ipos' }
             ].map((item) => (

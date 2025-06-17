@@ -25,7 +25,7 @@ const MobileShowCase = () => {
  <div className="md:w-full flex  absolute md:h-[100%] md:-top-15 ">
     <img src={div} alt="no image" className=" w-full h-full z-[5] "/>
     <a 
-        href="https://play.google.com/store/search?q=stockBox&c=apps&hl=en" 
+        href="https://play.google.com/store/apps/details?id=com.stock_box.stockbox" 
         target="_blank" 
         rel="noopener noreferrer"
         className="flex justify-center items-center  w-[80%] absolute md:top-[50%] left-[30%] z-30 top-[40%]"

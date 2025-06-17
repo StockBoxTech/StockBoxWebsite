@@ -29,15 +29,31 @@ const Partnet = () => {
         </div>
 
         {/* Google Map */}
-        <div className="mt-10">
-          <iframe
-            className="w-full h-64 rounded-lg shadow-md"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.99136057951!2d77.98563357556333!3d30.294307574798722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39092bbd7c22aa11%3A0xfded64e3634e17b1!2sStockbox%20Technologies%20Private%20Limited!5e0!3m2!1sen!2sin!4v1743601890768!5m2!1sen!2sin"
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
+           <div className="flex flex-col md:flex-row gap-6">
+  {/* First Map */}
+  <div className="flex-1 rounded-xl overflow-hidden shadow-md border border-white/10 aspect-video hover:shadow-lg transition-shadow duration-300">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.99136057951!2d77.98563357556333!3d30.294307574798722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39092bbd7c22aa11%3A0xfded64e3634e17b1!2sStockbox%20Technologies%20Private%20Limited!5e0!3m2!1sen!2sin!4v1743601890768!5m2!1sen!2sin"
+      className="w-full h-full"
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      allowFullScreen
+    />
+  </div>
+
+  {/* Second Map */}
+  <div className="flex-1 rounded-xl overflow-hidden shadow-md border border-white/10 aspect-video hover:shadow-lg transition-shadow duration-300">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3442.7990374848214!2d78.08241657556577!3d30.356660774767874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzDCsDIxJzI0LjAiTiA3OMKwMDUnMDYuMCJF!5e0!3m2!1sen!2sin!4v1749880617352!5m2!1sen!2sin"
+      className="w-full h-full"
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      allowFullScreen
+      style={{ border: 0 }}
+    />
+  </div>
+</div>
+        
       </div>
     </div>
   );
