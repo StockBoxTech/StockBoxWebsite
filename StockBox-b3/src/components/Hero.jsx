@@ -44,12 +44,10 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center mt-[7%]  px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8">
       
      <div className="relative w-[230px] md:w-[300px] h-[30px] md:h-[27px] mb-5 md:mb-0">
-  <div className="relative  rounded-full box text-white text-xs md:text-sm flex items-center justify-center h-full w-full">
-    Your Money is our responsibility
-  </div>
+ 
 </div>
 
 
@@ -58,20 +56,14 @@ const Hero = () => {
           className="md:text-[80px] text-3xl lg:text-[5vw]  text-center  mx-auto leading-tight text-white  font-bold "
           style={{ fontFamily: "plus-jakarta-sans" }}
         >
-          Invest in Your Future, With a
-          <span className="md:block">{""} Trusted & SEBI Registered</span>
-          <span className="md:block mt-2">{""} Research Analyst</span>
+          Invest Smarter
+          <span className="md:block">{""} With Stockbox</span>
+      
         </h1>
+        <p className="sub-head text-[#ebff86] text-[1.6em] flex flex-col items-center justify-center text-center mt-4 md:mt-6 font-semibold">
+          <span >Registered I Plans Starts With Rs. 99</span> <span>I Trusted By 70K+Users</span> </p>
       </div>
-      <div className="w-[60%] max-w-[60%] sm:max-w-[80%] lg:max-w-[80%]  mt-4 container3">
-        <p className="text-sm sm:text-base md:text-lg text- text-center text-white
-          leading-relaxed sm:leading-loose">
-          We are a SEBI Registered Research Analyst firm that assists in
-          empowering your trading and investment decisions/opportunities with
-          best-in-class stock market research and insights, utilizing our
-          time-tested algorithmic tools.
-        </p>
-      </div>
+      
       <button onClick={() => navigator("/Download")}
         className="w-[205px]  px-1  h-[48px] sm:h-[56px] 
           bg-[#ebff86] mt-6 sm:mt-10 text-gray-700

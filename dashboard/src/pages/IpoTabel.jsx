@@ -20,7 +20,9 @@ const IpoTable = () => {
     listingDate: '',
     issuePrice: '',
     issueAmountCr: '',
-    blogLink: ''
+    blogLink: '',
+     status:'open',
+     review:''
   });
 
   useEffect(() => {
@@ -68,7 +70,9 @@ const IpoTable = () => {
         listingDate: '',
         issuePrice: '',
         issueAmountCr: '',
-        blogLink: ''
+        blogLink: '',
+         status:'open',
+         review:''
       });
       setEditingId(null);
       fetchIpos();
@@ -90,7 +94,10 @@ const IpoTable = () => {
       listingDate: ipo.listingDate,
       issuePrice: ipo.issuePrice,
       issueAmountCr: ipo.issueAmountCr,
-      blogLink: ipo.blogLink
+      blogLink: ipo.blogLink,
+      status: ipo.status,
+      review: ipo.review
+
     });
     setEditingId(ipo._id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -427,6 +434,32 @@ const IpoTable = () => {
               style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ced4da' }}
             />
           </div>
+
+           <div>
+            <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>review</label>
+            <input 
+              type="text" 
+              name="review" 
+              placeholder="review" 
+              value={formData.review} 
+              onChange={handleChange} 
+              style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ced4da' }}
+            />
+          </div>
+           <div>
+  <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Status</label>
+  <select
+    name="status"
+    value={formData.status}
+    onChange={handleChange}
+    style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ced4da' }}
+  >
+    <option value="">Select status</option>
+    <option value="open">Open</option>
+    <option value="closed">Closed</option>
+  </select>
+</div>
+
         </div>
         
         <button 
@@ -459,7 +492,9 @@ const IpoTable = () => {
                 listingDate: '',
                 issuePrice: '',
                 issueAmountCr: '',
-                blogLink: ''
+                blogLink: '',
+                status:'open',
+                review:''
               });
               setEditingId(null);
             }}
@@ -502,6 +537,8 @@ const IpoTable = () => {
                 <th style={{ padding: '12px 15px', textAlign: 'left' }}>Issue Price (₹)</th>
                 <th style={{ padding: '12px 15px', textAlign: 'left' }}>Amount (Cr.)</th>
                 <th style={{ padding: '12px 15px', textAlign: 'left' }}>Blog</th>
+                <th style={{ padding: '12px 15px', textAlign: 'left' }}>Review</th>
+                <th style={{ padding: '12px 15px', textAlign: 'left' }}>Status</th>
                 <th style={{ padding: '12px 15px', textAlign: 'left' }}>Actions</th>
               </tr>
             </thead>
@@ -533,6 +570,8 @@ const IpoTable = () => {
                       'N/A'
                     )}
                   </td>
+                  <td style={{ padding: '12px 15px' }}>{ipo.review || 'N/A'}</td>
+                  <td style={{ padding: '12px 15px' }}>{ipo.status || 'N/A'}</td>
                   <td style={{ padding: '12px 15px', display: 'flex', gap: '10px' }}>
                     <button 
                       onClick={() => handleEdit(ipo)}

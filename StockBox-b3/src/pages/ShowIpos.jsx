@@ -7,6 +7,7 @@ const ShowIpos = () => {
   const [filteredIpos, setFilteredIpos] = useState([]);
   const [upcomingIpos, setUpcomingIpos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [todayIpo, setTodayIpo] = useState([]);
@@ -42,11 +43,20 @@ const ShowIpos = () => {
   }, []);
 
   useEffect(() => {
-    const filtered = ipos.filter(ipo =>
-      ipo.company.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    let filtered = ipos;
+
+    if (searchTerm) {
+      filtered = filtered.filter(ipo =>
+        ipo.company.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (statusFilter) {
+      filtered = filtered.filter(ipo => ipo.status === statusFilter);
+    }
+
     setFilteredIpos(filtered);
-  }, [searchTerm, ipos]);
+  }, [searchTerm, statusFilter, ipos]);
 
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
@@ -105,8 +115,9 @@ const ShowIpos = () => {
         </div>
       </div>
 
-      {/* Search Input */}
-      <div className="max-w-xl mb-6 mx-auto">
+      {/* Filters */}
+      <div className="max-w-4xl mb-6 mx-auto flex flex-col sm:flex-row gap-4">
+        {/* Search Input */}
         <input
           type="text"
           placeholder="🔍 Search IPOs by company name..."
@@ -114,6 +125,17 @@ const ShowIpos = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+
+        {/* Category Dropdown */}
+        <select
+          className="w-full sm:w-64 px-4 py-3 rounded-md bg-[#2d3b37] text-white border border-gray-600 focus:outline-none"
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+        >
+          <option value="">All Statuses</option>
+          <option value="open">Open</option>
+          <option value="closed">Closed</option>
+        </select>
       </div>
 
       {/* IPO Table */}
@@ -121,9 +143,11 @@ const ShowIpos = () => {
         {filteredIpos.length === 0 ? (
           <div className="p-8 text-center text-gray-300">
             <h3 className="text-lg font-medium mb-2">
-              {searchTerm ? `No IPOs found for "${searchTerm}"` : 'No IPOs available'}
+              {searchTerm || statusFilter
+                ? `No IPOs found for "${searchTerm}"${statusFilter ? ` with status "${statusFilter}"` : ''}`
+                : 'No IPOs available'}
             </h3>
-            <p>{searchTerm ? 'Try a different search' : 'Check back later for updates.'}</p>
+            <p>{searchTerm || statusFilter ? 'Try a different filter' : 'Check back later for updates.'}</p>
           </div>
         ) : (
           <table className="min-w-full text-left divide-y divide-gray-700">
@@ -137,6 +161,7 @@ const ShowIpos = () => {
                 <th className="px-6 py-3">Issue Amount (Cr.)</th>
                 <th className="px-6 py-3">Rating</th>
                 <th className="px-6 py-3">Research Report</th>
+                <th className="px-6 py-3">Review</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-600">
@@ -165,6 +190,7 @@ const ShowIpos = () => {
                       <span className="text-gray-400">N/A</span>
                     )}
                   </td>
+                  <td className="px-6 py-4 text-sm">{ipo.review}</td>
                 </tr>
               ))}
             </tbody>

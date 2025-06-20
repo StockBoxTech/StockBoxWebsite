@@ -8,7 +8,9 @@ const ipoSchema = new mongoose.Schema({
   listingDate: { type: String },
   issuePrice: { type: Number },
   issueAmountCr: { type: Number },
-  blogLink: { type: String }
+  blogLink: { type: String },
+  status: { type: String, enum: [ 'open', 'closed'], default: 'upcoming' },
+  review:{ type: String },
 });
 
 export default mongoose.model('Iposlist', ipoSchema);
