@@ -91,6 +91,11 @@ const Dashboard = ({ children }) => {
       icon: <Database size={20} />,
     },
     {
+      path: "/complaints",
+      label: "Complaints Data",
+      icon: <Database size={20} />,
+    },
+    {
       path: "/Event ",
       label: "Add Event (Popup-event)",
       icon: <Calendar size={20} />,

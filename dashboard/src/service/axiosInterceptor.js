@@ -21,7 +21,9 @@ axiosInstance.interceptors.response.use(
     // Customize this based on how your backend sends token-related errors
     if (
       message.toLowerCase().includes("token not found") ||
-      message.toLowerCase().includes("token expired") 
+      message.toLowerCase().includes("token expired") ||
+      message.toLowerCase().includes("Unauthorized") 
+
     ) {
       localStorage.removeItem("isLoggedIn");
       // Optionally redirect to login or notify user

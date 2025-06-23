@@ -20,6 +20,7 @@ import IpoTabel from "./pages/IpoTabel";
 import AddEmployee from "./components/Employee/AddEmploye";
 import Employee from "./pages/Employee";
 import Resrpt from "./pages/Resrpt";
+import Complaints from "./pages/Complaints";
 
 const App = () => {
   const navigate = useNavigate();
@@ -70,8 +71,8 @@ const App = () => {
           <Route path="/employee" element={<Employee />} />
           <Route path="/employees/edit/:id" element={<AddEmployee />} />
           <Route path="/employees/add" element={<AddEmployee />} />
-          <Route path="/report" element={<Resrpt/>}/>
-
+          <Route path="/report" element={<Resrpt />} />
+          <Route path="/complaints" element={<Complaints />} />
         </Route>
       </Routes>
     </>

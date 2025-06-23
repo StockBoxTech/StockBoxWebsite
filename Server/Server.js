@@ -21,6 +21,7 @@ import CrousalImagesForSmallScreen from "./routes/ImagesForSmallScreenRoute.js";
 import path from "path";
 import EmployeeRoute from "./routes/EmployeeRoute.js";
 import Issuerouter from "./routes/issueRoutes.js";
+import complaintReportRoutes from "./routes/complaintReport.Routes.js";
 
 dotenv.config();
 
@@ -60,7 +61,8 @@ app.use("/api/Otp", SendOtpToPhNumberRouter); // OTP routes
 app.use("/api/company", iporouter);
 app.use("/api/crousal/smallScreen", CrousalImagesForSmallScreen);
 app.use("/api/employee", EmployeeRoute);
-app.use("/api/report",Issuerouter)
+app.use("/api/report", Issuerouter);
+app.use("/api/complaint-report", complaintReportRoutes);
 
 // Error handling middleware
 app.use(errorHandler);
