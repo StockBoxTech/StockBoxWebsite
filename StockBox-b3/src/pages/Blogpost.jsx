@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./blogpost.css";
@@ -7,7 +7,8 @@ import {
   faClock, 
   faUser, 
   faBookmark, 
-  faShareAlt, 
+  faShareAlt,
+  faLink,
   faArrowLeft 
 } from '@fortawesome/free-solid-svg-icons';
 import { 
@@ -26,6 +27,7 @@ const Blogpost = () => {
   const [error, setError] = useState(null);
   const [isCopied, setIsCopied] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const contentRef = useRef(null);
 
   useEffect(() => {
     async function fetchBlogData() {
@@ -52,31 +54,31 @@ const Blogpost = () => {
   const title = blogData?.title || "Check out this blog post";
   
   const socialLinks = [
-  {
-    name: "Facebook",
-    url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
-    icon: faFacebookF,
-    bgColor: "bg-[#1877F2]" // Facebook blue
-  },
-  {
-    name: "Twitter",
-    url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`,
-    icon: faTwitter,
-    bgColor: "bg-[#1DA1F2]" // Twitter blue
-  },
-  {
-    name: "WhatsApp",
-    url: `https://api.whatsapp.com/send?text=${encodeURIComponent(title + " " + shareUrl)}`,
-    icon: faWhatsapp,
-    bgColor: "bg-[#25D366]" // WhatsApp green
-  },
-  {
-    name: "LinkedIn",
-    url: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(title)}`,
-    icon: faLinkedinIn,
-    bgColor: "bg-[#0A66C2]" // LinkedIn blue
-  }
-];
+    {
+      name: "Facebook",
+      url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+      icon: faFacebookF,
+      bgColor: "bg-[#1877F2]"
+    },
+    {
+      name: "Twitter",
+      url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`,
+      icon: faTwitter,
+      bgColor: "bg-[#1DA1F2]"
+    },
+    {
+      name: "WhatsApp",
+      url: `https://api.whatsapp.com/send?text=${encodeURIComponent(title + " " + shareUrl)}`,
+      icon: faWhatsapp,
+      bgColor: "bg-[#25D366]"
+    },
+    {
+      name: "LinkedIn",
+      url: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(title)}`,
+      icon: faLinkedinIn,
+      bgColor: "bg-[#0A66C2]"
+    }
+  ];
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shareUrl);
@@ -86,7 +88,7 @@ const Blogpost = () => {
 
   const toggleBookmark = () => {
     setIsBookmarked(!isBookmarked);
-    // Here you would typically also save to localStorage or make an API call
+    // Add actual bookmarking functionality here
   };
 
   const formatDate = (dateString) => {
@@ -104,10 +106,13 @@ const Blogpost = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500 mx-auto mb-4"></div>
-          <p className="text-gray-600 font-medium">Loading blog post...</p>
+          <div className="animate-pulse bg-gray-200 rounded-xl w-16 h-16 mx-auto mb-6"></div>
+          <div className="space-y-4">
+            <div className="h-6 bg-gray-200 rounded w-64 mx-auto"></div>
+            <div className="h-4 bg-gray-200 rounded w-48 mx-auto"></div>
+          </div>
         </div>
       </div>
     );
@@ -115,22 +120,29 @@ const Blogpost = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center p-8 max-w-md mx-auto bg-white rounded-xl shadow-md">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="text-center p-8 max-w-md mx-auto bg-white rounded-2xl shadow-xl">
+          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
           <h2 className="text-2xl font-bold text-gray-800 mb-3">Error Loading Blog</h2>
-          <p className="text-gray-600 mb-6">{error}</p>
-          <button 
-            onClick={() => window.location.reload()}
-            className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-medium"
-          >
-            Try Again
-          </button>
-          <button 
-            onClick={() => navigate('/blogs')}
-            className="mt-4 px-6 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors font-medium block w-full"
-          >
-            Back to Blog List
-          </button>
+          <p className="text-gray-600 mb-8">{error}</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={() => window.location.reload()}
+              className="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duration-200"
+            >
+              Try Again
+            </button>
+            <button 
+              onClick={() => navigate('/blogs')}
+              className="px-6 py-3 bg-white text-gray-800 rounded-xl border border-gray-200 hover:bg-gray-50 transition-colors font-medium shadow hover:shadow-md"
+            >
+              Back to Blog List
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -148,113 +160,129 @@ const Blogpost = () => {
         )}
       </Helmet>
           
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Back Button */}
         <button 
           onClick={() => navigate('/blogs')}
-          className="flex items-center text-[#ebff86] hover:text-[#acbd55] mb-6 transition-colors font-medium"
+          className="flex items-center gap-2 text-indigo-600 hover:text-indigo-800 mb-8 transition-colors font-medium group"
         >
-          <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
-          Back to All Blogs
+          <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center group-hover:bg-indigo-200 transition-colors">
+            <FontAwesomeIcon icon={faArrowLeft} className="text-indigo-600 group-hover:text-indigo-800" />
+          </div>
+          <span>Back to All Blogs</span>
         </button>
 
         {/* Article Container */}
-        <article className="bg-white rounded-2xl shadow-md overflow-hidden">
+        <article className="bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl">
           {/* Featured Image */}
           {blogData.thumbImage?.secure_url && (
-            <div className="w-full h-80 md:h-96 overflow-hidden">
+            <div className="w-full h-80 md:h-96 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
               <img
                 src={blogData.thumbImage.secure_url}
                 alt={blogData.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
+              <div className="absolute bottom-6 left-6 right-6 z-20">
+                {/* Category Tag */}
+                {blogData.category && (
+                  <span className="inline-block px-4 py-1.5 text-xs font-bold text-white bg-indigo-600 rounded-full mb-3">
+                    {blogData.category.blogCategoryName}
+                  </span>
+                )}
+
+                {/* Title */}
+                <h1 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-3 drop-shadow-lg">
+                  {blogData.title}
+                </h1>
+
+                {/* Author and Date */}
+                <div className="flex flex-wrap items-center gap-4 text-white/90">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                      <FontAwesomeIcon icon={faUser} className="text-white" />
+                    </div>
+                    <span className="text-sm font-medium">{blogData.author || "Unknown Author"}</span>
+                  </div>
+                  <span className="text-sm flex items-center gap-1">
+                    <FontAwesomeIcon icon={faClock} />
+                    {formatDate(blogData.updatedAt)}
+                  </span>
+                  <span className="text-sm flex items-center gap-1">
+                    <FontAwesomeIcon icon={faBookmark} className="text-sm" />
+                    {estimateReadingTime(blogData.content)}
+                  </span>
+                </div>
+              </div>
             </div>
           )}
 
           {/* Article Content */}
           <div className="px-6 py-8 md:px-10 md:py-12">
-            {/* Category Tag */}
-            {blogData.category && (
-              <span className="inline-block px-4 py-1 text-sm font-semibold text-indigo-600 bg-indigo-50 rounded-full mb-4">
-                {blogData.category.blogCategoryName}
-              </span>
-            )}
-
-            {/* Title */}
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
-              {blogData.title}
-            </h1>
-
-            {/* Author and Date */}
-            <div className="flex items-center space-x-4 mb-8">
-              <div className="flex items-center">
-                <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center mr-3">
-                  <FontAwesomeIcon icon={faUser} className="text-gray-500" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-gray-700">{blogData.author || "Unknown Author"}</p>
-                  <p className="text-xs text-gray-500">{formatDate(blogData.updatedAt)}</p>
-                </div>
-              </div>
-              <span className="text-sm text-gray-500 flex items-center">
-                <FontAwesomeIcon icon={faClock} className="mr-1" />
-                {estimateReadingTime(blogData.content)}
-              </span>
-            </div>
-
             {/* Content */}
-            <div className="prose max-w-none text-gray-700">
-              <div dangerouslySetInnerHTML={{ __html: blogData.content }} />
-            </div>
+            <div 
+              ref={contentRef}
+              className="prose prose-lg max-w-none text-gray-700 prose-headings:text-gray-900 prose-a:text-indigo-600 hover:prose-a:text-indigo-800 prose-blockquote:border-l-indigo-600 prose-blockquote:bg-gray-50 prose-blockquote:px-6 prose-blockquote:py-4 prose-blockquote:rounded-xl prose-img:rounded-xl prose-img:shadow-md"
+              dangerouslySetInnerHTML={{ __html: blogData.content }} 
+            />
 
             {/* Divider */}
-            <div className="border-t border-gray-100 my-8"></div>
+            <div className="border-t border-gray-200 my-10"></div>
 
             {/* Action Buttons */}
-            <div className="flex justify-between items-center">
-              <div className="flex space-x-2">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+              <div className="flex items-center gap-3">
                 <button 
                   onClick={toggleBookmark}
-                  className={`p-2 rounded-full ${isBookmarked ? 'text-indigo-600' : 'text-gray-500 hover:text-indigo-600'}`}
+                  className={`p-3 rounded-full flex items-center gap-2 transition-colors ${isBookmarked ? 'bg-indigo-100 text-indigo-600' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}
                   aria-label={isBookmarked ? "Remove bookmark" : "Bookmark this article"}
                 >
                   <FontAwesomeIcon icon={faBookmark} />
+                  <span className="text-sm font-medium hidden sm:inline">
+                    {isBookmarked ? "Bookmarked" : "Bookmark"}
+                  </span>
                 </button>
+                
                 <button 
                   onClick={copyToClipboard}
-                  className="p-2 rounded-full text-gray-500 hover:text-indigo-600"
-                  aria-label="Share this article"
+                  className="p-3 rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 transition-colors flex items-center gap-2"
+                  aria-label="Copy link to clipboard"
                 >
-                  <FontAwesomeIcon icon={faShareAlt} />
+                  <FontAwesomeIcon icon={faLink} />
+                  <span className="text-sm font-medium hidden sm:inline">Copy Link</span>
                 </button>
               </div>
 
               {/* Social Share Buttons */}
-              <div className="flex space-x-2 ">
-  {socialLinks.map((social) => (
-    <a
-      key={social.name}
-      href={social.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`p-2 rounded-full text-white ${social.bgColor} hover:opacity-90 transition-opacity`}
-      aria-label={`Share on ${social.name}`}
-    >
-      <FontAwesomeIcon icon={social.icon} />
-    </a>
-  ))}
-</div>
+              <div className="flex flex-col gap-3">
+                <p className="text-sm font-medium text-gray-700">Share this article:</p>
+                <div className="flex gap-2">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`p-3 rounded-full text-white ${social.bgColor} hover:opacity-90 transition-opacity flex items-center justify-center w-12 h-12`}
+                      aria-label={`Share on ${social.name}`}
+                    >
+                      <FontAwesomeIcon icon={social.icon} className="text-lg" />
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-
-          {/* Floating Copy Link Notification */}
-          {isCopied && (
-            <div className="fixed bottom-6 right-6 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-lg animate-fade-in-out">
-              Link copied to clipboard!
-            </div>
-          )}
         </article>
+
+        {/* Floating Copy Link Notification */}
+        {isCopied && (
+          <div className="fixed bottom-6 right-6 bg-gray-800 text-white px-4 py-3 rounded-lg shadow-xl flex items-center gap-2 animate-fade-in-out z-50">
+            <FontAwesomeIcon icon={faLink} className="text-indigo-400" />
+            <span>Link copied to clipboard!</span>
+          </div>
+        )}
       </div>
     </>
   );

@@ -68,7 +68,7 @@ const Card = () => {
       <SideAnimateCard className="w-screen bg-amber-100" />
 
       {/* Mobile */}
-      <div className="flex justify-center items-center h-[70vh] md:hidden">
+      <div className="flex justify-center items-center md:h-[65vh] h-[49vh] md:hidden">
         <div className="relative flex justify-center w-1/2 items-center">
           {activeImages.slice(0, 4).map((imgObj, index) => (
             <div

@@ -60,4 +60,13 @@
  .sub-head{
  text: center;
  font-size: 3.2rem;
+ 
  }
+
+ @media screen and (max-width: 768px) {
+  .sub-head {
+    font-size: 1rem;
+    text-align: center;
+    color: aqua;
+  }
+}

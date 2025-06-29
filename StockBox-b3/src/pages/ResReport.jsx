@@ -8,7 +8,7 @@ const ResReport = () => {
   const [monthFilter, setMonthFilter] = useState('');
   const [yearFilter, setYearFilter] = useState('');
 
-  const API_URL = 'http://localhost:5000/api/report';
+  const API_URL = `${import.meta.env.VITE_API_URL}/api/report`;
 
   useEffect(() => {
     const fetchIssues = async () => {

@@ -125,7 +125,7 @@ export const Login = asyncHandler(async (req, res, next) => {
 export const Logout = asyncHandler(async (req, res, next) => {
   const logout = res.clearCookie("jwt", {
     httpOnly: true,
-    secure: true,
+    secure: false,
     sameSite: "None",
   });
   if(!logout) {

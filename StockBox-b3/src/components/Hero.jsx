@@ -46,33 +46,31 @@ const Hero = () => {
   return (
     <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8">
       
-     <div className="relative w-[230px] md:w-[300px] h-[30px] md:h-[27px] mb-5 md:mb-0">
- 
-</div>
+
 
 
       <div className="container2 mx-auto px-4">
         <h1
-          className="md:text-[80px] text-3xl lg:text-[5vw]  text-center  mx-auto leading-tight text-white  font-bold "
+          className="md:text-[75px] text-3xl lg:text-[4.5vw]  text-center  mx-auto leading-tight text-white  font-bold "
           style={{ fontFamily: "plus-jakarta-sans" }}
         >
           Invest Smarter
           <span className="md:block">{""} With Stockbox</span>
       
         </h1>
-        <p className="sub-head text-[#ebff86] text-[1.6em] flex flex-col items-center justify-center text-center mt-4 md:mt-6 font-semibold">
-          <span >Registered I Plans Starts With Rs. 99</span> <span>I Trusted By 70K+Users</span> </p>
+        <p className="sub-head text-[#ebff86] md:text-[1.6em] flex flex-col items-center justify-center text-center mt-4 md:mt-6 font-semibold">
+          <span >SEBI registered I Plans Starts With Rs. 99</span> <span>I Trusted By 70K<sup>+</sup> Users</span> </p>
       </div>
       
       <button onClick={() => navigator("/Download")}
         className="w-[205px]  px-1  h-[48px] sm:h-[56px] 
-          bg-[#ebff86] mt-6 sm:mt-10 text-gray-700
+          bg-[#ebff86] mt-[2px] sm:mt-3 text-gray-700
           text-base sm:text-lg font-semibold rounded-2xl 
           hover:bg-[#e4ebc1] transition-colors duration-1000 container4
           font-[plus-jakarta-sans] shadow-lg   drop-shadow-md"
       >
        <div className="flex items-center justify-center gap-3">
-        <p className=" font-bold"> Download Now  </p> 
+        <p className=" font-bold"> Get Start </p> 
         <svg
   className="w-8 h-8 animate-bounce text-white"
   fill="none"
