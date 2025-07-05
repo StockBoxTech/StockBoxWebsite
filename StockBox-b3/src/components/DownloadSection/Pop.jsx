@@ -79,34 +79,44 @@ const Pop = () => {
               <section>
                 <h3 className="text-lg font-semibold text-orange-300 mb-2">स्टॉकबॉक्स सब्सक्रिप्शन नोटिस</h3>
                 <p className="mb-4">
-                  स्टॉकबॉक्स सब्सक्रिप्शन प्लान्स के लिए सब्सक्राइब करते समय, कृपया भुगतान केवल स्टॉकबॉक्स टेक्नोलॉजीज प्राइवेट लिमिटेड के अधिकृत कंपनी खाते में ही करें...
+प्रिय ग्राहक स्टॉकबॉक्स टेक्नोलॉजीज प्रा. लिमिटेड,  हमेशा कंपनी खाते (स्टॉकबॉक्स टेक्नोलॉजीज प्रा. लिमिटेड) में सदस्यता शुल्क लेता है
                 </p>
                 <p className="mb-4">
-                  स्टॉकबॉक्स टेक्नोलॉजीज अपने ग्राहकों से लाभ साझा नहीं करता...
+                  किसी भी पर्सनल (अन्य) खाते या यूपीआई में राशि का भुगतान न करें। यदि आप किसी अन्य खाते में राशि का भुगतान करते हैं तो हम उसके लिए जिम्मेदार नहीं हैं।
                 </p>
               </section>
 
               <section>
                 <h3 className="text-lg font-semibold text-orange-300 mb-2">Stockbox Subscription Notice</h3>
                 <p className="mb-4">
-                  To subscribe to Stockbox Subscription Plans, ensure payments are made...
+                  Dear Clients Stockbox Technologies Pvt. Ltd. taken subscription charges in Companies Account ( Stockbox Technologies Pvt. Ltd. )
                 </p>
                 <p className="mb-4">
-                  Stockbox Technologies does not engage in profit sharing...
+                  Don't Pay Amount in Any Personal ( other ) Account or UPI. IF you pay amount in any other account we are not responsible for that.
                 </p>
               </section>
 
               <section className="bg-red-100/20 border border-red-200/30 p-4 rounded-lg">
                 <h3 className="text-lg font-semibold text-red-200 mb-2">⚠️ Fraud Alert</h3>
                 <p className="mb-3">
-                  We wish to inform our valued clients of recent fraudulent activities...
+                  We would like to inform our valued clients that we have recently noticed instances of
+                   fraudulent activities involving our company's name. These individuals are sharing our 
+                   panel screenshots and using our name to request payments to their personal bank accounts
+                    and UPI IDs. We urge all our clients to exercise caution and verify the bank details provided 
+                    for making payments. It is essential to ensure that the recipient's name matches our company 
+                    name, Stockbox Technologies Pvt. Ltd. If you come across any bank details or UPI IDs that do not 
+                    correspond to our company name, we strongly advise against making any payments and urge you to
+                     report the incident immediately to our customer helpline at 9997398943. 
                 </p>
                 <p className="mb-3">
-                  Please verify all bank details to ensure the recipient's name is <strong>Stockbox Technologies Pvt. Ltd.</strong>...
+                Please note that we, 
+                     Stockbox Technologies Pvt. Ltd., have no affiliation with these individuals and take no 
+                     responsibility for any transactions made outside of the verified and authorized channels. 
+                     We apologize for any inconvenience caused by these fraudulent activities and assure you that 
+                     we are taking necessary steps to address this issue and protect your interests. Thank you for
+                      your continued support and vigilance in safeguarding our mutual interests.
                 </p>
-                <p>
-                  Stockbox Technologies Pvt. Ltd. is not affiliated with these individuals...
-                </p>
+               
               </section>
 
               <div className="text-right">

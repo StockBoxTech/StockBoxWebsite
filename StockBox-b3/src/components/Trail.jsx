@@ -129,14 +129,7 @@ const Trail = () => {
           </motion.button>
           
           {/* Additional benefit text */}
-          <motion.p 
-            className="text-gray-400 text-sm py-2"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-          >
-            No credit card required • 14-day free trial • Cancel anytime
-          </motion.p>
+        
         </motion.div>
       </div>
 
